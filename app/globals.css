@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Feniks Studios — Design System
+   DA : BLANC & OR (accent doré #DEB267)
+   Le noir & or est réservé à des sections ponctuelles (jamais l'accueil).
+   ============================================================ */
+
+:root {
+  --background: #ffffff;
+  --surface: #faf7f1;      /* crème clair pour sections alternées */
+  --surface-2: #f3eee4;
+  --border: #e9e3d7;
+  --foreground: #17150f;   /* presque noir chaud */
+  --muted: #6c675c;        /* gris chaud (texte secondaire) */
+  --muted-2: #a49d8f;
+
+  --gold: #deb267;         /* or de marque (aplats, lignes, gros titres) */
+  --gold-deep: #b8863b;
+  --gold-ink: #9a6f28;     /* or lisible pour petit texte sur blanc */
+
+  --ink: #17150f;          /* pour sections noir & or ponctuelles */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-ink: var(--gold-ink);
+  --color-ink: var(--ink);
+
+  --font-display: var(--font-montserrat);
+  --font-body: var(--font-raleway);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(222, 178, 103, 0.3);
+  color: var(--ink);
+}
+
+/* ---- Typography helpers ---- */
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.text-gold-ink {
+  color: var(--gold-ink);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(120deg, var(--gold-deep) 0%, var(--gold) 45%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.section-dark .text-gradient-gold {
+  background: linear-gradient(120deg, var(--gold-light, #ecd39b) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.eyebrow {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--gold-ink);
+}
+
+/* ---- Reveal on scroll ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  color: #fff;
+  box-shadow: 0 10px 26px -12px rgba(184, 134, 59, 0.7);
+}
+.btn-gold:hover {
+  box-shadow: 0 16px 36px -12px rgba(184, 134, 59, 0.9);
+  transform: translateY(-2px);
+}
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+}
+.btn-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -16px rgba(0, 0, 0, 0.5);
+}
+.btn-outline {
+  border: 1px solid var(--gold-deep);
+  color: var(--gold-ink);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: rgba(222, 178, 103, 0.1);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+.card:hover {
+  border-color: rgba(222, 178, 103, 0.7);
+  transform: translateY(-4px);
+  box-shadow: 0 26px 50px -30px rgba(120, 90, 30, 0.4);
+}
+
+/* ---- Section noir & or (usage ponctuel, pages internes) ---- */
+.section-dark {
+  background: var(--ink);
+  color: #f5f2ea;
+}
+.section-dark .eyebrow {
+  color: var(--gold);
+}
+.section-dark .text-muted {
+  color: #b9b3a5 !important;
+}
+
+/* ---- Utility ---- */
+.container-x {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+.gold-line {
+  width: 56px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-deep));
+}
+
+/* ---- Curseur signature (desktop, pointeur fin uniquement) ---- */
+.fk-cursor-dot,
+.fk-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+}
+
+.has-custom-cursor .fk-cursor-dot,
+.has-custom-cursor .fk-cursor-ring {
+  display: block;
+  opacity: 1;
+}
+
+/* on masque le curseur système, sauf là où il aide (champs de saisie) */
+.has-custom-cursor,
+.has-custom-cursor a,
+.has-custom-cursor button,
+.has-custom-cursor [role="button"] {
+  cursor: none;
+}
+.has-custom-cursor input,
+.has-custom-cursor textarea,
+.has-custom-cursor select {
+  cursor: auto;
+}
+
+.fk-cursor-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-deep);
+  transition: opacity 0.25s ease;
+}
+
+/* Anneau identique partout — aucun changement au survol */
+.fk-cursor-ring {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  transition: opacity 0.25s ease;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 36s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}

@@ -1,0 +1,19 @@
+# Fichiers de travail : conservés dans le projet, mais inutiles en ligne.
+
+# Scripts de récupération / traitement des assets (usage ponctuel, en local)
+scripts/
+
+# Sources brutes des logos, avant détourage (le site utilise public/logos/)
+public/brandsrc/
+public/clients/
+
+# Anciennes images de travail, plus référencées
+public/work/
+
+# Fichiers intermédiaires du scraping du portfolio
+data/portfolio-scraped.json
+portfolio_links.txt
+
+# Divers
+.env.local
+*.log
