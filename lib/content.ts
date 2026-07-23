@@ -30,6 +30,7 @@ export const nav = [
   { label: "Accueil", href: "/" },
   { label: "L'agence", href: "/agence" },
   { label: "Réalisations", href: "/realisations" },
+  { label: "Tarifs", href: "/tarifs" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -102,6 +103,74 @@ export const services: Service[] = [
     icon: "share",
   },
 ];
+
+// Tarifs — prix "à partir de", positionnement corporate moyenne-haute gamme.
+export type PricePack = {
+  title: string;
+  icon: string;
+  from: number; // euros
+  unit?: string; // "jour", "module"…
+  note: string;
+  highlight?: boolean;
+};
+
+export const pricing: PricePack[] = [
+  {
+    title: "Film d'entreprise / institutionnel",
+    icon: "building",
+    from: 3500,
+    note: "Écriture, tournage, montage et étalonnage d'un film qui raconte qui vous êtes.",
+    highlight: true,
+  },
+  {
+    title: "Publicité web ou TV",
+    icon: "tv",
+    from: 6000,
+    note: "Un spot percutant, du concept à la diffusion, pensé pour votre cible.",
+  },
+  {
+    title: "Motion design",
+    icon: "motion",
+    from: 2200,
+    note: "Une animation sur-mesure pour rendre clair et désirable un concept ou un service.",
+  },
+  {
+    title: "Vidéo produit / présentation",
+    icon: "box",
+    from: 2000,
+    note: "Mettez en valeur un produit, un service ou une activité.",
+  },
+  {
+    title: "Interview",
+    icon: "mic",
+    from: 1500,
+    note: "Dirigeants, collaborateurs ou clients : une parole soignée et authentique.",
+  },
+  {
+    title: "Video learning / formation",
+    icon: "learning",
+    from: 1500,
+    unit: "module",
+    note: "Des contenus pédagogiques clairs et engageants pour former vos équipes.",
+  },
+  {
+    title: "Couverture d'événement",
+    icon: "event",
+    from: 1200,
+    unit: "jour",
+    note: "Séminaires, conférences, lancements : vos temps forts capturés fidèlement.",
+  },
+  {
+    title: "Prises de vues drone",
+    icon: "drone",
+    from: 700,
+    note: "En complément d'un projet ou en autonomie : des plans aériens qui subliment vos images.",
+  },
+];
+
+export function formatPrice(n: number): string {
+  return n.toLocaleString("fr-FR") + " €";
+}
 
 export type Testimonial = {
   quote: string;
