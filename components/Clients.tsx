@@ -14,7 +14,7 @@ export default function Clients() {
             <div
               key={c.name}
               title={c.name}
-              className="relative h-14 w-32 md:h-20 md:w-44 opacity-90 hover:opacity-100 hover:scale-105 transition duration-300"
+              className="relative h-16 w-36 md:h-20 md:w-44 opacity-90 hover:opacity-100 hover:scale-105 transition duration-300"
             >
               <Image
                 src={c.src}

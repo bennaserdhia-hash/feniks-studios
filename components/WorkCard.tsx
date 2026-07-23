@@ -3,11 +3,19 @@ import Link from "next/link";
 import { Video } from "@/lib/portfolio";
 import { IconPlay } from "./Icons";
 
-export default function WorkCard({ work, large = false }: { work: Video; large?: boolean }) {
+export default function WorkCard({
+  work,
+  large = false,
+  instant = false,
+}: {
+  work: Video;
+  large?: boolean;
+  instant?: boolean;
+}) {
   const hasVideo = Boolean(work.youtubeId || work.vimeoId);
 
   return (
-    <article className="reveal group">
+    <article className={instant ? "group" : "reveal group"}>
       <Link href={`/realisations/${work.id}`} className="block">
         <div
           className={`relative overflow-hidden rounded-xl border border-border ${

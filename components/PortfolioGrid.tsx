@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import WorkCard from "./WorkCard";
 import { Video } from "@/lib/portfolio";
 
@@ -12,29 +12,39 @@ export default function PortfolioGrid({ works }: { works: Video[] }) {
   }, [works]);
 
   const [active, setActive] = useState<string | null>(null);
+  const topRef = useRef<HTMLDivElement>(null);
   const shown = active ? works.filter((w) => w.category === active) : works;
 
+  const select = (cat: string | null) => {
+    setActive(cat);
+    // ramène en haut de la grille pour toujours voir les résultats
+    requestAnimationFrame(() => {
+      const y = topRef.current?.getBoundingClientRect().top ?? 0;
+      if (y < 0) topRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
   return (
-    <>
+    <div ref={topRef} className="scroll-mt-28">
       {/* Filtres */}
       <div className="flex flex-wrap gap-2 mb-10">
-        <FilterChip label={`Tout (${works.length})`} on={!active} onClick={() => setActive(null)} />
+        <FilterChip label={`Tout (${works.length})`} on={!active} onClick={() => select(null)} />
         {categories.map(([cat, n]) => (
           <FilterChip
             key={cat}
             label={`${cat} (${n})`}
             on={active === cat}
-            onClick={() => setActive(cat)}
+            onClick={() => select(cat)}
           />
         ))}
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9">
         {shown.map((w) => (
-          <WorkCard key={w.id} work={w} />
+          <WorkCard key={w.id} work={w} instant={active !== null} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
