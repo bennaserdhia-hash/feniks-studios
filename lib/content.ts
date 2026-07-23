@@ -182,17 +182,17 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
+      "Le réalisateur a géré notre projet extrêmement bien et a respecté le calendrier très scrupuleusement. Il est fortement probable que nous fassions de nouveau appel à Feniks Studios. Je les recommande vivement !",
+    name: "Philippe Teyssedre",
+    role: "Chef de projet — EDF",
+    photo: "/people/philippe-teyssedre.png",
+  },
+  {
+    quote:
       "Entre expertise technique et créativité, ils sont « force de proposition ». Avec eux, on fait mieux…",
     name: "Mehdi Maatoug",
     role: "Coach Développement personnel",
     photo: "/people/mehdi-maatoug.jpg",
-  },
-  {
-    quote:
-      "Le réalisateur a géré notre projet extrêmement bien et a respecté le calendrier très scrupuleusement. Il est fortement probable que nous fassions de nouveau appel à Feniks Studios. Je les recommande vivement !",
-    name: "Philippe Teyssedre",
-    role: "Chef de projet",
-    photo: "/people/philippe-teyssedre.png",
   },
   {
     quote:
