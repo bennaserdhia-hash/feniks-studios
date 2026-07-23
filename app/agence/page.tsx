@@ -10,7 +10,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "L'agence",
   description:
-    "Feniks Studios, boîte de production audiovisuelle parisienne fondée en 2014. Comprendre votre entreprise pour en raconter l'histoire : storytelling et exigence technique haut de gamme.",
+    "Feniks Studios, agence de production audiovisuelle parisienne fondée en 2014. Comprendre votre entreprise pour en raconter l'histoire : storytelling et exigence technique haut de gamme.",
 };
 
 const approach = [
@@ -41,7 +41,7 @@ export default function AgencePage() {
             Nous racontons <span className="text-gradient-gold">vos histoires</span>.
           </>
         }
-        intro="Boîte de production audiovisuelle parisienne fondée en 2014. Notre métier ne commence pas derrière la caméra : il commence par comprendre votre produit, votre histoire et vos valeurs. Le reste — écriture, tournage, post-production — n'est que la mise en œuvre de ce récit, avec une exigence technique haut de gamme."
+        intro="Agence de production audiovisuelle parisienne fondée en 2014. Notre métier ne commence pas derrière la caméra : il commence par comprendre votre produit, votre histoire et vos valeurs. Le reste — écriture, tournage, post-production — n'est que la mise en œuvre de ce récit, avec une exigence technique haut de gamme."
       />
 
       {/* Positioning */}

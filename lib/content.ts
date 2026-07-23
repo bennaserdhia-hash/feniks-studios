@@ -8,10 +8,10 @@ export const site = {
   tagline: "Expert en audiovisuel d'entreprise",
   baseline: "En perpétuel renouvellement créatif",
   founded: 2014,
-  kicker: "Boîte de production parisienne · Fondée en 2014",
+  kicker: "Agence de production parisienne · Fondée en 2014",
   // Accroche accueil : comprendre → raconter → exécuter
   pitch:
-    "Comprendre votre produit, votre histoire et ce qui fait votre âme — puis en tirer un récit. C'est là que se joue la vraie valeur d'une boîte de production : la maîtrise du storytelling, servie par une exigence technique haut de gamme.",
+    "Comprendre votre produit, votre histoire et ce qui fait votre âme — puis en tirer un récit. C'est là que se joue la vraie valeur d'une agence de production : la maîtrise du storytelling, servie par une exigence technique haut de gamme.",
   mission:
     "Comprendre les entreprises en profondeur pour transformer ce qu'elles sont en récits qui marquent — et leur donner, grâce à la vidéo, les moyens de se démarquer.",
   locations: ["Paris"],

@@ -39,14 +39,14 @@ export default async function Home() {
 
           <div className="order-1 md:order-2">
             <SectionHeading
-              eyebrow="Boîte de production audiovisuelle"
+              eyebrow="Agence de production audiovisuelle"
               title={
                 <>
                   Comprendre votre entreprise{" "}
                   <span className="text-gold">avant de filmer quoi que ce soit.</span>
                 </>
               }
-              intro="Aujourd'hui, la vraie valeur d'une boîte de production ne tient pas au matériel : elle tient à sa capacité à comprendre votre produit, votre histoire et ce qui fait votre âme — puis à en tirer un récit. C'est ce que nous faisons depuis 2014, en associant maîtrise du storytelling et exigence technique haut de gamme."
+              intro="Aujourd'hui, la vraie valeur d'une agence de production ne tient pas au matériel : elle tient à sa capacité à comprendre votre produit, votre histoire et ce qui fait votre âme — puis à en tirer un récit. C'est ce que nous faisons depuis 2014, en associant maîtrise du storytelling et exigence technique haut de gamme."
             />
             <div className="grid grid-cols-3 gap-8 mt-10 reveal">
               {[

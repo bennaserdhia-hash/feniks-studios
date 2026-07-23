@@ -8,7 +8,7 @@ import { serviceIcons, IconArrow, IconCheck } from "@/components/Icons";
 export const metadata: Metadata = {
   title: "Tarifs",
   description:
-    "Les tarifs de Feniks Studios, boîte de production audiovisuelle parisienne : film d'entreprise dès 3 500 €, motion design, publicité, couverture d'événement, video learning. Devis sur-mesure gratuit.",
+    "Les tarifs de Feniks Studios, agence de production audiovisuelle parisienne : film d'entreprise dès 3 500 €, motion design, publicité, couverture d'événement, video learning. Devis sur-mesure gratuit.",
 };
 
 const included = [

@@ -34,7 +34,7 @@ export default function ContactPage() {
                 <li className="flex items-start gap-3">
                   <IconMapPin className="h-5 w-5 text-gold shrink-0 mt-0.5" />
                   <span>
-                    Boîte de production basée à
+                    Agence de production basée à
                     <br />
                     <strong className="text-foreground">{site.locations.join(" & ")}</strong>
                   </span>

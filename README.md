@@ -1,7 +1,7 @@
 # Feniks Studios — site web (Next.js)
 
 Reconstruction moderne du site [feniksstudios.com](https://feniksstudios.com) :
-boîte de production audiovisuelle parisienne fondée en 2014.
+agence de production audiovisuelle parisienne fondée en 2014.
 
 Site vitrine rapide, sécurisé et gratuit à héberger, qui remplace l'ancien
 WordPress. Design cinématographique sombre à accent doré, formulaire de devis

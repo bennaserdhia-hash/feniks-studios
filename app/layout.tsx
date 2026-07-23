@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import ChromeGate from "@/components/ChromeGate";
 import CustomCursor from "@/components/CustomCursor";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -26,20 +27,20 @@ export const metadata: Metadata = {
     template: "%s — Feniks Studios",
   },
   description:
-    "Boîte de production audiovisuelle parisienne fondée en 2014. Nous comprenons votre produit et votre histoire pour en faire un récit : storytelling et exigence technique haut de gamme. Films d'entreprise, motion design, couverture d'événement, publicité.",
+    "Agence de production audiovisuelle parisienne fondée en 2014. Nous comprenons votre produit et votre histoire pour en faire un récit : storytelling et exigence technique haut de gamme. Films d'entreprise, motion design, couverture d'événement, publicité.",
   keywords: [
     "production audiovisuelle",
     "film d'entreprise",
     "vidéo entreprise",
     "motion design",
     "agence vidéo Paris",
-    "boîte de production Paris",
+    "agence de production Paris",
     "Feniks Studios",
   ],
   openGraph: {
     title: "Feniks Studios — Expert en audiovisuel d'entreprise",
     description:
-      "Films d'entreprise, motion design, couverture d'événement, publicité. Boîte de production parisienne depuis 2014.",
+      "Films d'entreprise, motion design, couverture d'événement, publicité. Agence de production parisienne depuis 2014.",
     type: "website",
     locale: "fr_FR",
     siteName: "Feniks Studios",
@@ -64,6 +65,7 @@ export default function RootLayout({
         <ChromeGate>
           <Footer />
         </ChromeGate>
+        <Analytics />
       </body>
     </html>
   );
