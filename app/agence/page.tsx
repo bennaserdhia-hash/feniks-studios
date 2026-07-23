@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { Section, SectionHeading } from "@/components/Section";
 import ServicesList from "@/components/ServicesList";
-import { services, team, site } from "@/lib/content";
+import { services, team } from "@/lib/content";
 import { IconArrow, IconCheck } from "@/components/Icons";
 import PageHeader from "@/components/PageHeader";
 
@@ -162,15 +161,15 @@ export default function AgencePage() {
               eyebrow="Pourquoi Feniks Studios"
               title="Passionnés, réactifs, force de proposition."
             />
-            <div className="reveal relative aspect-video rounded-2xl overflow-hidden border border-border mt-8">
-              <Image
-                src="/portfolio/linkedin-local.jpg"
-                alt="Couverture d'événement LinkedIn Local Toulouse par Feniks Studios"
-                fill
-                sizes="(max-width:768px) 100vw, 45vw"
-                className="object-cover"
+            <div className="reveal relative aspect-video rounded-2xl overflow-hidden border border-border mt-8 bg-ink">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/1u-kUWha1mM?autoplay=1&mute=1&loop=1&playlist=1u-kUWha1mM&controls=0&rel=0&modestbranding=1&playsinline=1"
+                title="Feniks Studios — en action"
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
           </div>
           <ul className="reveal space-y-4">
