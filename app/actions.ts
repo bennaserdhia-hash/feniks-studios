@@ -110,9 +110,14 @@ export async function sendQuote(
       console.error(
         `[DEVIS NON ENVOYÉ] Resend ${res.status} ${detail}\n` + lines.join("\n")
       );
+      let reason = detail;
+      try {
+        reason = (JSON.parse(detail).message as string) || detail;
+      } catch {}
+      // DIAGNOSTIC TEMPORAIRE — à retirer une fois l'email fonctionnel
       return {
         ok: false,
-        error: `L'envoi a échoué. Réessayez dans un instant, ou écrivez-nous directement à ${to}.`,
+        error: `[diag] Resend ${res.status} · from=${from} · to=${to} · ${reason}`,
       };
     }
 
