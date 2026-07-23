@@ -29,7 +29,7 @@ export default function TarifsPage() {
             Des prix clairs, <span className="text-gradient-gold">une valeur juste</span>
           </>
         }
-        intro="Chaque projet est unique, mais vous avez droit à un ordre de grandeur avant même de nous appeler. Voici nos prix de départ — le devis final est établi sur-mesure, selon vos ambitions et votre diffusion."
+        intro="Chez Feniks Studios, rien n'est standardisé : chaque projet est entièrement sur-mesure, réalisé par une équipe de passionnés dont le métier est de rendre votre film unique. Ces prix de départ vous donnent un ordre de grandeur — le devis final est construit avec vous, selon vos ambitions et votre diffusion."
       />
 
       {/* Grille de tarifs */}
@@ -83,11 +83,13 @@ export default function TarifsPage() {
           <div>
             <p className="eyebrow mb-4">Compris dans chaque projet</p>
             <h2 className="font-display text-3xl font-extrabold leading-tight">
-              Un accompagnement complet, sans surprise.
+              Du sur-mesure, par une équipe de passionnés.
             </h2>
             <p className="text-muted mt-4 leading-relaxed">
-              Nos prix ne sont pas des « produits d&apos;appel » : ils incluent tout ce qui fait
-              la qualité d&apos;un film, du premier échange à la livraison.
+              Nous ne vendons pas des « packs » sortis d&apos;un catalogue. Chaque film est pensé,
+              écrit et réalisé pour vous — par une équipe qui aime son métier et met un point
+              d&apos;honneur à rendre votre projet unique. Nos prix incluent tout ce qui fait la
+              qualité, du premier échange à la livraison.
             </p>
           </div>
           <ul className="reveal space-y-4">

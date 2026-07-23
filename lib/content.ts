@@ -123,6 +123,13 @@ export const pricing: PricePack[] = [
     highlight: true,
   },
   {
+    title: "Couverture d'événement",
+    icon: "event",
+    from: 1200,
+    unit: "jour",
+    note: "Séminaires, conférences, lancements : vos temps forts capturés fidèlement.",
+  },
+  {
     title: "Publicité web ou TV",
     icon: "tv",
     from: 6000,
@@ -152,13 +159,6 @@ export const pricing: PricePack[] = [
     from: 1500,
     unit: "module",
     note: "Des contenus pédagogiques clairs et engageants pour former vos équipes.",
-  },
-  {
-    title: "Couverture d'événement",
-    icon: "event",
-    from: 1200,
-    unit: "jour",
-    note: "Séminaires, conférences, lancements : vos temps forts capturés fidèlement.",
   },
   {
     title: "Prises de vues drone",
