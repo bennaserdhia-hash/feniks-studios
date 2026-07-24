@@ -289,7 +289,7 @@ export const posts: Post[] = [
       "La vidéo est devenue le format roi. Découvrez pourquoi un contenu audiovisuel soigné est un investissement rentable pour votre marque.",
     category: "Stratégie",
     readingTime: "5 min",
-    cover: "/portfolio/les-boutiques-saint-georges.png",
+    cover: "/blog/investir-qualite.webp",
     bodyImage: "/portfolio/film-rrr-edf-formation-commerciale.jpg",
   },
   {
@@ -300,7 +300,7 @@ export const posts: Post[] = [
       "Portée, engagement, mémorisation : la vidéo transforme votre présence sociale. Voici comment en tirer parti.",
     category: "Réseaux sociaux",
     readingTime: "4 min",
-    cover: "/portfolio/kfc-foot-5-cup-le-five.jpg",
+    cover: "/blog/reseaux-sociaux.jpg",
     bodyImage: "/portfolio/concert-2019-arabel-fm.jpg",
   },
   {
@@ -310,7 +310,7 @@ export const posts: Post[] = [
       "Le motion design et l'animation permettent d'expliquer l'abstrait et de captiver. Quand et pourquoi les choisir ?",
     category: "Motion design",
     readingTime: "4 min",
-    cover: "/portfolio/blue-project.png",
+    cover: "/blog/films-animation.jpg",
     bodyImage: "/portfolio/afsr.png",
   },
   {
@@ -320,7 +320,7 @@ export const posts: Post[] = [
       "Une bonne histoire crée de l'émotion et de la fidélité. Le storytelling vidéo au service de votre marque.",
     category: "Storytelling",
     readingTime: "6 min",
-    cover: "/portfolio/highlander-adventures.jpg",
+    cover: "/blog/storytelling.jpg",
     bodyImage: "/portfolio/ummanite-au-mali-2018.jpg",
   },
   {
@@ -331,7 +331,7 @@ export const posts: Post[] = [
       "SEO, conversion, engagement : la vidéo est un pilier de toute stratégie digitale performante.",
     category: "Digital",
     readingTime: "5 min",
-    cover: "/portfolio/sicav-labellisee-isr-echiquier-positive-impact-eur.jpg",
+    cover: "/blog/strategie-digitale.jpg",
     bodyImage: "/portfolio/meet-up-iot-industriel-actility-ge-digital.jpg",
   },
   {
@@ -341,7 +341,7 @@ export const posts: Post[] = [
       "De l'attention à l'action : comment la vidéo nourrit l'engagement à chaque étape du parcours client.",
     category: "Engagement",
     readingTime: "4 min",
-    cover: "/portfolio/monsieur-store-care-habitat.jpg",
+    cover: "/blog/engagement.jpg",
     bodyImage: "/portfolio/kashan-rug-iranian-handmade-carpets.jpg",
   },
 ];
