@@ -7,7 +7,7 @@ import ServicesList from "@/components/ServicesList";
 import WorkCard from "@/components/WorkCard";
 import PostCard from "@/components/PostCard";
 import Testimonials from "@/components/Testimonials";
-import { services, posts } from "@/lib/content";
+import { services, posts, showreel2022 } from "@/lib/content";
 import { getVideos } from "@/lib/portfolio";
 import { IconArrow } from "@/components/Icons";
 
@@ -99,6 +99,21 @@ export default async function Home() {
             Découvrir l'agence <IconArrow className="h-4 w-4" />
           </Link>
         </div>
+
+        <div className="reveal relative aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-border mb-12 bg-ink">
+          <video
+            className="h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={showreel2022.poster}
+            preload="metadata"
+          >
+            <source src={showreel2022.mp4} type="video/mp4" />
+          </video>
+        </div>
+
         <ServicesList items={services.slice(0, 6)} />
       </Section>
 

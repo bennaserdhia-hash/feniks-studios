@@ -356,6 +356,13 @@ export const showreel = {
   poster: "/video/poster.jpg",
 };
 
+// Showreel 2022 auto-hébergé (téléchargé depuis la chaîne YouTube Feniks),
+// boucle muette de 30 s pour les sections "prestations" / "pourquoi nous".
+export const showreel2022 = {
+  mp4: "/video/showreel-2022.mp4",
+  poster: "/video/poster-2022.jpg",
+};
+
 // Réalisations — vraies miniatures de projets récupérées du site
 export type Work = {
   title: string;

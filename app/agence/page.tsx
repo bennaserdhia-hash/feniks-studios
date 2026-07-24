@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Section, SectionHeading } from "@/components/Section";
 import ServicesList from "@/components/ServicesList";
-import { services, team } from "@/lib/content";
+import { services, team, showreel2022 } from "@/lib/content";
 import { IconArrow, IconCheck } from "@/components/Icons";
 import PageHeader from "@/components/PageHeader";
 
@@ -162,14 +162,17 @@ export default function AgencePage() {
               title="Passionnés, réactifs, force de proposition."
             />
             <div className="reveal relative aspect-video rounded-2xl overflow-hidden border border-border mt-8 bg-ink">
-              <iframe
-                src="https://www.youtube-nocookie.com/embed/1u-kUWha1mM?autoplay=1&mute=1&loop=1&playlist=1u-kUWha1mM&controls=0&rel=0&modestbranding=1&playsinline=1"
-                title="Feniks Studios — en action"
-                className="absolute inset-0 h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-              />
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster={showreel2022.poster}
+                preload="metadata"
+              >
+                <source src={showreel2022.mp4} type="video/mp4" />
+              </video>
             </div>
           </div>
           <ul className="reveal space-y-4">
