@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { posts } from "@/lib/content";
 import { Section } from "@/components/Section";
@@ -57,6 +58,17 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
 
       <Section className="!pt-6">
         <div className="max-w-3xl mx-auto">
+          <div className="reveal relative aspect-[16/9] rounded-2xl overflow-hidden border border-border mb-10">
+            <Image
+              src={post.cover}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width:768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
+
           <article className="prose-feniks space-y-6 text-muted leading-relaxed text-lg">
             <p className="text-foreground text-xl font-display">{post.excerpt}</p>
             <p>
@@ -72,6 +84,21 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
               longtemps qu'un texte ou une image. Le mouvement, le son et le rythme créent une
               expérience immersive qui installe durablement votre message.
             </p>
+            <figure className="reveal not-prose my-8">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-border">
+                <Image
+                  src={post.bodyImage}
+                  alt={`Illustration — ${post.category}`}
+                  fill
+                  sizes="(max-width:768px) 100vw, 768px"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="text-sm text-muted-2 mt-3 text-center">
+                Une réalisation Feniks Studios — {post.category.toLowerCase()}.
+              </figcaption>
+            </figure>
+
             <h2 className="font-display text-2xl font-bold text-foreground pt-4">
               De l'idée à la diffusion
             </h2>
