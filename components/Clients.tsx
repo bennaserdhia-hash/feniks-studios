@@ -6,7 +6,7 @@ export default function Clients() {
     <div className="py-14 md:py-20 border-y border-border bg-surface/60">
       <div className="container-x">
         <p className="text-center text-sm text-muted-2 uppercase tracking-[0.25em] mb-12">
-          Ils nous font confiance
+          Plus de 40 marques nous font confiance
         </p>
 
         <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-10 md:gap-x-16 md:gap-y-12">
