@@ -33,7 +33,9 @@ export default function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
+        open
+          ? "bg-white border-b border-border py-3"
+          : scrolled
           ? "bg-background/85 backdrop-blur-xl border-b border-border py-3"
           : "bg-transparent py-5"
       }`}
@@ -82,7 +84,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden fixed inset-x-0 top-[64px] bottom-0 bg-background/98 backdrop-blur-xl transition-all duration-300 ${
+        className={`md:hidden fixed inset-x-0 top-[64px] bottom-0 z-40 bg-white transition-all duration-300 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
