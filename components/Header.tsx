@@ -82,13 +82,13 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — plein écran opaque, couvre aussi derrière la barre */}
       <div
-        className={`md:hidden fixed inset-x-0 top-[64px] bottom-0 z-40 bg-white transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 z-40 bg-white transition-opacity duration-200 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
-        <nav className="container-x flex flex-col gap-1 pt-8">
+        <nav className="container-x flex flex-col gap-1 pt-28">
           {nav.map((item) => (
             <Link
               key={item.href}
