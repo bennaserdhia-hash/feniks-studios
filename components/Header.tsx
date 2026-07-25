@@ -40,7 +40,7 @@ export default function Header() {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="container-x flex items-center justify-between">
+      <div className="container-x flex items-center justify-between relative z-50">
         <Logo />
 
         {/* Desktop nav */}
