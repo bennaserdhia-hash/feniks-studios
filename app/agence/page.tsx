@@ -116,20 +116,6 @@ export default function AgencePage() {
               qu&apos;on a su lire dans votre entreprise avant de la filmer.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-6 md:gap-12 mt-14 max-w-2xl">
-            {[
-              { v: "2014", l: "Année de création" },
-              { v: "40+", l: "Marques accompagnées" },
-              { v: "10+", l: "Types de prestations vidéo" },
-            ].map((s) => (
-              <div key={s.l}>
-                <p className="font-display text-4xl md:text-5xl font-black text-gold">
-                  {s.v}
-                </p>
-                <p className="text-sm mt-2 leading-snug text-[#b9b3a5]">{s.l}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

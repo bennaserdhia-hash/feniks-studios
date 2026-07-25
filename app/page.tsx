@@ -48,20 +48,6 @@ export default async function Home() {
               }
               intro="Aujourd'hui, la vraie valeur d'une agence de production ne tient pas au matériel : elle tient à sa capacité à comprendre votre produit, votre histoire et ce qui fait votre âme — puis à en tirer un récit. C'est ce que nous faisons depuis 2014, en associant maîtrise du storytelling et exigence technique haut de gamme."
             />
-            <div className="grid grid-cols-3 gap-8 mt-10 reveal">
-              {[
-                { v: "2014", l: "année de création" },
-                { v: "40+", l: "marques accompagnées" },
-                { v: "50", l: "films réalisés" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <p className="font-display text-4xl font-black text-gold">{s.v}</p>
-                  <p className="text-xs text-muted mt-2 leading-snug uppercase tracking-wide">
-                    {s.l}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </Section>
