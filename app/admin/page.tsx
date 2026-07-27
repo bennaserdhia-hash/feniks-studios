@@ -100,7 +100,10 @@ export default function AdminPage() {
   const remove = async (v: Video) => {
     if (!confirm(`Supprimer « ${v.title} » ?\n\nCette action est définitive.`)) return;
     const res = await fetch(`/api/portfolio/${v.id}`, { method: "DELETE" });
-    if (!res.ok) return flash("err", "Suppression impossible.");
+    if (!res.ok) {
+      const { error } = await res.json().catch(() => ({ error: "Suppression impossible." }));
+      return flash("err", error ?? "Suppression impossible.");
+    }
     await load();
     flash("ok", "Vidéo supprimée.");
   };
