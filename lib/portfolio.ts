@@ -1,14 +1,15 @@
 /**
  * Stockage des réalisations (portfolio).
  *
- * Aujourd'hui : fichier JSON local (data/portfolio.json) — parfait en local.
- * En production (Vercel), le système de fichiers est en lecture seule :
- * il faudra brancher ce module sur une base (Supabase) ou un stockage objet.
- * Toute la logique passe par ce fichier, donc la migration ne touchera que lui.
+ * Source de vérité : table Supabase `feniks_portfolio` (voir lib/supabase.ts).
+ * Repli : si Supabase n'est pas configuré (clé absente), on lit le fichier
+ * data/portfolio.json en LECTURE SEULE — le site affiche donc toujours les
+ * projets, même sans base. Les écritures, elles, exigent Supabase.
  */
 
 import fs from "node:fs/promises";
 import path from "node:path";
+import { getServiceClient, PORTFOLIO_TABLE } from "./supabase";
 
 export type Video = {
   id: string;
@@ -46,7 +47,8 @@ export function embedUrl(v: Video): string | null {
 
 const FILE = path.join(process.cwd(), "data", "portfolio.json");
 
-export async function getVideos(): Promise<Video[]> {
+/** Lecture du fichier JSON local (repli / seed). */
+async function readFileVideos(): Promise<Video[]> {
   try {
     const raw = await fs.readFile(FILE, "utf8");
     const parsed = JSON.parse(raw);
@@ -56,30 +58,37 @@ export async function getVideos(): Promise<Video[]> {
   }
 }
 
-/** Erreur explicite quand le stockage n'est pas inscriptible (hébergement en lecture seule). */
+/** Erreur explicite quand aucune base inscriptible n'est disponible. */
 export class StorageReadOnlyError extends Error {
   constructor() {
     super(
-      "Le stockage est en lecture seule sur cet hébergement : les modifications " +
-        "ne peuvent pas être enregistrées. Il faut brancher une base de données " +
-        "(voir README, section « Dashboard en production »)."
+      "Le stockage est en lecture seule : la base Supabase n'est pas configurée " +
+        "(variables SUPABASE_URL / SUPABASE_SECRET_KEY). Les modifications ne " +
+        "peuvent pas être enregistrées."
     );
     this.name = "StorageReadOnlyError";
   }
 }
 
-async function saveVideos(videos: Video[]): Promise<void> {
-  try {
-    await fs.mkdir(path.dirname(FILE), { recursive: true });
-    await fs.writeFile(FILE, JSON.stringify(videos, null, 2) + "\n", "utf8");
-  } catch (err) {
-    const code = (err as NodeJS.ErrnoException)?.code;
-    // EROFS/EACCES : disque en lecture seule (Vercel, conteneurs figés…)
-    if (code === "EROFS" || code === "EACCES" || code === "EPERM") {
-      throw new StorageReadOnlyError();
-    }
-    throw err;
+type Row = { id: string; position: number; data: Video };
+
+export async function getVideos(): Promise<Video[]> {
+  const supabase = getServiceClient();
+  if (!supabase) return readFileVideos();
+
+  const { data, error } = await supabase
+    .from(PORTFOLIO_TABLE)
+    .select("id, position, data")
+    .order("position", { ascending: true });
+
+  if (error) {
+    console.error("[portfolio] lecture Supabase échouée, repli JSON:", error.message);
+    return readFileVideos();
   }
+  // Si la table est vide (pas encore semée), on retombe sur le JSON.
+  if (!data || data.length === 0) return readFileVideos();
+
+  return (data as Row[]).map((r) => ({ ...r.data, id: r.id }));
 }
 
 export function slugify(input: string): string {
@@ -95,44 +104,85 @@ export function slugify(input: string): string {
 }
 
 export async function addVideo(input: Omit<Video, "id">): Promise<Video> {
-  const videos = await getVideos();
+  const supabase = getServiceClient();
+  if (!supabase) throw new StorageReadOnlyError();
+
+  const existing = await getVideos();
   let id = slugify(input.title);
   let n = 2;
-  while (videos.some((v) => v.id === id)) id = `${slugify(input.title)}-${n++}`;
+  while (existing.some((v) => v.id === id)) id = `${slugify(input.title)}-${n++}`;
 
   const video: Video = { id, ...input };
-  videos.unshift(video); // les nouveautés en premier
-  await saveVideos(videos);
+  // Nouveautés en tête : position inférieure au minimum actuel.
+  const minPos = existing.length
+    ? await getMinPosition(supabase)
+    : 0;
+
+  const { error } = await supabase
+    .from(PORTFOLIO_TABLE)
+    .insert({ id, position: minPos - 1, data: video });
+
+  if (error) throw new Error(error.message);
   return video;
+}
+
+async function getMinPosition(
+  supabase: NonNullable<ReturnType<typeof getServiceClient>>
+): Promise<number> {
+  const { data } = await supabase
+    .from(PORTFOLIO_TABLE)
+    .select("position")
+    .order("position", { ascending: true })
+    .limit(1);
+  return data && data.length ? (data[0] as { position: number }).position : 0;
 }
 
 export async function updateVideo(
   id: string,
   patch: Partial<Omit<Video, "id">>
 ): Promise<Video | null> {
-  const videos = await getVideos();
-  const i = videos.findIndex((v) => v.id === id);
-  if (i === -1) return null;
-  videos[i] = { ...videos[i], ...patch };
-  await saveVideos(videos);
-  return videos[i];
+  const supabase = getServiceClient();
+  if (!supabase) throw new StorageReadOnlyError();
+
+  const { data: current, error: readErr } = await supabase
+    .from(PORTFOLIO_TABLE)
+    .select("data")
+    .eq("id", id)
+    .maybeSingle();
+  if (readErr) throw new Error(readErr.message);
+  if (!current) return null;
+
+  const next: Video = { ...(current.data as Video), ...patch, id };
+  const { error } = await supabase
+    .from(PORTFOLIO_TABLE)
+    .update({ data: next, updated_at: new Date().toISOString() })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  return next;
 }
 
 export async function deleteVideo(id: string): Promise<boolean> {
-  const videos = await getVideos();
-  const next = videos.filter((v) => v.id !== id);
-  if (next.length === videos.length) return false;
-  await saveVideos(next);
-  return true;
+  const supabase = getServiceClient();
+  if (!supabase) throw new StorageReadOnlyError();
+
+  const { error, count } = await supabase
+    .from(PORTFOLIO_TABLE)
+    .delete({ count: "exact" })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  return (count ?? 0) > 0;
 }
 
 /** Réordonne selon une liste d'ids. */
 export async function reorderVideos(ids: string[]): Promise<Video[]> {
-  const videos = await getVideos();
-  const byId = new Map(videos.map((v) => [v.id, v]));
-  const ordered = ids.map((i) => byId.get(i)).filter((v): v is Video => Boolean(v));
-  // on garde en fin de liste ceux qui n'étaient pas dans ids
-  for (const v of videos) if (!ids.includes(v.id)) ordered.push(v);
-  await saveVideos(ordered);
-  return ordered;
+  const supabase = getServiceClient();
+  if (!supabase) throw new StorageReadOnlyError();
+
+  // Position = index dans la liste fournie.
+  await Promise.all(
+    ids.map((id, i) =>
+      supabase.from(PORTFOLIO_TABLE).update({ position: i }).eq("id", id)
+    )
+  );
+  return getVideos();
 }
