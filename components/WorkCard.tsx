@@ -7,21 +7,30 @@ export default function WorkCard({
   work,
   large = false,
   instant = false,
+  fillVertical = false,
 }: {
   work: Video;
   large?: boolean;
   instant?: boolean;
+  /** Dans la grille masonry : sur ≥sm la vignette verticale remplit sa cellule
+   *  (2 lignes) pour des rangées alignées. Ailleurs elle garde son ratio 2:3. */
+  fillVertical?: boolean;
 }) {
   const hasVideo = Boolean(work.youtubeId || work.vimeoId);
 
+  const imgBox = work.vertical
+    ? `aspect-[2/3]${fillVertical ? " sm:aspect-auto sm:flex-1 sm:min-h-0" : ""}`
+    : large
+    ? "aspect-[16/9]"
+    : "aspect-video";
+
   return (
-    <article className={instant ? "group" : "reveal group"}>
-      <Link href={`/realisations/${work.id}`} className="block">
-        <div
-          className={`relative overflow-hidden rounded-xl border border-border ${
-            work.vertical ? "aspect-[2/3]" : large ? "aspect-[16/9]" : "aspect-video"
-          }`}
-        >
+    <article
+      data-vertical={work.vertical ? "" : undefined}
+      className={`${instant ? "group" : "reveal group"} flex flex-col h-full`}
+    >
+      <Link href={`/realisations/${work.id}`} className="flex flex-1 flex-col min-h-0">
+        <div className={`relative overflow-hidden rounded-xl border border-border ${imgBox}`}>
           <Image
             src={work.image}
             alt={`${work.title} — ${work.category}`}
@@ -43,17 +52,16 @@ export default function WorkCard({
             {work.category}
           </p>
           <h3
-            className={`font-display font-bold leading-tight mt-1 group-hover:text-gold-ink transition-colors ${
+            className={`font-display font-bold leading-tight mt-1 group-hover:text-gold-ink transition-colors line-clamp-2 min-h-[2.5em] ${
               large ? "text-xl" : "text-base"
             }`}
           >
             {work.title}
           </h3>
-          {work.description && (
-            <p className="text-muted text-sm mt-1.5 leading-relaxed line-clamp-2">
-              {work.description}
-            </p>
-          )}
+          {/* Hauteur fixe (2 lignes) : cartes uniformes → colonnes alignées, pas de décalage */}
+          <p className="text-muted text-sm mt-1.5 leading-relaxed line-clamp-2 min-h-[3.25em]">
+            {work.description}
+          </p>
         </div>
       </Link>
     </article>

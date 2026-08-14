@@ -25,22 +25,34 @@ export default function PortfolioGrid({ works }: { works: Video[] }) {
   const relayout = useCallback(() => {
     const grid = gridRef.current;
     if (!grid) return;
-    const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
     const cells = Array.from(grid.children) as HTMLElement[];
-    // 1 colonne (mobile) : flux normal avec gap-y, pas de masonry
-    if (cols <= 1) {
-      grid.style.gridAutoRows = "";
-      grid.style.rowGap = "";
-      cells.forEach((c) => (c.style.gridRowEnd = ""));
-      return;
-    }
-    grid.style.gridAutoRows = "1px";
-    grid.style.rowGap = "0px";
+    const desktop = window.matchMedia("(min-width: 640px)").matches;
+
+    // Reset (sert aussi de mesure). Sur mobile on s'arrête là : flux normal
+    // avec gap-y, les 2 Shorts sont déjà côte à côte via col-span.
+    grid.style.gridAutoRows = "";
+    grid.style.rowGap = "";
+    cells.forEach((c) => (c.style.gridRowEnd = ""));
+    if (!desktop) return;
+
+    // Hauteur naturelle d'une carte horizontale = 1 ligne.
+    let unit = 0;
     for (const cell of cells) {
       const card = cell.firstElementChild as HTMLElement | null;
-      if (!card) continue;
-      const h = card.getBoundingClientRect().height;
-      cell.style.gridRowEnd = `span ${Math.max(1, Math.round(h + ROW_GAP))}`;
+      if (card && !card.hasAttribute("data-vertical")) {
+        unit = card.getBoundingClientRect().height;
+        break;
+      }
+    }
+    if (!unit) return;
+
+    // Lignes de hauteur fixe : une verticale occupe 2 lignes → rangées
+    // parfaitement alignées, aucun décalage cumulé en descendant.
+    grid.style.gridAutoRows = `${unit}px`;
+    grid.style.rowGap = `${ROW_GAP}px`;
+    for (const cell of cells) {
+      const vertical = cell.firstElementChild?.hasAttribute("data-vertical");
+      cell.style.gridRowEnd = vertical ? "span 2" : "span 1";
     }
   }, []);
 
@@ -94,14 +106,14 @@ export default function PortfolioGrid({ works }: { works: Video[] }) {
 
       <div
         ref={gridRef}
-        className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9 items-start"
+        className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9 items-stretch"
       >
         {shown.map((w) => (
           // Sur mobile : cartes horizontales en pleine largeur (col-span-2),
           // vignettes verticales à mi-largeur → les deux Shorts côte à côte.
           // Dès sm : toutes les cartes occupent une colonne.
           <div key={w.id} className={w.vertical ? "col-span-1" : "col-span-2 sm:col-span-1"}>
-            <WorkCard work={w} instant={active !== null} />
+            <WorkCard work={w} instant={active !== null} fillVertical />
           </div>
         ))}
       </div>
