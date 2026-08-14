@@ -94,10 +94,13 @@ export default function PortfolioGrid({ works }: { works: Video[] }) {
 
       <div
         ref={gridRef}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9 items-start"
+        className="grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9 items-start"
       >
         {shown.map((w) => (
-          <div key={w.id}>
+          // Sur mobile : cartes horizontales en pleine largeur (col-span-2),
+          // vignettes verticales à mi-largeur → les deux Shorts côte à côte.
+          // Dès sm : toutes les cartes occupent une colonne.
+          <div key={w.id} className={w.vertical ? "col-span-1" : "col-span-2 sm:col-span-1"}>
             <WorkCard work={w} instant={active !== null} />
           </div>
         ))}
