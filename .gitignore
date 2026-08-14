@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# thumbnail generation workspace
+.thumbwork/
+public/portfolio__backup/
