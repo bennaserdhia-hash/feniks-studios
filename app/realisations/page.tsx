@@ -6,6 +6,9 @@ import PortfolioGrid from "@/components/PortfolioGrid";
 import { getVideos } from "@/lib/portfolio";
 import { IconArrow } from "@/components/Icons";
 
+// ISR : régénération auto (max 60 s) pour refléter les ajouts/édits du portfolio.
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Nos réalisations",
   description:

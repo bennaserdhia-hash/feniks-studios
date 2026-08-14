@@ -26,6 +26,8 @@ export type Video = {
   details?: string[];
   /** Libellé d'origine, plus précis que la catégorie regroupée */
   categoryLabel?: string;
+  /** Format vertical (Short / Reel) : vignette et player en 9:16 */
+  vertical?: boolean;
   /** Ancien champ libre, conservé pour le dashboard */
   client?: string;
   videoUrl?: string;

@@ -9,6 +9,10 @@ import { IconArrow, IconPlay } from "@/components/Icons";
 
 type Props = { params: Promise<{ id: string }> };
 
+// ISR : les fiches projet se régénèrent auto (max 60 s) ; les nouveaux projets
+// ajoutés en base sont rendus à la demande (dynamicParams par défaut).
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const videos = await getVideos();
   return videos.map((v) => ({ id: v.id }));
@@ -59,7 +63,11 @@ export default async function ProjectPage({ params }: Props) {
 
       {/* Lecteur */}
       <Section className="!pt-4 !pb-10">
-        <div className="relative aspect-video rounded-2xl overflow-hidden border border-border bg-surface-2 shadow-[0_40px_80px_-40px_rgba(120,90,30,0.35)]">
+        <div
+          className={`relative rounded-2xl overflow-hidden border border-border bg-surface-2 shadow-[0_40px_80px_-40px_rgba(120,90,30,0.35)] ${
+            video.vertical ? "aspect-[9/16] max-w-[420px] mx-auto" : "aspect-video"
+          }`}
+        >
           {embed ? (
             <iframe
               src={embed}

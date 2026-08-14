@@ -1,5 +1,72 @@
 [
   {
+    "id": "groupe-sandaya-4",
+    "title": "Groupe Sandaya",
+    "category": "Vidéo produit",
+    "categoryLabel": "Film produit",
+    "image": "/portfolio/groupe-sandaya-4.png",
+    "youtubeId": "H9gYH1oYZ_k",
+    "vimeoId": "",
+    "description": "Le groupe Sandaya nous a de nouveau sollicité pour valoriser Le Garden, son nouvel espace de restauration et de convivialité, en documentant sa construction jusqu’à sa mise en lumière.",
+    "details": [
+      "L’objectif était de raconter la transformation du lieu, de la structure au rendu final, en mettant en avant l’ambiance chaleureuse de cet espace pensé pour les vacanciers."
+    ]
+  },
+  {
+    "id": "learning-trip-tanger",
+    "title": "Learning Trip",
+    "category": "Publicité",
+    "categoryLabel": "Spot Web - Voyage",
+    "image": "/portfolio/learning-trip-tanger.png",
+    "youtubeId": "Yff4iq8Nfpo",
+    "vimeoId": "",
+    "description": "Learning Trip nous a sollicité pour réaliser une vidéo promotionnelle mettant en valeur la ville de Tanger et l’expérience de voyage proposée à ses participants.",
+    "details": [
+      "Le défi était de capturer l’énergie et les découvertes du séjour à travers un montage dynamique donnant envie de partir à la découverte de la ville."
+    ]
+  },
+  {
+    "id": "burger-addict-le-snow",
+    "title": "Burger Addict",
+    "category": "Publicité",
+    "categoryLabel": "Format vertical - Food",
+    "image": "/portfolio/burger-addict-le-snow.png",
+    "youtubeId": "BgPwg_xJ5qk",
+    "vimeoId": "",
+    "description": "Burger Addict nous a confié la réalisation d’un contenu vertical percutant pour présenter Le Snow, pensé pour les réseaux sociaux.",
+    "details": [
+      "Format court et rythmé, optimisé pour le mobile, afin de mettre l’eau à la bouche en quelques secondes."
+    ],
+    "vertical": true
+  },
+  {
+    "id": "ufo-bns",
+    "title": "UFO BNS",
+    "category": "Publicité",
+    "categoryLabel": "Format vertical",
+    "image": "/portfolio/ufo-bns.png",
+    "youtubeId": "xns-aHD2Bj8",
+    "vimeoId": "",
+    "description": "Contenu vertical réalisé pour UFO BNS, conçu pour capter l’attention sur les réseaux sociaux.",
+    "details": [
+      "Format court et vertical, pensé pour une diffusion mobile-first."
+    ],
+    "vertical": true
+  },
+  {
+    "id": "groupe-sandaya-5",
+    "title": "Groupe Sandaya",
+    "category": "Vidéo produit",
+    "categoryLabel": "Film produit",
+    "image": "/portfolio/groupe-sandaya-5.png",
+    "youtubeId": "4GCVLHH9KIg",
+    "vimeoId": "",
+    "description": "Nouvelle collaboration avec le groupe Sandaya pour mettre en valeur le camping Le Carbonnier et ses espaces à travers un film produit soigné.",
+    "details": [
+      "Valorisation des infrastructures et de l’ambiance du site pour donner à voir l’expérience vécue par les vacanciers."
+    ]
+  },
+  {
     "id": "skooleo",
     "title": "Skooleo",
     "category": "Couverture d'événement",
@@ -154,19 +221,6 @@
     "youtubeId": "99lrKWEVJqc",
     "vimeoId": "",
     "description": "AJ+ nous a sollicité afin de produire un reportage sur le football en amont de la Coupe du monde. Premier volet de la série.",
-    "details": [
-      "Le challenge était de pouvoir à la fois couvrir toutes les nécessités d’AJ+ afin qu’ils puissent opérer sur le terrain français, mais également d’identifier les meilleurs profils et les meilleures histoires à raconter concernant ce sujet tout en ayant un reportage digital à destination des réseaux sociaux."
-    ]
-  },
-  {
-    "id": "aj-2",
-    "title": "AJ+ — Reportage football (2)",
-    "category": "Reportage",
-    "categoryLabel": "Reportage sportif",
-    "image": "/portfolio/aj-2.png",
-    "youtubeId": "TUA0qpQUR1E",
-    "vimeoId": "",
-    "description": "Second volet du reportage produit pour AJ+ sur le football, en amont de la Coupe du monde.",
     "details": [
       "Le challenge était de pouvoir à la fois couvrir toutes les nécessités d’AJ+ afin qu’ils puissent opérer sur le terrain français, mais également d’identifier les meilleurs profils et les meilleures histoires à raconter concernant ce sujet tout en ayant un reportage digital à destination des réseaux sociaux."
     ]
@@ -651,21 +705,6 @@
     ]
   },
   {
-    "id": "lawson-jr-music-batteur-professionnel",
-    "title": "Lawson Jr'Music - Batteur professionnel",
-    "category": "Site web",
-    "categoryLabel": "Site web",
-    "image": "/portfolio/lawson-jr-music-batteur-professionnel.png",
-    "youtubeId": "",
-    "vimeoId": "",
-    "description": "Lawson Jr’Music – The Focused Project",
-    "details": [
-      "Identité visuelle + création de site web pour le batteur professionnel Lawson Jr’Music.",
-      "Artiste Passionné, Lawson vit son rêve qui se réalise pas après pas. Sa principale activité se résume par le partage de cette passion en concerts ou en studios d’enregistrements mais aussi par le biais de belles rencontres & collaborations musicales au niveau national et international.",
-      "Définir une identité visuelle (création de logo, charte graphique)"
-    ]
-  },
-  {
     "id": "war-games",
     "title": "War games",
     "category": "Couverture d'événement",
@@ -699,71 +738,6 @@
     "details": [
       "Le 19 juin 2014, les étudiants du master ont présentés, leurs projets sur le thème de la e-santé, devant un jury de professionnels présidé par Patrick ERRARD, président du LEEM.",
       "A cette occasion, le président du Jury remet également le prix de la meilleure thèse de l’année précédente en marketing Pharmaceutique."
-    ]
-  },
-  {
-    "id": "groupe-sandaya-4",
-    "title": "Groupe Sandaya",
-    "category": "Vidéo produit",
-    "categoryLabel": "Film produit",
-    "image": "/portfolio/groupe-sandaya-4.png",
-    "youtubeId": "H9gYH1oYZ_k",
-    "vimeoId": "",
-    "description": "Le groupe Sandaya nous a de nouveau sollicité pour valoriser Le Garden, son nouvel espace de restauration et de convivialité, en documentant sa construction jusqu’à sa mise en lumière.",
-    "details": [
-      "L’objectif était de raconter la transformation du lieu, de la structure au rendu final, en mettant en avant l’ambiance chaleureuse de cet espace pensé pour les vacanciers."
-    ]
-  },
-  {
-    "id": "learning-trip-tanger",
-    "title": "Learning Trip",
-    "category": "Publicité",
-    "categoryLabel": "Spot Web - Voyage",
-    "image": "/portfolio/learning-trip-tanger.png",
-    "youtubeId": "Yff4iq8Nfpo",
-    "vimeoId": "",
-    "description": "Learning Trip nous a sollicité pour réaliser une vidéo promotionnelle mettant en valeur la ville de Tanger et l’expérience de voyage proposée à ses participants.",
-    "details": [
-      "Le défi était de capturer l’énergie et les découvertes du séjour à travers un montage dynamique donnant envie de partir à la découverte de la ville."
-    ]
-  },
-  {
-    "id": "burger-addict-le-snow",
-    "title": "Burger Addict",
-    "category": "Publicité",
-    "categoryLabel": "Format vertical - Food",
-    "image": "/portfolio/burger-addict-le-snow.png",
-    "youtubeId": "BgPwg_xJ5qk",
-    "vimeoId": "",
-    "description": "Burger Addict nous a confié la réalisation d’un contenu vertical percutant pour présenter Le Snow, pensé pour les réseaux sociaux.",
-    "details": [
-      "Format court et rythmé, optimisé pour le mobile, afin de mettre l’eau à la bouche en quelques secondes."
-    ]
-  },
-  {
-    "id": "ufo-bns",
-    "title": "UFO BNS",
-    "category": "Publicité",
-    "categoryLabel": "Format vertical",
-    "image": "/portfolio/ufo-bns.png",
-    "youtubeId": "xns-aHD2Bj8",
-    "vimeoId": "",
-    "description": "Contenu vertical réalisé pour UFO BNS, conçu pour capter l’attention sur les réseaux sociaux.",
-    "details": [
-      "Format court et vertical, pensé pour une diffusion mobile-first."
-    ]
-  },
-  {
-    "id": "groupe-sandaya-5",
-    "title": "Groupe Sandaya",
-    "category": "Vidéo produit",
-    "categoryLabel": "Film produit",
-    "image": "/portfolio/groupe-sandaya-5.png",
-    "youtubeId": "4GCVLHH9KIg",
-    "vimeoId": "",
-    "description": "Nouvelle collaboration avec le groupe Sandaya pour mettre en valeur le camping Le Carbonnier et ses espaces à travers un film produit soigné.",
-    "details": [
-      "Valorisation des infrastructures et de l’ambiance du site pour donner à voir l’expérience vécue par les vacanciers."
     ]
   }
 ]

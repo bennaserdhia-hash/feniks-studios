@@ -19,7 +19,7 @@ export default function WorkCard({
       <Link href={`/realisations/${work.id}`} className="block">
         <div
           className={`relative overflow-hidden rounded-xl border border-border ${
-            large ? "aspect-[16/9]" : "aspect-video"
+            work.vertical ? "aspect-[9/16]" : large ? "aspect-[16/9]" : "aspect-video"
           }`}
         >
           <Image

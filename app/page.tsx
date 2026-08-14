@@ -11,6 +11,10 @@ import { services, posts, showreel2022 } from "@/lib/content";
 import { getVideos } from "@/lib/portfolio";
 import { IconArrow } from "@/components/Icons";
 
+// ISR : la page se régénère au plus toutes les 60 s pour refléter
+// automatiquement les changements du portfolio (Supabase / dashboard /admin).
+export const revalidate = 60;
+
 export default async function Home() {
   const works = await getVideos();
   return (
