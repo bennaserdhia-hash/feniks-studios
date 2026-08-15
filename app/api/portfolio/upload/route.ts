@@ -2,9 +2,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 import { slugify } from "@/lib/portfolio";
+import { getServiceClient } from "@/lib/supabase";
 
 const MAX_BYTES = 12 * 1024 * 1024; // 12 Mo
 const ALLOWED = ["image/jpeg", "image/png", "image/webp", "image/avif"];
+const BUCKET = "portfolio";
 
 export async function POST(request: Request) {
   const form = await request.formData();
@@ -25,7 +27,7 @@ export async function POST(request: Request) {
 
   const buffer = Buffer.from(await file.arrayBuffer());
 
-  // Normalise en JPEG 1280x692 (ratio des miniatures existantes ~768x415)
+  // Normalise en JPEG 1280x692 (ratio des miniatures existantes)
   let output: Buffer;
   try {
     output = await sharp(buffer)
@@ -37,21 +39,27 @@ export async function POST(request: Request) {
   }
 
   const base = slugify(file.name.replace(/\.[^.]+$/, "")) || "miniature";
-  const dir = path.join(process.cwd(), "public", "portfolio");
-  await fs.mkdir(dir, { recursive: true });
+  const filename = `${base}-${Date.now()}.jpg`;
 
-  let name = `${base}.jpg`;
-  let n = 2;
-  while (
-    await fs
-      .access(path.join(dir, name))
-      .then(() => true)
-      .catch(() => false)
-  ) {
-    name = `${base}-${n++}.jpg`;
+  // En prod : upload vers Supabase Storage (le FS de Vercel est en lecture seule).
+  const supabase = getServiceClient();
+  if (supabase) {
+    const { error } = await supabase.storage
+      .from(BUCKET)
+      .upload(filename, output, { contentType: "image/jpeg", upsert: false });
+    if (error) {
+      return Response.json(
+        { error: `Upload impossible (stockage) : ${error.message}` },
+        { status: 500 }
+      );
+    }
+    const { data } = supabase.storage.from(BUCKET).getPublicUrl(filename);
+    return Response.json({ url: data.publicUrl }, { status: 201 });
   }
 
-  await fs.writeFile(path.join(dir, name), output);
-
-  return Response.json({ url: `/portfolio/${name}` }, { status: 201 });
+  // Repli local (développement sans Supabase configuré).
+  const dir = path.join(process.cwd(), "public", "portfolio");
+  await fs.mkdir(dir, { recursive: true });
+  await fs.writeFile(path.join(dir, filename), output);
+  return Response.json({ url: `/portfolio/${filename}` }, { status: 201 });
 }
