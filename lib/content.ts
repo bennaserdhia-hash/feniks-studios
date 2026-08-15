@@ -349,6 +349,7 @@ export const posts: Post[] = [
 
 // Types de projet pour le formulaire de devis
 export const projectTypes = [
+  "Production IA (IA ou IA pas ?)",
   "Film Corporate / Institutionnel",
   "Couverture d'événement",
   "Pub Web / TV",

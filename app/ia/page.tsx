@@ -7,7 +7,7 @@ import { IconArrow, IconTv, IconPlay, IconBox } from "@/components/Icons";
 export const metadata: Metadata = {
   title: "IA ou IA pas ? — Production audiovisuelle augmentée par l'IA",
   description:
-    "Feniks Studios assume l'IA à 100 % : publicités futuristes, films hyper-réalistes et images qui auraient coûté des centaines de milliers d'euros. Une offre où l'IA n'est jamais un sujet — tout est dans l'histoire.",
+    "Feniks Studios utilise l'IA à 100 % : publicités futuristes, films hyper-réalistes et images qui auraient coûté des centaines de milliers d'euros. Une offre où, grâce au storytelling, l'IA passe au second plan — tout est dans l'histoire.",
 };
 
 const offers = [
@@ -46,8 +46,8 @@ const steps = [
   },
   {
     n: "04",
-    title: "On assume.",
-    text: "Transparence totale sur la méthode — et le prix juste d'un savoir-faire encore rare. L'IA à 100 %, revendiquée.",
+    title: "On joue cartes sur table.",
+    text: "Transparence totale sur la méthode — et le prix juste d'un savoir-faire encore rare. L'IA utilisée à 100 %, sans détour.",
   },
 ];
 
@@ -61,7 +61,7 @@ export default function IaPage() {
             IA ou <span className="text-gradient-gold">IA pas&nbsp;?</span>
           </>
         }
-        intro="Une offre qui assume l'IA à 100 % — et le prix qui va avec. Des publicités futuristes, des films hyper-réalistes, des images qui auraient coûté des dizaines ou des centaines de milliers d'euros. Réalisées par des équipes formées, où l'IA n'est jamais un sujet : tout est dans l'histoire."
+        intro="Une offre qui utilise l'IA à 100 % — et le prix qui va avec. Des publicités futuristes, des films hyper-réalistes, des images qui auraient coûté des dizaines ou des centaines de milliers d'euros. Réalisées par des équipes formées, où — grâce au storytelling — l'IA passe au second plan : tout est dans l'histoire."
       />
 
       {/* Ce qu'on produit */}
