@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { sendQuote, type QuoteState } from "@/app/actions";
 import { projectTypes } from "@/lib/content";
 import { IconArrow, IconCheck } from "./Icons";
@@ -15,6 +15,13 @@ export default function QuoteForm() {
 
   const toggle = (t: string) =>
     setSelected((s) => (s.includes(t) ? s.filter((x) => x !== t) : [...s, t]));
+
+  // Pré-sélection du type "Production IA" quand on arrive depuis /ia (?projet=ia)
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("projet") !== "ia") return;
+    const ia = projectTypes.find((t) => t.startsWith("Production IA"));
+    if (ia) setSelected((s) => (s.includes(ia) ? s : [...s, ia]));
+  }, []);
 
   if (state.ok) {
     return (

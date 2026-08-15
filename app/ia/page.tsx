@@ -217,7 +217,7 @@ export default function IaPage() {
             Décrivez-nous votre idée — on vous dit ce que l'IA rend possible, et à quel prix.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/contact" className="btn btn-gold">
+            <Link href="/contact?projet=ia" className="btn btn-gold">
               Parler de mon projet <IconArrow className="h-4 w-4" />
             </Link>
             <Link href="/realisations" className="btn btn-outline !border-gold/40 !text-gold">
