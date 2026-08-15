@@ -30,6 +30,7 @@ export const nav = [
   { label: "Accueil", href: "/" },
   { label: "L'agence", href: "/agence" },
   { label: "Réalisations", href: "/realisations" },
+  { label: "IA", href: "/ia" },
   { label: "Tarifs", href: "/tarifs" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
