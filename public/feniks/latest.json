@@ -1,0 +1,22 @@
+{
+ "artefacts": {
+  "macos-arm64": {
+   "format": "zip-app",
+   "sha256": "b6b0bac9f8fea02f92e05a06c6ee1b8219943374901e6551e501d8b1eb82e497",
+   "taille": 27866642,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.1/Feniks-Studios-0.2.1-macos-arm64.zip"
+  },
+  "windows-x64": {
+   "format": "inno-setup",
+   "sha256": "0b45beadbb927ed2632580b96790b680b4078733b187a327b3b18d8d14f7c6f3",
+   "taille": 65765233,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.1/Feniks-Studios-0.2.1-windows-x64.exe"
+  }
+ },
+ "key_id": "ed25519-e7ad8f23ce32",
+ "notes": "# Feniks Studios 0.2.1\n\nPremière mise à jour installée par Feniks lui-même.\n\nCette version n'ajoute rien : elle existe pour éprouver le chemin complet —\nvérifier, télécharger, prouver que le paquet démarre, prendre la place de\nl'ancien, redémarrer.\n\n- Le panneau des mises à jour ne peut plus annoncer « aucune clé de\n  vérification » alors que la version installée en embarque une : cet état-là\n  parlait du programme, pas du serveur, et il restait en mémoire d'une version\n  à l'autre.\n- Réglages, clés, projets et médias restent intacts, comme toujours.",
+ "published_at": "2026-08-26T16:12:09Z",
+ "schema": 1,
+ "version": "0.2.1",
+ "version_source_minimale": "0.2.0"
+}
