@@ -18,8 +18,14 @@ export default function WorkCard({
 }) {
   const hasVideo = Boolean(work.youtubeId || work.vimeoId);
 
+  // NB : chaque classe `aspect-[…]` doit apparaître comme chaîne littérale
+  // délimitée — sinon le scanner de Tailwind v4 ne génère pas la règle
+  // (ex. `aspect-[2/3]` collé à un ${…} de template literal → non détecté,
+  // vignette verticale sans hauteur = carte blanche sur l'accueil).
   const imgBox = work.vertical
-    ? `aspect-[2/3]${fillVertical ? " sm:aspect-auto sm:flex-1 sm:min-h-0" : ""}`
+    ? fillVertical
+      ? "aspect-[2/3] sm:aspect-auto sm:flex-1 sm:min-h-0"
+      : "aspect-[2/3]"
     : large
     ? "aspect-[16/9]"
     : "aspect-video";
