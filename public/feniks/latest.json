@@ -2,21 +2,21 @@
  "artefacts": {
   "macos-arm64": {
    "format": "zip-app",
-   "sha256": "7ce78aeb7e7f3e0754ea5766c446ede63a3389c71c555e54bf052648308db2c4",
-   "taille": 27869701,
-   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.2/Feniks-Studios-0.2.2-macos-arm64.zip"
+   "sha256": "c00dcc4352e654184a2ac3c56f91010e7a5a9c20c38247ffc75cef5a95659c39",
+   "taille": 27877198,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.3/Feniks-Studios-0.2.3-macos-arm64.zip"
   },
   "windows-x64": {
    "format": "inno-setup",
-   "sha256": "dc5063fca4b22c047f3ab9c2b367c9cea14fa009a0cb78f12cc9823d9473d02f",
-   "taille": 65775469,
-   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.2/Feniks-Studios-0.2.2-windows-x64.exe"
+   "sha256": "ab7089b0b243fd5f926ad1bfd6446cf105cf3dfb552a2fabb905b298fa23acfb",
+   "taille": 65776777,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.3/Feniks-Studios-0.2.3-windows-x64.exe"
   }
  },
  "key_id": "ed25519-e7ad8f23ce32",
- "notes": "# Feniks Studios 0.2.2\n\nCe que la première vraie mise à jour a révélé, et qui est réparé.\n\n- **La fenêtre revient.** Sous Windows, la mise à jour relançait le moteur sans\n  son lanceur : Feniks répondait, mais aucune fenêtre ne s'ouvrait.\n- **L'état après mise à jour est juste.** Le panneau annonçait encore la version\n  qu'on venait d'installer, et la transaction restait en chemin. Feniks conclut\n  maintenant à partir de ce qu'il est, pas de ce qu'un cache disait.\n- **Windows s'installe pour toi seul**, dans ton espace utilisateur : plus de\n  mot de passe administrateur à l'installation ni à chaque mise à jour, et\n  Feniks apparaît dans « Applications installées ».\n- **Plus de processus abandonnés.** Les processus d'affichage lancés par Feniks\n  s'arrêtent avec lui.\n\nRéglages, clés, projets et médias restent intacts, comme toujours.",
- "published_at": "2026-08-26T21:29:45Z",
+ "notes": "# Feniks Studios 0.2.3\n\nDeux réparations, aucune nouveauté.\n\n- **Les questions que Feniks pose s'affichent enfin.** Sur Mac, la fenêtre ne\n  savait pas montrer les demandes de confirmation : « Supprimer un projet »,\n  « Déverrouiller la boussole », « Restaurer une révision » et une trentaine\n  d'autres gestes s'annulaient tout seuls, en silence. Ils reviennent tous.\n- **Les anciens installateurs ne s'accumulent plus.** Feniks ne garde que celui\n  qui permet de revenir à la version précédente, et l'efface une fois la mise à\n  jour confirmée — jamais pendant.\n\nRéglages, clés, projets et médias restent intacts, comme toujours.",
+ "published_at": "2026-08-27T07:22:14Z",
  "schema": 1,
- "version": "0.2.2",
+ "version": "0.2.3",
  "version_source_minimale": "0.2.0"
 }
