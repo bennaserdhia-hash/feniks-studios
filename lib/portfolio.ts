@@ -28,6 +28,13 @@ export type Video = {
   categoryLabel?: string;
   /** Format vertical (Short / Reel) : vignette et player en 9:16 */
   vertical?: boolean;
+  /**
+   * Miniature « brute » (photo uploadée via l'admin) → on redessine le cadre or
+   * + monogramme + catégorie en surcouche (composant ThumbFrame). Les anciennes
+   * réalisations ont cette déco incrustée dans le fichier : elles n'ont pas ce
+   * drapeau et ne reçoivent donc PAS la surcouche (sinon doublon).
+   */
+  overlay?: boolean;
   /** Ancien champ libre, conservé pour le dashboard */
   client?: string;
   videoUrl?: string;

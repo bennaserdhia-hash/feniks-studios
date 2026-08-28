@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ThumbFrame from "@/components/ThumbFrame";
 
 type Video = {
   id: string;
@@ -12,6 +13,7 @@ type Video = {
   youtubeId?: string;
   vimeoId?: string;
   description?: string;
+  overlay?: boolean;
 };
 
 type Draft = Omit<Video, "id"> & { id?: string };
@@ -153,6 +155,7 @@ export default function AdminPage() {
                     sizes="(max-width:768px) 100vw, 33vw"
                     className="object-cover"
                   />
+                  {v.overlay && <ThumbFrame category={v.category} />}
                 </div>
                 <div className="p-4">
                   <p className="text-[11px] uppercase tracking-widest text-gold-ink font-display font-semibold">
@@ -248,8 +251,8 @@ function VideoForm({
       const { error } = await res.json().catch(() => ({ error: "Upload impossible" }));
       return onError(error ?? "Upload impossible.");
     }
-    const { url } = await res.json();
-    set({ image: url });
+    const { url, overlay } = await res.json();
+    set({ image: url, overlay: Boolean(overlay) });
   };
 
   return (
@@ -284,9 +287,10 @@ function VideoForm({
             {draft.image ? (
               <div className="relative aspect-video rounded-xl overflow-hidden border border-border mb-3">
                 <Image src={draft.image} alt="Aperçu" fill sizes="500px" className="object-cover" />
+                {draft.overlay && <ThumbFrame category={draft.category} />}
                 <button
                   onClick={() => set({ image: "" })}
-                  className="absolute top-2 right-2 bg-white/90 rounded-full px-3 py-1 text-xs font-semibold hover:bg-white"
+                  className="absolute top-2 right-2 z-20 bg-white/90 rounded-full px-3 py-1 text-xs font-semibold hover:bg-white"
                 >
                   Changer
                 </button>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Video } from "@/lib/portfolio";
 import { IconPlay } from "./Icons";
+import ThumbFrame from "./ThumbFrame";
 
 export default function WorkCard({
   work,
@@ -44,7 +45,8 @@ export default function WorkCard({
             sizes={large ? "(max-width:768px) 100vw, 66vw" : "(max-width:768px) 100vw, 33vw"}
             className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
-          <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/35 transition-colors duration-500 grid place-items-center">
+          {work.overlay && <ThumbFrame category={work.category} />}
+          <div className="absolute inset-0 z-20 bg-ink/0 group-hover:bg-ink/35 transition-colors duration-500 grid place-items-center">
             {hasVideo && (
               <span className="h-14 w-14 rounded-full bg-white/90 backdrop-blur grid place-items-center text-gold-ink opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-500 shadow-lg">
                 <IconPlay className="h-5 w-5" />

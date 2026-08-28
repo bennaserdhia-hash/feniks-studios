@@ -54,12 +54,13 @@ export async function POST(request: Request) {
       );
     }
     const { data } = supabase.storage.from(BUCKET).getPublicUrl(filename);
-    return Response.json({ url: data.publicUrl }, { status: 201 });
+    // overlay: true → photo brute, le cadre or + logo sont redessinés côté site.
+    return Response.json({ url: data.publicUrl, overlay: true }, { status: 201 });
   }
 
   // Repli local (développement sans Supabase configuré).
   const dir = path.join(process.cwd(), "public", "portfolio");
   await fs.mkdir(dir, { recursive: true });
   await fs.writeFile(path.join(dir, filename), output);
-  return Response.json({ url: `/portfolio/${filename}` }, { status: 201 });
+  return Response.json({ url: `/portfolio/${filename}`, overlay: true }, { status: 201 });
 }
