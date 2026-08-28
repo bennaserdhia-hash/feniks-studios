@@ -2,21 +2,21 @@
  "artefacts": {
   "macos-arm64": {
    "format": "zip-app",
-   "sha256": "c00dcc4352e654184a2ac3c56f91010e7a5a9c20c38247ffc75cef5a95659c39",
-   "taille": 27877198,
-   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.3/Feniks-Studios-0.2.3-macos-arm64.zip"
+   "sha256": "78b07d4ea2d16bbf41b0505a5964794bfe3d6a437a25450f699d1e56ce8fb310",
+   "taille": 27886507,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.4/Feniks-Studios-0.2.4-macos-arm64.zip"
   },
   "windows-x64": {
    "format": "inno-setup",
-   "sha256": "ab7089b0b243fd5f926ad1bfd6446cf105cf3dfb552a2fabb905b298fa23acfb",
-   "taille": 65776777,
-   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.3/Feniks-Studios-0.2.3-windows-x64.exe"
+   "sha256": "88473f8175be04b0035d5c9f20da7f67bdb1410c9f077170eb27d7ee8b68d9d9",
+   "taille": 65787184,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.4/Feniks-Studios-0.2.4-windows-x64.exe"
   }
  },
  "key_id": "ed25519-e7ad8f23ce32",
- "notes": "# Feniks Studios 0.2.3\n\nDeux réparations, aucune nouveauté.\n\n- **Les questions que Feniks pose s'affichent enfin.** Sur Mac, la fenêtre ne\n  savait pas montrer les demandes de confirmation : « Supprimer un projet »,\n  « Déverrouiller la boussole », « Restaurer une révision » et une trentaine\n  d'autres gestes s'annulaient tout seuls, en silence. Ils reviennent tous.\n- **Les anciens installateurs ne s'accumulent plus.** Feniks ne garde que celui\n  qui permet de revenir à la version précédente, et l'efface une fois la mise à\n  jour confirmée — jamais pendant.\n\nRéglages, clés, projets et médias restent intacts, comme toujours.",
- "published_at": "2026-08-27T07:22:14Z",
+ "notes": "# Feniks Studios 0.2.4\n\nLe poste réalisateur apprend à monter, et non plus seulement à trier.\n\n- **Le monteur a le droit de choisir l'ordre.** Jusqu'ici la moindre inversion\n  exigeait une phrase de ta vision, citée mot pour mot : sans elle, la scène\n  recopiait l'ordre du tournage et le studio se contentait de dégraisser. Les\n  scènes neuves démarrent maintenant en régime **narratif** — le montage sert\n  tes beats, chaque déplacement porte sa raison, et une seule chose reste\n  intouchable : une réponse ne passe jamais avant sa question. Tes scènes déjà\n  calculées gardent le régime sous lequel elles l'ont été ; le menu du brief\n  les fait basculer quand tu le décides.\n- **Le studio ne se fabrique plus ses propres interdits.** Il transformait\n  chaque conversation en règles bloquantes — cent vingt-huit sur une seule\n  scène, dont pas une écrite par toi. Une seule suffisait à tuer la phase. Ce\n  qui bloque désormais est ce que le monteur a lui-même nommé comme une\n  dépendance de sens.\n- **Une réflexion de scène ne s'arrête plus.** Ni sur un désaccord de lecture,\n  ni sur un champ mal rempli. Ce qui coince se répare, et ce qui ne se répare\n  pas s'affiche sur la scène au lieu de la jeter.\n- **La réparation ne jette plus de parole.** Elle retirait des répliques et\n  remettait les beats dans l'ordre du tournage — elle défaisait le montage pour\n  réparer trois unités. Elle remet maintenant la cause avant l'effet, et ne\n  touche à rien d'autre.\n- **Ce que tu demandais, ce que la matière donne.** Chaque beat porte sa\n  lecture : ce que ton intention voulait, ce que les rushes contiennent\n  vraiment là-dessus, l'écart, le choix fait et pourquoi c'est le plus proche.\n  Un beat que la matière ne peut pas servir ne se confond plus avec un beat\n  servi.\n\nDeux réparations :\n\n- **La carte « À propos » des Réglages s'affiche.** Corrigée avant la 0.2.3\n  mais jamais embarquée : ouvrir les Réglages n'y montrait ni la version, ni le\n  bouton de mise à jour.\n- **« Exporter vers Premi",
+ "published_at": "2026-08-28T09:16:03Z",
  "schema": 1,
- "version": "0.2.3",
- "version_source_minimale": "0.2.0"
+ "version": "0.2.4",
+ "version_source_minimale": "0.0.0"
 }
