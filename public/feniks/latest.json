@@ -2,21 +2,21 @@
  "artefacts": {
   "macos-arm64": {
    "format": "zip-app",
-   "sha256": "78b07d4ea2d16bbf41b0505a5964794bfe3d6a437a25450f699d1e56ce8fb310",
-   "taille": 27886507,
-   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.4/Feniks-Studios-0.2.4-macos-arm64.zip"
+   "sha256": "6f2a56ccde08b0821b6a0bfd27ffff612337983fd848111b14a254de4cb98083",
+   "taille": 27898368,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.5/Feniks-Studios-0.2.5-macos-arm64.zip"
   },
   "windows-x64": {
    "format": "inno-setup",
-   "sha256": "88473f8175be04b0035d5c9f20da7f67bdb1410c9f077170eb27d7ee8b68d9d9",
-   "taille": 65787184,
-   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.4/Feniks-Studios-0.2.4-windows-x64.exe"
+   "sha256": "d9583bedee23c6316ca1e3d4b485bf56c9a770f34a37407330e0d55b613b4eba",
+   "taille": 65793077,
+   "url": "https://github.com/bennaserdhia-hash/feniks-releases/releases/download/v0.2.5/Feniks-Studios-0.2.5-windows-x64.exe"
   }
  },
  "key_id": "ed25519-e7ad8f23ce32",
- "notes": "# Feniks Studios 0.2.4\n\nLe poste réalisateur apprend à monter, et non plus seulement à trier.\n\n- **Le monteur a le droit de choisir l'ordre.** Jusqu'ici la moindre inversion\n  exigeait une phrase de ta vision, citée mot pour mot : sans elle, la scène\n  recopiait l'ordre du tournage et le studio se contentait de dégraisser. Les\n  scènes neuves démarrent maintenant en régime **narratif** — le montage sert\n  tes beats, chaque déplacement porte sa raison, et une seule chose reste\n  intouchable : une réponse ne passe jamais avant sa question. Tes scènes déjà\n  calculées gardent le régime sous lequel elles l'ont été ; le menu du brief\n  les fait basculer quand tu le décides.\n- **Le studio ne se fabrique plus ses propres interdits.** Il transformait\n  chaque conversation en règles bloquantes — cent vingt-huit sur une seule\n  scène, dont pas une écrite par toi. Une seule suffisait à tuer la phase. Ce\n  qui bloque désormais est ce que le monteur a lui-même nommé comme une\n  dépendance de sens.\n- **Une réflexion de scène ne s'arrête plus.** Ni sur un désaccord de lecture,\n  ni sur un champ mal rempli. Ce qui coince se répare, et ce qui ne se répare\n  pas s'affiche sur la scène au lieu de la jeter.\n- **La réparation ne jette plus de parole.** Elle retirait des répliques et\n  remettait les beats dans l'ordre du tournage — elle défaisait le montage pour\n  réparer trois unités. Elle remet maintenant la cause avant l'effet, et ne\n  touche à rien d'autre.\n- **Ce que tu demandais, ce que la matière donne.** Chaque beat porte sa\n  lecture : ce que ton intention voulait, ce que les rushes contiennent\n  vraiment là-dessus, l'écart, le choix fait et pourquoi c'est le plus proche.\n  Un beat que la matière ne peut pas servir ne se confond plus avec un beat\n  servi.\n\nDeux réparations :\n\n- **La carte « À propos » des Réglages s'affiche.** Corrigée avant la 0.2.3\n  mais jamais embarquée : ouvrir les Réglages n'y montrait ni la version, ni le\n  bouton de mise à jour.\n- **« Exporter vers Premi",
- "published_at": "2026-08-28T09:16:03Z",
+ "notes": "# Feniks Studios 0.2.5\n\nDes garde-fous qui se taisaient, et un écran qui parlait d'un autre ordinateur.\n\n## Ce qui ne vérifiait rien\n\nTrois contrôles s'affichaient sans rien contrôler. Ils ont tous la même faute :\nfaute de matière à examiner, ils ne disaient rien — et leur silence se lisait\ncomme un feu vert.\n\n- **La transcription lue par une scène.** Les coupes d'une scène sont des index\n  de mots dans une liste précise ; retranscrire un témoin fabrique une autre\n  liste, et les mêmes index n'y désignent plus les mêmes mots. Le contrôle\n  cherchait son estampille au mauvais endroit : sur sept scènes, sept fois zéro\n  lecture. Aucune ne pouvait être dite à jour, ni périmée. Trois d'entre elles\n  n'avaient même aucune source à examiner, et l'écran retirait carrément la\n  carte — plus d'avertissement, rien qui distingue « vérifié » de « pas\n  vérifiable ».\n- **La mise en images.** Le contrôle de concordance avec la phase 1 était\n  entièrement sauté quand la mise en images ne disait pas sur quel squelette\n  elle avait été faite. Quatre sur onze étaient dans ce cas, toutes rendues\n  « rien à signaler ». C'est pourtant le cas où l'on en sait le moins.\n- **Le moteur IA.** Il calcule la bonne phrase — « CLI absent, voici la\n  commande d'installation » ou « CLI présent, aucun forfait connecté » —\n  et l'écran écrasait les deux par un conseil écrit en dur.\n\n## Ce qui se trompait de machine\n\nSept messages parlaient de « ce Mac ». Feniks tourne sur PC depuis la 0.2.0.\nUn écran qui se trompe de machine fait douter de tout le reste.\n\n- « Se connecter » n'existait que dans la ligne « compte », en bas de page :\n  la carte du moteur, là où on lit « non connecté », n'en proposait aucun.\n- Sur Windows, l'écran de mise à jour annonçait « téléchargée et vérifiée »\n  puis ne proposait plus rien : le bouton d'installation n'était jamais demandé\n  sur cette plateforme. Une version publiée, signée et vérifiée restait hors\n  d'atteinte.\n\n## Ce qui se lisait mal\n\n- **Les notes de version** s",
+ "published_at": "2026-08-28T16:21:33Z",
  "schema": 1,
- "version": "0.2.4",
+ "version": "0.2.5",
  "version_source_minimale": "0.0.0"
 }
