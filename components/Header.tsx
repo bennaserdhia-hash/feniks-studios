@@ -1,16 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import { nav } from "@/lib/client-content";
 import { IconMenu, IconClose } from "./Icons";
 
+const subscribe = () => () => {};
+const clientSnapshot = () => true;
+const serverSnapshot = () => false;
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState({ open: false, path: "" });
   const pathname = usePathname();
+  const mounted = useSyncExternalStore(
+    subscribe,
+    clientSnapshot,
+    serverSnapshot,
+  );
   const open = menu.open && menu.path === pathname;
 
   useEffect(() => {
@@ -44,9 +53,10 @@ export default function Header() {
         <nav className="hidden xl:flex items-center gap-5">
           {nav.map((item) => {
             const active =
-              item.href === "/"
+              mounted &&
+              (item.href === "/"
                 ? pathname === "/"
-                : pathname.startsWith(item.href);
+                : pathname.startsWith(item.href));
             return (
               <Link
                 key={item.href}
