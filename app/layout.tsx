@@ -1,3 +1,4 @@
+import { OrganizationData } from "@/components/StructuredData";
 import type { Metadata } from "next";
 import { Montserrat, Raleway } from "next/font/google";
 import "./globals.css";
@@ -21,7 +22,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://feniksstudios.com"),
+  metadataBase: new URL("https://www.feniksstudios.com"),
   title: {
     default: "Feniks Studios — Expert en audiovisuel d'entreprise",
     template: "%s — Feniks Studios",
@@ -56,16 +57,22 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${montserrat.variable} ${raleway.variable}`}>
       <body>
+        <a href="#contenu" className="skip-link">
+          Aller au contenu
+        </a>
+        <OrganizationData />
         <Reveal />
         <CustomCursor />
         <ChromeGate>
           <Header />
         </ChromeGate>
-        <main className="relative z-[2]">{children}</main>
+        <main id="contenu" className="relative z-[2]">
+          {children}
+        </main>
         <ChromeGate>
           <Footer />
         </ChromeGate>
-        <Analytics />
+        {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   );

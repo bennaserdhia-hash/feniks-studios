@@ -1,31 +1,27 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import { Section } from "@/components/Section";
 import PortfolioGrid from "@/components/PortfolioGrid";
-import { getVideos } from "@/lib/portfolio";
+import { getPublicVideos } from "@/lib/portfolio";
 import { IconArrow } from "@/components/Icons";
 
 // ISR : régénération auto (max 60 s) pour refléter les ajouts/édits du portfolio.
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: "Nos réalisations",
-  description:
-    "50 réalisations audiovisuelles signées Feniks Studios : films d'entreprise, couvertures d'événement, publicités, motion design et reportages pour EDF, KFC, PSG, Al Jazeera, AJ+, Sandaya, Hirsch Isolation et bien d'autres.",
-};
+export const metadata = pageMetadata(
+  "/realisations",
+  "Réalisations vidéo et motion design",
+  "Découvrez nos réalisations : films d’entreprise, publicités, motion design et vidéos événementielles. Des projets concrets pour EDF, Sandaya, AJ+ et d’autres marques.",
+);
 
 export default async function RealisationsPage() {
-  const works = await getVideos();
+  const works = await getPublicVideos();
   return (
     <>
       <PageHeader
         eyebrow="Nos réalisations"
-        title={
-          <>
-            Les histoires <span className="text-gradient-gold">qu'on nous a confiées</span>
-          </>
-        }
+        title="Nos réalisations audiovisuelles"
         intro="Un aperçu de nos productions vidéo, pour tous supports et tous secteurs — de la couverture d'événement au motion design."
       />
 
@@ -38,8 +34,9 @@ export default async function RealisationsPage() {
             Créons votre prochaine vidéo.
           </h2>
           <p className="text-muted max-w-xl mx-auto mb-7">
-            Vous souhaitez des exemples précis correspondant à votre secteur ou à votre type
-            de projet ? Contactez-nous, nous vous enverrons une sélection ciblée.
+            Vous souhaitez des exemples précis correspondant à votre secteur ou
+            à votre type de projet ? Contactez-nous, nous vous enverrons une
+            sélection ciblée.
           </p>
           <Link href="/contact" className="btn btn-gold">
             Demander un devis <IconArrow className="h-4 w-4" />

@@ -45,7 +45,9 @@ const CATEGORIES = [
 function parseYoutube(input: string): string {
   const s = input.trim();
   if (!s) return "";
-  const m = s.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/);
+  const m = s.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/,
+  );
   if (m) return m[1];
   return /^[\w-]{11}$/.test(s) ? s : s;
 }
@@ -55,7 +57,10 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [saving, setSaving] = useState(false);
-  const [toast, setToast] = useState<{ kind: "ok" | "err"; msg: string } | null>(null);
+  const [toast, setToast] = useState<{
+    kind: "ok" | "err";
+    msg: string;
+  } | null>(null);
 
   const load = async () => {
     setLoading(true);
@@ -65,7 +70,7 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    load();
+    void Promise.resolve().then(load);
   }, []);
 
   const flash = (kind: "ok" | "err", msg: string) => {
@@ -86,7 +91,7 @@ export default function AdminPage() {
         method: editing ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(draft),
-      }
+      },
     );
     setSaving(false);
 
@@ -100,10 +105,13 @@ export default function AdminPage() {
   };
 
   const remove = async (v: Video) => {
-    if (!confirm(`Supprimer « ${v.title} » ?\n\nCette action est définitive.`)) return;
+    if (!confirm(`Supprimer « ${v.title} » ?\n\nCette action est définitive.`))
+      return;
     const res = await fetch(`/api/portfolio/${v.id}`, { method: "DELETE" });
     if (!res.ok) {
-      const { error } = await res.json().catch(() => ({ error: "Suppression impossible." }));
+      const { error } = await res
+        .json()
+        .catch(() => ({ error: "Suppression impossible." }));
       return flash("err", error ?? "Suppression impossible.");
     }
     await load();
@@ -118,14 +126,22 @@ export default function AdminPage() {
           <div className="flex items-baseline gap-3">
             <span className="font-display font-black text-lg">Portfolio</span>
             <span className="text-sm text-muted">
-              {loading ? "…" : `${videos.length} vidéo${videos.length > 1 ? "s" : ""}`}
+              {loading
+                ? "…"
+                : `${videos.length} vidéo${videos.length > 1 ? "s" : ""}`}
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <Link href="/realisations" className="text-sm text-muted hover:text-gold-ink">
+            <Link
+              href="/realisations"
+              className="text-sm text-muted hover:text-gold-ink"
+            >
               Voir le site ↗
             </Link>
-            <button onClick={() => setDraft({ ...EMPTY })} className="btn btn-gold !py-3 !px-5">
+            <button
+              onClick={() => setDraft({ ...EMPTY })}
+              className="btn btn-gold !py-3 !px-5"
+            >
               + Ajouter une vidéo
             </button>
           </div>
@@ -139,7 +155,10 @@ export default function AdminPage() {
           <div className="card p-14 text-center">
             <p className="font-display font-bold text-xl mb-2">Aucune vidéo</p>
             <p className="text-muted mb-6">Ajoute ta première réalisation.</p>
-            <button onClick={() => setDraft({ ...EMPTY })} className="btn btn-gold">
+            <button
+              onClick={() => setDraft({ ...EMPTY })}
+              className="btn btn-gold"
+            >
               + Ajouter une vidéo
             </button>
           </div>
@@ -161,15 +180,25 @@ export default function AdminPage() {
                   <p className="text-[11px] uppercase tracking-widest text-gold-ink font-display font-semibold">
                     {v.category}
                   </p>
-                  <h3 className="font-display font-bold leading-tight mt-1">{v.title}</h3>
+                  <h3 className="font-display font-bold leading-tight mt-1">
+                    {v.title}
+                  </h3>
                   <p className="text-sm text-muted line-clamp-2 mt-1">
-                    {v.description || <span className="italic text-muted-2">Pas de description</span>}
+                    {v.description || (
+                      <span className="italic text-muted-2">
+                        Pas de description
+                      </span>
+                    )}
                   </p>
                   <p className="text-xs mt-2">
                     {v.youtubeId ? (
-                      <span className="text-gold-ink">▶ YouTube · {v.youtubeId}</span>
+                      <span className="text-gold-ink">
+                        ▶ YouTube · {v.youtubeId}
+                      </span>
                     ) : v.vimeoId ? (
-                      <span className="text-gold-ink">▶ Vimeo · {v.vimeoId}</span>
+                      <span className="text-gold-ink">
+                        ▶ Vimeo · {v.vimeoId}
+                      </span>
                     ) : (
                       <span className="text-muted-2">Aucune vidéo liée</span>
                     )}
@@ -245,10 +274,15 @@ function VideoForm({
     setUploading(true);
     const fd = new FormData();
     fd.append("file", file);
-    const res = await fetch("/api/portfolio/upload", { method: "POST", body: fd });
+    const res = await fetch("/api/portfolio/upload", {
+      method: "POST",
+      body: fd,
+    });
     setUploading(false);
     if (!res.ok) {
-      const { error } = await res.json().catch(() => ({ error: "Upload impossible" }));
+      const { error } = await res
+        .json()
+        .catch(() => ({ error: "Upload impossible" }));
       return onError(error ?? "Upload impossible.");
     }
     const { url, overlay } = await res.json();
@@ -286,7 +320,13 @@ function VideoForm({
 
             {draft.image ? (
               <div className="relative aspect-video rounded-xl overflow-hidden border border-border mb-3">
-                <Image src={draft.image} alt="Aperçu" fill sizes="500px" className="object-cover" />
+                <Image
+                  src={draft.image}
+                  alt="Aperçu"
+                  fill
+                  sizes="500px"
+                  className="object-cover"
+                />
                 {draft.overlay && <ThumbFrame category={draft.category} />}
                 <button
                   onClick={() => set({ image: "" })}
@@ -337,7 +377,9 @@ function VideoForm({
           />
 
           <div>
-            <label className="block text-sm font-display font-semibold mb-2">Catégorie</label>
+            <label className="block text-sm font-display font-semibold mb-2">
+              Catégorie
+            </label>
             <input
               list="categories"
               value={draft.category}
@@ -364,12 +406,15 @@ function VideoForm({
               className="w-full rounded-lg border border-border px-4 py-3 outline-none focus:border-gold bg-white"
             />
             <p className="text-xs text-muted-2 mt-1.5">
-              Colle l&apos;URL entière — l&apos;identifiant est extrait automatiquement.
+              Colle l&apos;URL entière — l&apos;identifiant est extrait
+              automatiquement.
             </p>
           </div>
 
           <div>
-            <label className="block text-sm font-display font-semibold mb-2">Description</label>
+            <label className="block text-sm font-display font-semibold mb-2">
+              Description
+            </label>
             <textarea
               value={draft.description ?? ""}
               onChange={(e) => set({ description: e.target.value })}
@@ -388,7 +433,11 @@ function VideoForm({
           >
             Annuler
           </button>
-          <button onClick={onSave} disabled={saving || uploading} className="btn btn-gold !py-3">
+          <button
+            onClick={onSave}
+            disabled={saving || uploading}
+            className="btn btn-gold !py-3"
+          >
             {saving ? "Enregistrement…" : draft.id ? "Enregistrer" : "Ajouter"}
           </button>
         </div>

@@ -1,122 +1,66 @@
-# Feniks Studios — site web (Next.js)
+# Feniks Studios
 
-Reconstruction moderne du site [feniksstudios.com](https://feniksstudios.com) :
-agence de production audiovisuelle parisienne fondée en 2014.
+Site public de production audiovisuelle, développé avec Next.js 16.2, React 19, TypeScript et Tailwind CSS 4. Le site est relié au projet Vercel existant `feniks-studios-zmkx`.
 
-Site vitrine rapide, sécurisé et gratuit à héberger, qui remplace l'ancien
-WordPress. Design cinématographique sombre à accent doré, formulaire de devis
-multi-étapes, blog, SEO intégré.
+## Développement et vérification
 
-## Stack
-
-- **Next.js 16** (App Router) + **React 19**
-- **TypeScript**
-- **Tailwind CSS v4**
-- Polices : Montserrat + Raleway (auto-hébergées via `next/font`)
-- Envoi d'email : **Resend** (via une Server Action)
-
-## Démarrage
-
-```bash
-npm install
-npm run dev        # http://localhost:3000
-```
-
-## Configuration de l'envoi des devis
-
-Le formulaire de contact envoie les demandes par email via Resend.
-
-1. Créez un compte gratuit sur https://resend.com
-2. Générez une clé API
-3. Copiez `.env.example` en `.env.local` et renseignez :
-   - `RESEND_API_KEY` — votre clé
-   - `CONTACT_EMAIL` — l'adresse qui reçoit les demandes
-   - `CONTACT_FROM` — l'expéditeur (domaine vérifié, ou `onboarding@resend.dev` pour tester)
-
-> Sans clé, le formulaire fonctionne en **mode démo** : la demande est
-> journalisée dans la console serveur mais aucun email n'est envoyé.
-
-## Structure
-
-```
-app/
-  layout.tsx            En-tête, pied de page, polices, SEO global
-  page.tsx              Accueil
-  agence/               L'agence (positionnement, prestations, équipe)
-  realisations/         Portfolio
-  blog/                 Liste + article [slug]
-  contact/              Contact + formulaire de devis
-  mentions-legales/     RGPD / mentions
-  actions.ts            Server Action d'envoi d'email
-  sitemap.ts, robots.ts SEO
-components/              Composants UI (Header, Footer, Hero, cartes…)
-lib/content.ts          TOUT le contenu éditable (textes, services, témoignages, blog)
-```
-
-### Modifier le contenu
-
-L'essentiel du contenu (services, témoignages, équipe, articles, coordonnées,
-réseaux sociaux) se trouve dans **`lib/content.ts`**. Pas besoin de toucher au
-design pour mettre à jour les textes.
-
-## À compléter / remplacer
-
-- **Articles de blog** : les corps d'articles (`app/blog/[slug]/page.tsx`) sont
-  génériques ; remplacer par le vrai contenu rédactionnel.
-- **Mentions légales** : compléter raison sociale, SIRET, hébergeur.
-- **Photos de tournage** : une seule vraie photo « coulisses » a pu être
-  récupérée de l'ancien site (`public/photos/tournage.jpg`).
-
-## Mise en ligne
-
-### 1. Déployer sur Vercel
-
-```bash
-npm i -g vercel
-vercel            # aperçu
-vercel --prod     # production
-```
-
-### 2. Variables d'environnement (Vercel > Settings > Environment Variables)
-
-Voir `.env.example`. Les deux obligatoires en production :
-
-| Variable | Rôle | Sans elle |
-|---|---|---|
-| `RESEND_API_KEY` | Envoi des demandes de devis | Le formulaire affiche une erreur avec l'email de secours et journalise la demande |
-| `ADMIN_PASSWORD` | Accès au dashboard `/admin` | `/admin` renvoie 503 |
-
-### 3. Brancher le domaine
-
-Vercel > Settings > Domains > ajouter `feniksstudios.com`, puis créer chez le
-registrar les enregistrements DNS indiqués par Vercel. **C'est cette étape qui
-remplace l'ancien site WordPress** — à faire en dernier, une fois le reste validé.
-
-### 4. Emails : domaine vérifié
-
-Tant que `feniksstudios.com` n'est pas vérifié chez Resend, l'expéditeur reste
-`onboarding@resend.dev` (les emails arrivent, mais peuvent tomber en indésirables).
-Vérifier le domaine chez Resend, puis passer `CONTACT_FROM` sur
-`contact@feniksstudios.com`.
-
-## Dashboard en production ⚠️
-
-Le dashboard `/admin` écrit dans `data/portfolio.json` et `public/portfolio/`.
-**Vercel a un système de fichiers en lecture seule** : en l'état, ajouter ou
-modifier une vidéo en ligne renverra une erreur 503 explicite
-(`StorageReadOnlyError`) — rien n'est perdu en silence, mais rien n'est
-enregistré non plus.
-
-Pour rendre le dashboard pleinement opérationnel en ligne, il faut brancher une
-base de données + un stockage de fichiers (Supabase convient et son offre
-gratuite suffit). Toute la logique est isolée dans `lib/portfolio.ts` : seul ce
-fichier est à réécrire, le reste du site n'y touche pas.
-
-En attendant, la mise à jour du portfolio se fait **en local** puis on redéploie.
-
-## Build de production
-
-```bash
+```sh
+npm run dev
+npm run lint
+npm run test:quote
 npm run build
-npm run start
+npm run start -- --port 4317
+python3 scripts/verify-public-site.py http://localhost:4317
 ```
+
+Le test de devis utilise un fournisseur email simulé : il contrôle les pièces jointes, les limites et les erreurs sans envoyer de message. Le contrôle du site parcourt son sitemap et les variantes des 50 anciennes URL.
+
+## Contenus
+
+- `lib/client-content.ts` : identité, navigation, témoignages et types de projet ; uniquement les données nécessaires aux composants interactifs.
+- `lib/content.ts` : offre, tarifs et ressources du site.
+- `data/articles.json` : les six articles, avec des sections distinctes. `lib/articles.ts` calcule la durée de lecture ; modifier la date de mise à jour lors d’un changement éditorial réel.
+- `data/services.json` : les dix pages de prestations.
+- `lib/portfolio.ts` : lecture du portfolio dans Supabase, avec repli local en lecture seule. Les opérations d’administration exigent Supabase.
+- `data/project-editorial.json` : corrections de présentation sur les vues publiques ; elles ne modifient pas les enregistrements d’administration.
+- `data/project-seo-titles.json` : titres SEO spécifiques pour les projets dont le nom complet est trop long.
+- `data/archive-projects.json` : deux réalisations historiques restaurées ; elles sont ajoutées aux vues publiques si leur identifiant n’existe pas déjà dans la base.
+- `data/legacy-redirects.json` : les 50 correspondances permanentes entre les anciennes et nouvelles réalisations.
+- `data/video-publication-dates.json` : dates publiques vérifiées. Le `VideoObject` n’est émis que lorsque l’identifiant de la vidéo correspond à la date enregistrée. Ajouter une date vérifiée pour les nouveaux projets, sans utiliser la date d’ajout dans la base comme date de publication du film.
+
+Le sitemap est généré à partir du portfolio public et comprend les prestations et les articles. La régénération suit les nouveaux projets. Les URL canonical et les métadonnées de partage utilisent `https://www.feniksstudios.com`.
+
+## Formulaire
+
+Le formulaire transmet les demandes via Resend. Une pièce jointe de 3 Mo maximum est acceptée, dans les formats de document indiqués. La limite de la Server Action est de 4 Mo ; le plafond utilisateur laisse une marge pour les autres champs. Un lien peut être fourni dans le message pour un document plus volumineux.
+
+Variables existantes : `RESEND_API_KEY`, `CONTACT_EMAIL`, `CONTACT_FROM`, `ADMIN_USER`, `ADMIN_PASSWORD`, `SUPABASE_URL`, `SUPABASE_SECRET_KEY`. Ne jamais exposer les clés secrètes avec un préfixe `NEXT_PUBLIC_`.
+
+Sans clé Resend en production, une erreur explicite est renvoyée. En développement, le mode de test ne transmet aucun email. Une erreur du fournisseur conserve les champs contrôlés dans le formulaire. Les événements Analytics concernent les étapes et le nombre de formats sélectionnés ; les informations personnelles et le contenu du brief n’y sont pas inclus.
+
+## Mentions légales à finaliser avec les données validées
+
+La page utilise les coordonnées publiques déjà disponibles et peut afficher ces variables serveur lorsqu’elles sont renseignées :
+
+- `LEGAL_ENTITY_NAME` : raison sociale exacte.
+- `LEGAL_SIRET` : identifiant d’établissement.
+- `LEGAL_PUBLICATION_DIRECTOR` : directeur de publication.
+- `LEGAL_PUBLIC_ADDRESS` : adresse à publier, validée par l’entreprise.
+
+Ces données n’ont pas été inventées. Leur absence ne constitue pas une validation de complétude des mentions légales.
+
+## Médias et performance
+
+Sur mobile et avec une préférence de mouvement réduit ou d’économie de données, le showreel ne démarre pas automatiquement. L’affiche et le bouton permettent une lecture volontaire. Sur ordinateur, la version de prévisualisation peut se lancer lorsqu’elle entre dans l’écran. La vidéo secondaire est chargée à la demande.
+
+Les masters sont conservés. Les affiches WebP et la boucle de prévisualisation sont les fichiers légers de diffusion. Le contenu est visible sans JavaScript ; l’animation d’apparition concerne les éléments situés plus bas dans la page.
+
+## Déploiement
+
+```sh
+vercel --yes --scope feniks-studios
+# après les contrôles de la prévisualisation :
+vercel --prod --yes --scope feniks-studios
+```
+
+La configuration de domaine et de messagerie existe déjà. Une mise à jour du site ne nécessite pas de modifier les DNS ni les enregistrements de mail. Voir `MISE-EN-LIGNE.md` et le compte rendu `SEO-IMPLEMENTATION.md`.

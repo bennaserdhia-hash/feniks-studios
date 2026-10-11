@@ -1,133 +1,131 @@
 "use server";
-
-import { site } from "@/lib/content";
-
+import { site, projectTypes } from "@/lib/content";
+import { attachmentError } from "@/lib/quote";
 export type QuoteState = {
   ok: boolean;
   error?: string;
   fieldErrors?: Record<string, string>;
   demo?: boolean;
 };
-
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 export async function sendQuote(
   _prev: QuoteState,
-  formData: FormData
+  formData: FormData,
 ): Promise<QuoteState> {
-  // Honeypot anti-spam (champ caché "company")
-  if ((formData.get("company") as string)?.trim()) {
-    return { ok: true }; // on ignore silencieusement les bots
-  }
-
-  const firstName = (formData.get("firstName") as string)?.trim() ?? "";
-  const lastName = (formData.get("lastName") as string)?.trim() ?? "";
-  const email = (formData.get("email") as string)?.trim() ?? "";
-  const phone = (formData.get("phone") as string)?.trim() ?? "";
-  const message = (formData.get("message") as string)?.trim() ?? "";
-  const types = formData.getAll("projectTypes").map(String);
-  const fileName = (formData.get("fileName") as string)?.trim() ?? "";
-
+  const text = (key: string) => {
+    const value = formData.get(key);
+    return typeof value === "string" ? value.trim() : "";
+  };
+  if (text("company")) return { ok: true };
+  const firstName = text("firstName"),
+    lastName = text("lastName"),
+    email = text("email"),
+    phone = text("phone"),
+    message = text("message");
+  const types = formData
+    .getAll("projectTypes")
+    .filter(
+      (v): v is string => typeof v === "string" && projectTypes.includes(v),
+    );
+  const attachment = formData.get("attachment");
+  const file =
+    attachment instanceof File && attachment.size > 0 ? attachment : null;
   const fieldErrors: Record<string, string> = {};
-  if (!firstName) fieldErrors.firstName = "Prénom requis";
-  if (!lastName) fieldErrors.lastName = "Nom requis";
-  if (!email) fieldErrors.email = "Email requis";
-  else if (!EMAIL_RE.test(email)) fieldErrors.email = "Email invalide";
-  if (!message) fieldErrors.message = "Merci de décrire votre projet";
-
-  if (Object.keys(fieldErrors).length) {
-    return { ok: false, fieldErrors, error: "Veuillez corriger les champs indiqués." };
+  if (!firstName || firstName.length > 100)
+    fieldErrors.firstName = "Indiquez un prénom de 100 caractères maximum.";
+  if (!lastName || lastName.length > 100)
+    fieldErrors.lastName = "Indiquez un nom de 100 caractères maximum.";
+  if (!EMAIL_RE.test(email) || email.length > 254)
+    fieldErrors.email = "Indiquez une adresse email valide.";
+  if (phone.length > 60)
+    fieldErrors.phone = "Le numéro de téléphone est trop long.";
+  if (!message || message.length > 10000)
+    fieldErrors.message = "Décrivez votre projet en 10 000 caractères maximum.";
+  if (file) {
+    const error = attachmentError(file);
+    if (error) fieldErrors.attachment = error;
   }
-
-  const subject = `Nouvelle demande de devis — ${firstName} ${lastName}`;
+  if (Object.keys(fieldErrors).length)
+    return {
+      ok: false,
+      fieldErrors,
+      error:
+        "Vérifiez les informations indiquées avant de renvoyer votre demande.",
+    };
+  const filename =
+    file?.name
+      .split(/[\\/]/)
+      .pop()
+      ?.replace(/[\r\n\u0000]/g, "") || "document";
   const lines = [
     `Nom : ${firstName} ${lastName}`,
     `Email : ${email}`,
-    `Téléphone : ${phone || "—"}`,
-    `Types de projet : ${types.length ? types.join(", ") : "—"}`,
-    fileName ? `Fichier joint (mentionné) : ${fileName}` : "",
+    `Téléphone : ${phone || "Non renseigné"}`,
+    `Types de projet : ${types.join(", ") || "À définir"}`,
+    ...(file ? [`Pièce jointe : ${filename}`] : []),
     "",
     "Message :",
     message,
-  ].filter(Boolean);
-
-  const html = `
-    <div style="font-family:Arial,sans-serif;font-size:15px;color:#111">
-      <h2 style="color:#c2954c">Nouvelle demande de devis</h2>
-      <p><strong>Nom :</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)}</p>
-      <p><strong>Email :</strong> ${escapeHtml(email)}</p>
-      <p><strong>Téléphone :</strong> ${escapeHtml(phone) || "—"}</p>
-      <p><strong>Types de projet :</strong> ${types.map(escapeHtml).join(", ") || "—"}</p>
-      ${fileName ? `<p><strong>Fichier mentionné :</strong> ${escapeHtml(fileName)}</p>` : ""}
-      <p><strong>Message :</strong></p>
-      <p style="white-space:pre-wrap;background:#f6f6f6;padding:12px;border-radius:8px">${escapeHtml(
-        message
-      )}</p>
-    </div>`;
-
-  const apiKey = process.env.RESEND_API_KEY;
+  ];
   const to = process.env.CONTACT_EMAIL || site.email;
-  const from = process.env.CONTACT_FROM || "Feniks Studios <onboarding@resend.dev>";
-
-  // Pas de clé configurée.
+  const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    // En développement : on journalise et on confirme, pratique pour tester.
-    if (process.env.NODE_ENV !== "production") {
-      console.log("[DEVIS — mode démo, email non configuré]\n" + lines.join("\n"));
-      return { ok: true, demo: true };
-    }
-    // En production : surtout ne PAS faire croire que c'est parti.
+    if (process.env.NODE_ENV !== "production") return { ok: true, demo: true };
     console.error(
-      "[DEVIS PERDU] RESEND_API_KEY absente en production. Demande reçue :\n" +
-        lines.join("\n")
+      "[devis] Envoi indisponible : configuration email manquante.",
     );
     return {
       ok: false,
-      error: `L'envoi automatique est momentanément indisponible. Écrivez-nous directement à ${to}, nous vous répondrons rapidement.`,
+      error: `L’envoi automatique est momentanément indisponible. Écrivez-nous à ${to}, avec votre brief en pièce jointe.`,
     };
   }
-
   try {
-    const res = await fetch("https://api.resend.com/emails", {
+    const attachments = file
+      ? [
+          {
+            filename,
+            content: Buffer.from(await file.arrayBuffer()).toString("base64"),
+          },
+        ]
+      : undefined;
+    const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
+      signal: AbortSignal.timeout(15000),
       body: JSON.stringify({
-        from,
+        from:
+          process.env.CONTACT_FROM || "Feniks Studios <onboarding@resend.dev>",
         to: [to],
         reply_to: email,
-        subject,
-        html,
+        subject: `Nouvelle demande de devis — ${firstName} ${lastName}`,
         text: lines.join("\n"),
+        html: `<div style="font-family:Arial,sans-serif;color:#17150f"><h2>Nouvelle demande de devis</h2><p style="white-space:pre-wrap">${escapeHtml(lines.join("\n"))}</p></div>`,
+        attachments,
       }),
     });
-
-    if (!res.ok) {
-      const detail = await res.text();
-      // on journalise la demande pour ne rien perdre, même si l'envoi échoue
+    if (!response.ok) {
       console.error(
-        `[DEVIS NON ENVOYÉ] Resend ${res.status} ${detail}\n` + lines.join("\n")
+        `[devis] Échec du fournisseur email : HTTP ${response.status}.`,
       );
       return {
         ok: false,
-        error: `L'envoi a échoué. Réessayez dans un instant, ou écrivez-nous directement à ${to}.`,
+        error: `Votre demande n’a pas pu être envoyée. Réessayez ou écrivez-nous directement à ${to}.`,
       };
     }
-
     return { ok: true };
-  } catch (err) {
-    console.error("sendQuote error:", err);
+  } catch {
+    console.error("[devis] Échec ou expiration de la connexion email.");
     return {
       ok: false,
-      error: "Une erreur réseau est survenue. Merci de réessayer.",
+      error: `La connexion a été interrompue. Vos informations sont conservées : réessayez ou écrivez-nous à ${to}.`,
     };
   }
 }
-
-function escapeHtml(s: string) {
-  return s
+function escapeHtml(value: string) {
+  return value
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")

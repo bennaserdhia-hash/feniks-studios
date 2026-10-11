@@ -23,13 +23,17 @@ export default function PostCard({ post }: { post: Post }) {
       </div>
 
       <div className="p-6 flex flex-col flex-1">
-        <p className="text-xs text-muted-2 mb-2">{post.readingTime} de lecture</p>
+        <p className="text-xs text-muted-2 mb-2">
+          {post.readingTime} de lecture
+        </p>
         <h3 className="font-display font-bold text-lg leading-snug mb-3 group-hover:text-gold-ink transition-colors">
           {post.title}
         </h3>
-        <p className="text-muted text-sm leading-relaxed flex-1">{post.excerpt}</p>
+        <p className="text-muted text-sm leading-relaxed flex-1">
+          {post.excerpt}
+        </p>
         <span className="inline-flex items-center gap-2 text-sm text-gold-ink mt-5 font-semibold">
-          Lire l'article
+          Lire l’article
           <IconArrow className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </span>
       </div>

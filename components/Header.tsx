@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
-import { nav } from "@/lib/content";
+import { nav } from "@/lib/client-content";
 import { IconMenu, IconClose } from "./Icons";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState({ open: false, path: "" });
   const pathname = usePathname();
+  const open = menu.open && menu.path === pathname;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -18,10 +19,6 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -36,18 +33,20 @@ export default function Header() {
         open
           ? "bg-white border-b border-border py-3"
           : scrolled
-          ? "bg-background/85 backdrop-blur-xl border-b border-border py-3"
-          : "bg-transparent py-5"
+            ? "bg-background/85 backdrop-blur-xl border-b border-border py-3"
+            : "bg-transparent py-5"
       }`}
     >
       <div className="container-x flex items-center justify-between relative z-50">
         <Logo />
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-5">
           {nav.map((item) => {
             const active =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
             return (
               <Link
                 key={item.href}
@@ -65,7 +64,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <Link href="/contact" className="btn btn-gold !px-6 !py-3 !text-xs">
             Demande de devis
           </Link>
@@ -73,19 +72,28 @@ export default function Header() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground p-2 -mr-2"
-          onClick={() => setOpen((v) => !v)}
+          className="xl:hidden text-foreground p-2 -mr-2"
+          onClick={() => setMenu({ open: !open, path: pathname })}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
+          aria-controls="site-menu"
         >
-          {open ? <IconClose className="h-6 w-6" /> : <IconMenu className="h-6 w-6" />}
+          {open ? (
+            <IconClose className="h-6 w-6" />
+          ) : (
+            <IconMenu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
       {/* Mobile menu — plein écran opaque, couvre aussi derrière la barre */}
       <div
-        className={`md:hidden fixed inset-0 z-40 bg-white transition-opacity duration-200 ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        inert={!open}
+        id="site-menu"
+        className={`xl:hidden fixed inset-0 z-40 bg-white transition-opacity duration-200 ${
+          open
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         <nav className="container-x flex flex-col gap-1 pt-28">
@@ -93,6 +101,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => setMenu({ open: false, path: pathname })}
               className="text-2xl font-display font-semibold py-4 border-b border-border text-foreground"
             >
               {item.label}

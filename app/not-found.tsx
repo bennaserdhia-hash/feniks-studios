@@ -12,10 +12,10 @@ export default function NotFound() {
           Cette page a pris son envol.
         </h1>
         <p className="text-muted mt-4 max-w-md mx-auto">
-          La page que vous cherchez n'existe pas ou a été déplacée.
+          La page que vous cherchez n’existe pas ou a été déplacée.
         </p>
         <Link href="/" className="btn btn-gold mt-8">
-          Retour à l'accueil <IconArrow className="h-4 w-4" />
+          Retour à l’accueil <IconArrow className="h-4 w-4" />
         </Link>
       </div>
     </section>

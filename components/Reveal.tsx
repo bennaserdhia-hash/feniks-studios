@@ -25,17 +25,23 @@ export default function Reveal() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            entry.target.classList.remove("reveal-pending");
             io.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     );
 
     const observeAll = (root: ParentNode) => {
       root
         .querySelectorAll<HTMLElement>(".reveal:not(.is-visible)")
-        .forEach((el) => io.observe(el));
+        .forEach((el) => {
+          if (el.getBoundingClientRect().top > window.innerHeight) {
+            el.classList.add("reveal-pending");
+            io.observe(el);
+          } else el.classList.add("is-visible");
+        });
     };
 
     observeAll(document);
@@ -46,8 +52,14 @@ export default function Reveal() {
         m.addedNodes.forEach((node) => {
           if (node.nodeType !== 1) return;
           const el = node as HTMLElement;
-          if (el.classList?.contains("reveal") && !el.classList.contains("is-visible")) {
-            io.observe(el);
+          if (
+            el.classList?.contains("reveal") &&
+            !el.classList.contains("is-visible")
+          ) {
+            if (el.getBoundingClientRect().top > window.innerHeight) {
+              el.classList.add("reveal-pending");
+              io.observe(el);
+            } else el.classList.add("is-visible");
           }
           observeAll(el);
         });

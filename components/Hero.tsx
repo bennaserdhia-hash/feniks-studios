@@ -1,3 +1,4 @@
+import Showreel from "./Showreel";
 import Link from "next/link";
 import { Caveat } from "next/font/google";
 import { site, showreel } from "@/lib/content";
@@ -20,12 +21,10 @@ export default function Hero() {
 
       <div className="container-x">
         <div className="max-w-4xl">
-          <p className="eyebrow reveal mb-6 flex items-center gap-3">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" />
-            {site.kicker}
-          </p>
-
           <h1 className="reveal font-display font-black uppercase leading-[1.02] tracking-tight text-[clamp(2.4rem,7.5vw,5.6rem)]">
+            <span className="block text-sm md:text-base tracking-wide leading-relaxed mb-6 font-semibold normal-case text-muted">
+              Agence de production audiovisuelle à Paris · Depuis 2014
+            </span>
             Nous <StruckWord variant="repassee">filmons</StruckWord>{" "}
             <span
               className={`${caveat.className} text-gold uppercase font-normal align-baseline`}
@@ -38,7 +37,9 @@ export default function Hero() {
           </h1>
 
           <div className="reveal mt-8 flex flex-col sm:flex-row sm:items-center gap-6">
-            <p className="text-lg text-muted max-w-xl leading-relaxed">{site.pitch}</p>
+            <p className="text-lg text-muted max-w-xl leading-relaxed">
+              {site.pitch}
+            </p>
           </div>
 
           <div className="reveal flex flex-wrap items-center gap-4 mt-8">
@@ -50,7 +51,6 @@ export default function Hero() {
             </Link>
           </div>
         </div>
-
       </div>
 
       {/* Showreel pleine largeur, bord à bord */}
@@ -58,21 +58,14 @@ export default function Hero() {
         className="reveal relative mt-14 md:mt-20 w-full overflow-hidden bg-surface-2 border-y border-border"
         style={{ transitionDelay: "120ms" }}
       >
-        <video
-          className="block w-full h-[46vh] sm:h-[58vh] lg:h-[74vh] object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={showreel.poster}
-          preload="metadata"
-        >
-          <source src={showreel.mp4} type="video/mp4" />
-        </video>
-
-        <div className="absolute bottom-5 left-5 md:bottom-7 md:left-8 flex items-center gap-2 rounded-full bg-white/85 backdrop-blur px-4 py-2 text-xs font-display font-semibold uppercase tracking-widest text-ink">
-          <span className="h-2 w-2 rounded-full bg-gold animate-pulse" /> Showreel
-        </div>
+        <Showreel
+          src="/video/showreel-preview.mp4"
+          fullSrc={showreel.full}
+          poster="/video/poster.webp"
+          title="Showreel Feniks Studios — production audiovisuelle"
+          autoPlayOnDesktop
+          className="h-[46vh] sm:h-[58vh] lg:h-[74vh]"
+        />
       </div>
     </section>
   );

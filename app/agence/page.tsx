@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Section, SectionHeading } from "@/components/Section";
 import ServicesList from "@/components/ServicesList";
@@ -6,11 +6,11 @@ import { services, team, showreel2022 } from "@/lib/content";
 import { IconArrow, IconCheck } from "@/components/Icons";
 import PageHeader from "@/components/PageHeader";
 
-export const metadata: Metadata = {
-  title: "L'agence",
-  description:
-    "Feniks Studios, agence de production audiovisuelle parisienne fondée en 2014. Comprendre votre entreprise pour en raconter l'histoire : storytelling et exigence technique haut de gamme.",
-};
+export const metadata = pageMetadata(
+  "/agence",
+  "Agence vidéo à Paris : notre équipe",
+  "Découvrez Feniks Studios, agence vidéo à Paris depuis 2014. Notre équipe vous accompagne du récit au tournage, au montage et à la livraison de votre film.",
+);
 
 const approach = [
   {
@@ -35,11 +35,7 @@ export default function AgencePage() {
     <>
       <PageHeader
         eyebrow="L'agence"
-        title={
-          <>
-            Nous racontons <span className="text-gradient-gold">vos histoires</span>.
-          </>
-        }
+        title="Une agence vidéo à Paris, du récit à la réalisation"
         intro="Agence de production audiovisuelle parisienne fondée en 2014. Notre métier ne commence pas derrière la caméra : il commence par comprendre votre produit, votre histoire et vos valeurs. Le reste — écriture, tournage, post-production — n'est que la mise en œuvre de ce récit, avec une exigence technique haut de gamme."
       />
 
@@ -53,16 +49,17 @@ export default function AgencePage() {
             />
             <div className="space-y-5 mt-8 text-muted leading-relaxed">
               <p>
-                Feniks Studios est bien plus qu'une simple société de production
-                audiovisuelle : c'est une équipe spécialisée en audiovisuel d'entreprise.
-                Nous proposons des vidéos pour tous supports — web, mobile, TV, video
-                learning.
+                Feniks Studios est bien plus qu’une simple société de production
+                audiovisuelle : c’est une équipe spécialisée en audiovisuel
+                d’entreprise. Nous proposons des vidéos pour tous supports —
+                web, mobile, TV, video learning.
               </p>
               <p>
-                La vidéo est devenue incontournable dans les stratégies marketing. Conscients
-                de son impact, nous sommes plus qu'un simple prestataire : nous sommes le
-                partenaire de nos clients. Notre objectif est de comprendre leurs besoins et
-                d'ajouter de la valeur à leur marque.
+                La vidéo est devenue incontournable dans les stratégies
+                marketing. Conscients de son impact, nous sommes plus qu’un
+                simple prestataire : nous sommes le partenaire de nos clients.
+                Notre objectif est de comprendre leurs besoins et d’ajouter de
+                la valeur à leur marque.
               </p>
             </div>
             <Link href="/contact" className="btn btn-gold mt-8">
@@ -77,7 +74,9 @@ export default function AgencePage() {
                   {a.step}
                 </span>
                 <div>
-                  <h3 className="font-display font-bold text-lg mb-1">{a.title}</h3>
+                  <h3 className="font-display font-bold text-lg mb-1">
+                    {a.title}
+                  </h3>
                   <p className="text-muted text-sm leading-relaxed">{a.text}</p>
                 </div>
               </div>
@@ -128,9 +127,15 @@ export default function AgencePage() {
         />
         <div className="flex flex-wrap justify-center gap-6 mt-14">
           {team.map((m) => (
-            <div key={m.name} className="reveal card p-8 text-center w-full sm:w-72">
+            <div
+              key={m.name}
+              className="reveal card p-8 text-center w-full sm:w-72"
+            >
               <div className="h-20 w-20 rounded-full mx-auto grid place-items-center bg-gold/12 border border-gold/25 font-display text-2xl font-extrabold text-gold mb-5">
-                {m.name.split(" ").map((n) => n[0]).join("")}
+                {m.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
               </div>
               <h3 className="font-display font-bold text-lg">{m.name}</h3>
               <p className="text-gold text-sm mt-1">{m.role}</p>

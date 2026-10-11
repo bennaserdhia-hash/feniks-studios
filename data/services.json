@@ -1,0 +1,255 @@
+[
+  {
+    "slug": "film-entreprise",
+    "title": "Film d’entreprise à Paris",
+    "seoTitle": "Film d’entreprise à Paris",
+    "icon": "building",
+    "description": "Un film d’entreprise pour présenter votre activité, vos équipes et ce qui vous distingue. Feniks Studios vous accompagne de l’écriture à la livraison.",
+    "intro": "Raconter votre entreprise commence par comprendre son activité et les personnes qui la font vivre. Nous construisons un film qui aide votre public à saisir votre proposition, vos valeurs et votre savoir-faire.",
+    "uses": [
+      "Présenter votre activité à des prospects ou partenaires.",
+      "Donner une place concrète aux équipes et aux gestes métier.",
+      "Accompagner une communication institutionnelle ou interne."
+    ],
+    "sections": [
+      {
+        "heading": "Un récit appuyé sur votre réalité",
+        "text": "Le brief définit le public, le message et les situations à filmer. Interviews, images de votre activité et séquences de contexte peuvent se compléter. Nous choisissons les images pour leur rôle dans le récit, avant d’en organiser le tournage."
+      },
+      {
+        "heading": "Un film pensé pour sa diffusion",
+        "text": "Le site, les rendez-vous commerciaux et les événements internes n’appellent pas exactement la même version. Précisez les usages attendus pour prévoir les durées, formats et sous-titres utiles dès l’écriture."
+      }
+    ],
+    "categories": ["Film d'entreprise", "Film corporate"],
+    "projectIds": ["edf", "hirsch-isolation"]
+  },
+  {
+    "slug": "video-evenementielle",
+    "title": "Vidéo événementielle et aftermovie",
+    "seoTitle": "Vidéo événementielle à Paris",
+    "icon": "event",
+    "description": "Séminaire, conférence ou journée d’intégration : préparez une vidéo événementielle qui restitue vos temps forts et prolonge votre communication.",
+    "intro": "Un événement réunit des moments qui ne se rejouent pas. Nous préparons leur couverture avec vous pour raconter son déroulement, son ambiance et les personnes qui y participent.",
+    "uses": [
+      "Restituer un séminaire, une conférence ou un lancement.",
+      "Produire un aftermovie pour vos participants et vos canaux.",
+      "Conserver une prise de parole ou un temps fort."
+    ],
+    "sections": [
+      {
+        "heading": "Préparer les moments à ne pas manquer",
+        "text": "Programme, lieux, déplacements et personnes à suivre permettent d’organiser les prises de vues et le son. Identifiez les séquences prioritaires et les accès nécessaires avant le jour de l’événement."
+      },
+      {
+        "heading": "Prévoir la suite du film",
+        "text": "Un aftermovie, un extrait d’intervention et une vidéo verticale ont des objectifs différents. Nous cadrons les livrables avec vous afin de recueillir les images nécessaires, plutôt que de décider toutes les déclinaisons après le tournage."
+      }
+    ],
+    "categories": ["Couverture d'événement"],
+    "projectIds": ["skooleo", "1er-seminaire-splf-soccer-park-le-five"]
+  },
+  {
+    "slug": "video-produit",
+    "title": "Vidéo produit et présentation de service",
+    "seoTitle": "Vidéo produit et service",
+    "icon": "box",
+    "description": "Présentez un produit ou un service avec une vidéo claire : usages, détails et démonstration, du brief aux formats de diffusion.",
+    "intro": "Une vidéo produit doit rendre l’offre compréhensible. Nous cherchons les usages et les détails qui comptent pour votre audience, puis organisons les séquences qui permettent de les montrer.",
+    "uses": [
+      "Montrer un usage ou une fonctionnalité.",
+      "Mettre en valeur un produit, un lieu ou une expérience.",
+      "Accompagner une page commerciale ou une présentation."
+    ],
+    "sections": [
+      {
+        "heading": "Montrer l’offre dans son contexte",
+        "text": "Une démonstration peut s’appuyer sur une manipulation, un utilisateur ou des séquences de détail. Le traitement dépend de ce qui peut être montré réellement et de ce qui demande une explication complémentaire."
+      },
+      {
+        "heading": "Définir les éléments à préparer",
+        "text": "Disponibilité du produit, lieux, intervenants et éléments de marque influencent le tournage. Le brief précise aussi les caractéristiques à expliquer et les versions nécessaires à votre diffusion."
+      }
+    ],
+    "categories": ["Vidéo produit"],
+    "projectIds": ["groupe-sandaya-4", "groupe-sandaya-5"]
+  },
+  {
+    "slug": "motion-design",
+    "title": "Motion design pour les entreprises",
+    "seoTitle": "Motion design à Paris",
+    "icon": "motion",
+    "description": "Expliquez un concept, un service ou un fonctionnement avec le motion design : script, storyboard, animation et formats de diffusion.",
+    "intro": "Le motion design donne une forme visuelle aux idées difficiles à filmer. Nous construisons une animation dont chaque séquence sert la compréhension, en lien avec votre identité.",
+    "uses": [
+      "Expliquer un mécanisme ou un parcours.",
+      "Présenter une offre qui n’a pas de représentation évidente.",
+      "Accompagner une communication pédagogique."
+    ],
+    "sections": [
+      {
+        "heading": "Valider le fond avant le mouvement",
+        "text": "Le script pose les idées ; le storyboard organise leur représentation. Ces validations permettent de discuter de la clarté du sujet avant d’animer. Elles sont particulièrement utiles lorsqu’un vocabulaire métier doit être rendu accessible."
+      },
+      {
+        "heading": "Choisir le bon niveau de détail",
+        "text": "Illustrations, typographie et schémas peuvent être combinés selon le message. La durée, la complexité des scènes, le son et les versions linguistiques déterminent le périmètre à prévoir dans le devis."
+      }
+    ],
+    "categories": ["Motion design"],
+    "projectIds": ["actility-the-ecosystem", "afsr"]
+  },
+  {
+    "slug": "interview",
+    "title": "Interview vidéo : dirigeants, équipes et clients",
+    "seoTitle": "Interview vidéo d’entreprise",
+    "icon": "mic",
+    "description": "Donnez la parole à vos dirigeants, équipes et clients : préparation de l’entretien, image, son et montage adaptés à votre communication.",
+    "intro": "Une interview utile laisse une personne expliquer une expérience avec ses mots. Nous préparons le sujet et les questions pour obtenir une parole précise, puis la mettons en images avec un son soigné.",
+    "uses": [
+      "Présenter un métier, une équipe ou un parcours.",
+      "Recueillir un témoignage ou une expertise.",
+      "Constituer des réponses courtes à plusieurs questions."
+    ],
+    "sections": [
+      {
+        "heading": "Préparer sans faire réciter",
+        "text": "Le sujet, le public et les exemples recherchés guident l’entretien. Une préparation en amont aide l’intervenant à comprendre ce qui est attendu, sans figer chaque phrase ni transformer sa parole en slogan."
+      },
+      {
+        "heading": "Un montage fidèle au propos",
+        "text": "Les extraits sont organisés pour faciliter la compréhension du sujet. Images complémentaires, sous-titres et informations d’identification peuvent accompagner la parole. Le format final dépend de l’usage prévu."
+      }
+    ],
+    "categories": ["Interview", "Reportage"],
+    "projectIds": []
+  },
+  {
+    "slug": "video-formation",
+    "title": "Vidéo de formation et video learning",
+    "seoTitle": "Vidéo de formation pour entreprise",
+    "icon": "learning",
+    "description": "Concevez des vidéos de formation adaptées à vos équipes : objectifs pédagogiques, séquences, démonstrations et livrables par module.",
+    "intro": "Une vidéo de formation doit aider son public à comprendre ou à réaliser une tâche. Nous partons de cet objectif pour construire des séquences et un niveau de détail adaptés aux personnes formées.",
+    "uses": [
+      "Expliquer un processus ou un geste métier.",
+      "Accompagner une formation interne.",
+      "Structurer plusieurs modules autour d’objectifs distincts."
+    ],
+    "sections": [
+      {
+        "heading": "Définir un objectif par séquence",
+        "text": "Un module gagne à préciser ce que l’apprenant doit pouvoir comprendre ou faire. Démonstration filmée, parole d’un expert et éléments animés peuvent être associés selon le sujet. Le contenu technique est validé avec les personnes compétentes de votre équipe."
+      },
+      {
+        "heading": "Organiser des contenus réutilisables",
+        "text": "Le découpage doit faciliter le visionnage et les mises à jour. Identifiez les informations susceptibles de changer et les supports de diffusion. Sous-titres, versions linguistiques et fichiers nécessaires à votre plateforme sont à définir dans le brief."
+      }
+    ],
+    "categories": ["Video learning", "Vidéo de formation"],
+    "projectIds": [
+      "film-rrr-edf-formation-commerciale",
+      "master-marketing-pharma"
+    ]
+  },
+  {
+    "slug": "video-tutorielle",
+    "title": "Vidéo tutorielle et démonstration",
+    "seoTitle": "Vidéo tutorielle et démonstration",
+    "icon": "play",
+    "description": "Montrez comment utiliser un produit ou suivre une procédure : vidéos tutorielles, étapes lisibles et démonstrations adaptées à votre public.",
+    "intro": "Un tutoriel répond à une question concrète. Nous organisons la démonstration pour que son public identifie les étapes, les gestes et les points de vigilance nécessaires à l’usage.",
+    "uses": [
+      "Présenter la prise en main d’un produit.",
+      "Expliquer une procédure ou un parcours.",
+      "Créer une ressource d’aide pour les utilisateurs."
+    ],
+    "sections": [
+      {
+        "heading": "Filmer les étapes qui comptent",
+        "text": "Le déroulement doit être testé avant le tournage. Préparez le produit et les conditions de démonstration, puis distinguez les gestes à montrer des informations à écrire ou à commenter. Un plan de détail peut rendre une manipulation plus claire qu’une longue explication."
+      },
+      {
+        "heading": "Faciliter la consultation",
+        "text": "Titres de séquence, sous-titres et découpage aident à retrouver une information. Nous définissons avec vous le niveau de détail et les versions nécessaires. Si l’interface ou la procédure évolue, la maintenance du tutoriel doit aussi être prévue."
+      }
+    ],
+    "categories": ["Vidéo produit", "Video learning"],
+    "projectIds": []
+  },
+  {
+    "slug": "publicite-video",
+    "title": "Publicité vidéo pour le web et la TV",
+    "seoTitle": "Production de publicité vidéo",
+    "icon": "tv",
+    "description": "Produisez un film publicitaire adapté à votre cible et à sa diffusion : concept, écriture, tournage et déclinaisons pour le web ou la télévision.",
+    "intro": "Un film publicitaire doit relier une idée créative à une offre précise. Nous travaillons le message, les images et le rythme en fonction de votre public et du contexte de diffusion.",
+    "uses": [
+      "Présenter une offre ou une campagne.",
+      "Produire un spot pour le web ou la télévision.",
+      "Décliner une création selon plusieurs usages."
+    ],
+    "sections": [
+      {
+        "heading": "Construire une promesse fidèle à l’offre",
+        "text": "Le concept part de ce que le produit ou le service permet réellement. Le script relie l’accroche, la démonstration et l’action attendue. Les éléments factuels de la campagne doivent être validés par votre équipe avant la production."
+      },
+      {
+        "heading": "Anticiper les livrables",
+        "text": "Durées, formats, langues et éléments obligatoires sont à préciser dès le brief. Les conditions de diffusion et les droits nécessaires doivent être cadrés avant de finaliser la création, afin de livrer une version adaptée au support prévu."
+      }
+    ],
+    "categories": ["Publicité"],
+    "projectIds": ["kfc", "monsieur-store"]
+  },
+  {
+    "slug": "prises-vues-drone",
+    "title": "Prises de vues drone pour vos projets",
+    "seoTitle": "Prises de vues drone pour entreprise",
+    "icon": "drone",
+    "description": "Valorisez un lieu, un site ou un événement avec des prises de vues drone, intégrées à votre film ou réalisées selon un brief spécifique.",
+    "intro": "Les vues aériennes donnent des repères sur un lieu et son environnement. Elles peuvent compléter un film d’entreprise, une présentation de site ou la couverture d’un projet.",
+    "uses": [
+      "Présenter un site et son implantation.",
+      "Montrer un événement ou une réalisation dans son contexte.",
+      "Compléter un tournage avec des séquences aériennes."
+    ],
+    "sections": [
+      {
+        "heading": "Vérifier le lieu et les conditions",
+        "text": "Le lieu, la date et les séquences recherchées doivent être connus suffisamment tôt. La faisabilité dépend des conditions de tournage et des autorisations applicables. Le plan de production tient compte de ces éléments avant de confirmer les prises de vues."
+      },
+      {
+        "heading": "Intégrer les images au récit",
+        "text": "Une vue aérienne doit apporter une information : situer, révéler une organisation ou montrer une échelle. Nous définissons les plans en fonction du film final, avec les autres images et les formats de livraison."
+      }
+    ],
+    "categories": ["Prise de vue drone", "Timelapse & drone"],
+    "projectIds": []
+  },
+  {
+    "slug": "diffusion-video",
+    "title": "Diffusion et intégration de vos vidéos",
+    "seoTitle": "Diffusion et intégration vidéo",
+    "icon": "share",
+    "description": "Préparez les versions et l’intégration de vos vidéos : supports, formats, sous-titres et présentation du film sur votre page web.",
+    "intro": "La diffusion prolonge la production. Nous vous accompagnons pour définir les usages du film, les versions utiles et les éléments qui facilitent sa consultation sur vos supports.",
+    "uses": [
+      "Prévoir les exports selon les écrans et usages.",
+      "Intégrer un film à une page avec une présentation claire.",
+      "Organiser les déclinaisons et ressources associées."
+    ],
+    "sections": [
+      {
+        "heading": "Choisir les supports avant les exports",
+        "text": "Site, réseaux sociaux, rendez-vous et événements peuvent demander des fichiers différents. Listez les usages et les contraintes de chaque canal. L’organisation des versions évite les recadrages improvisés et les fichiers difficiles à retrouver."
+      },
+      {
+        "heading": "Présenter le film dans une page utile",
+        "text": "Un titre, une description et un accès simple au lecteur permettent de comprendre le rôle du contenu. L’intégration doit préserver la lisibilité et le chargement de la page. Définissez aussi la suite proposée au visiteur : découverte d’une offre, ressource ou prise de contact."
+      }
+    ],
+    "categories": [],
+    "projectIds": []
+  }
+]

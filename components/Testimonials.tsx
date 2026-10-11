@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { testimonials } from "@/lib/content";
+import { testimonials } from "@/lib/client-content";
 import { IconArrow } from "./Icons";
 
 export default function Testimonials() {
@@ -29,7 +29,10 @@ export default function Testimonials() {
 
       {/* Quote */}
       <div>
-        <div className="font-display text-6xl leading-none text-gold/30 mb-2" aria-hidden>
+        <div
+          className="font-display text-6xl leading-none text-gold/30 mb-2"
+          aria-hidden
+        >
           &ldquo;
         </div>
         <blockquote className="text-xl md:text-[1.7rem] font-display font-medium leading-snug text-foreground/95">

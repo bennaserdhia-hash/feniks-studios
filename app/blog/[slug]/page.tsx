@@ -1,150 +1,172 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { posts } from "@/lib/content";
+import { servicePages } from "@/lib/services";
+import { pageMetadata, absoluteUrl, ORGANIZATION_ID } from "@/lib/seo";
 import { Section } from "@/components/Section";
-import { IconArrow } from "@/components/Icons";
-
+import Breadcrumbs from "@/components/Breadcrumbs";
+import StructuredData from "@/components/StructuredData";
+import PostCard from "@/components/PostCard";
+type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() {
-  return posts.map((p) => ({ slug: p.slug }));
+  return posts.map((post) => ({ slug: post.slug }));
 }
-
-export async function generateMetadata(
-  props: PageProps<"/blog/[slug]">
-): Promise<Metadata> {
-  const { slug } = await props.params;
-  const post = posts.find((p) => p.slug === slug);
-  if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const post = posts.find((post) => post.slug === slug);
+  if (!post) return { title: "Article introuvable", robots: { index: false } };
+  const metadata = pageMetadata(
+    `/blog/${slug}`,
+    post.seoTitle,
+    post.excerpt,
+    post.cover,
+  );
+  return {
+    ...metadata,
+    openGraph: {
+      ...metadata.openGraph,
+      type: "article",
+      modifiedTime: post.updatedAt,
+    },
+  };
 }
-
-export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
-  const { slug } = await props.params;
-  const post = posts.find((p) => p.slug === slug);
+export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = posts.find((post) => post.slug === slug);
   if (!post) notFound();
-
-  const related = posts.filter((p) => p.slug !== slug).slice(0, 3);
-
+  const related = posts
+    .filter(
+      (p) =>
+        p.slug !== slug && p.services.some((s) => post.services.includes(s)),
+    )
+    .slice(0, 3);
   return (
     <>
-      <section className="relative pt-36 md:pt-44 pb-10 overflow-hidden">
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(90% 120% at 50% -10%, rgba(222,178,103,0.14), transparent 55%)",
-          }}
-        />
-        <div className="container-x max-w-3xl">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-muted hover:text-gold transition-colors mb-8"
-          >
-            <IconArrow className="h-4 w-4 rotate-180" /> Retour au blog
-          </Link>
-          <div className="flex items-center gap-3 text-xs mb-5">
-            <span className="text-gold uppercase tracking-widest font-display font-semibold">
-              {post.category}
-            </span>
-            <span className="text-muted-2">•</span>
-            <span className="text-muted-2">{post.readingTime} de lecture</span>
-          </div>
-          <h1 className="font-display font-extrabold tracking-tight leading-[1.08] text-[clamp(2rem,5vw,3.25rem)]">
+      <Breadcrumbs
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${slug}` },
+        ]}
+      />
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: post.title,
+          description: post.excerpt,
+          image: [absoluteUrl(post.cover)],
+          dateModified: post.updatedAt,
+          author: {
+            "@type": "Organization",
+            name: "Feniks Studios",
+            url: absoluteUrl("/agence"),
+          },
+          publisher: { "@id": ORGANIZATION_ID },
+          mainEntityOfPage: absoluteUrl(`/blog/${slug}`),
+          inLanguage: "fr-FR",
+        }}
+      />
+      <Section className="!pt-12 !pb-10">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="font-display font-extrabold text-[clamp(2rem,5vw,3.25rem)] tracking-tight leading-tight">
             {post.title}
           </h1>
+          <p className="mt-5 text-sm text-muted">
+            Par l’équipe Feniks Studios · {post.readingTime} de lecture · Mis à
+            jour le <time dateTime={post.updatedAt}>11 octobre 2026</time>
+          </p>
+          <p className="text-xl text-foreground leading-relaxed mt-7">
+            {post.excerpt}
+          </p>
         </div>
-      </section>
-
-      <Section className="!pt-6">
+      </Section>
+      <Section className="!pt-0">
         <div className="max-w-3xl mx-auto">
-          <div className="reveal relative aspect-[16/9] rounded-2xl overflow-hidden border border-border mb-10">
+          <div className="relative aspect-video overflow-hidden rounded-xl mb-10">
             <Image
               src={post.cover}
               alt={post.title}
               fill
-              priority
               sizes="(max-width:768px) 100vw, 768px"
               className="object-cover"
             />
           </div>
-
-          <article className="prose-feniks space-y-6 text-muted leading-relaxed text-lg">
-            <p className="text-foreground text-xl font-display">{post.excerpt}</p>
-            <p>
-              La vidéo n'est plus une option : c'est le format qui capte l'attention, crée de
-              l'émotion et transforme la manière dont votre audience perçoit votre marque.
-              Dans cet article, nous explorons les leviers concrets à activer.
-            </p>
-            <h2 className="font-display text-2xl font-bold text-foreground pt-4">
-              Un format qui capte l'attention
-            </h2>
-            <p>
-              Les études le confirment : un message porté par la vidéo est retenu bien plus
-              longtemps qu'un texte ou une image. Le mouvement, le son et le rythme créent une
-              expérience immersive qui installe durablement votre message.
-            </p>
-            <figure className="reveal not-prose my-8">
-              <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-border">
-                <Image
-                  src={post.bodyImage}
-                  alt={`Illustration — ${post.category}`}
-                  fill
-                  sizes="(max-width:768px) 100vw, 768px"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="text-sm text-muted-2 mt-3 text-center">
-                Une réalisation Feniks Studios — {post.category.toLowerCase()}.
-              </figcaption>
-            </figure>
-
-            <h2 className="font-display text-2xl font-bold text-foreground pt-4">
-              De l'idée à la diffusion
-            </h2>
-            <p>
-              La réussite d'un projet vidéo tient à la cohérence entre l'objectif marketing,
-              le message et sa réalisation. C'est précisément le rôle d'un partenaire
-              audiovisuel : traduire vos enjeux en un contenu qui performe.
-            </p>
-            <blockquote className="border-l-2 border-gold pl-6 italic text-foreground/90">
-              « Entre expertise technique et créativité, il faut être force de proposition.
-              Avec la bonne équipe, on fait mieux. »
-            </blockquote>
-            <p>
-              Vous avez un projet en tête ? Parlons-en. Nous vous aiderons à définir le format
-              le plus pertinent et à le produire avec exigence.
-            </p>
+          <nav
+            aria-label="Sommaire de l’article"
+            className="border-y border-border py-6 mb-10"
+          >
+            <p className="font-display font-semibold mb-3">Dans cet article</p>
+            <ol className="space-y-2 list-decimal pl-5 text-muted">
+              {post.sections.map((section, i) => (
+                <li key={section.heading}>
+                  <a
+                    href={`#section-${i + 1}`}
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    {section.heading}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <article className="prose-feniks text-lg text-muted leading-relaxed max-w-[70ch]">
+            {post.sections.map((section, i) => (
+              <section
+                key={section.heading}
+                id={`section-${i + 1}`}
+                className="mb-12 scroll-mt-28"
+              >
+                <h2 className="font-display text-2xl md:text-3xl text-foreground font-bold leading-tight mb-5">
+                  {section.heading}
+                </h2>
+                {section.paragraphs.map((text) => (
+                  <p key={text} className="mb-5">
+                    {text}
+                  </p>
+                ))}
+                {section.points && (
+                  <ul className="list-disc pl-6 space-y-3">
+                    {section.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
           </article>
-
-          <div className="card mt-12 p-8 text-center">
-            <p className="eyebrow mb-3">Un projet vidéo ?</p>
-            <h3 className="font-display text-2xl font-extrabold mb-5">
-              Mettons votre histoire en images.
-            </h3>
-            <Link href="/contact" className="btn btn-gold">
-              Demander un devis <IconArrow className="h-4 w-4" />
+          <div className="border-t border-border pt-8">
+            <h2 className="font-display font-bold text-2xl mb-5">
+              Les prestations liées à ce sujet
+            </h2>
+            <ul className="space-y-3">
+              {servicePages
+                .filter((s) => post.services.includes(s.slug))
+                .map((service) => (
+                  <li key={service.slug}>
+                    <Link
+                      href={`/prestations/${service.slug}`}
+                      className="text-gold-ink underline underline-offset-4"
+                    >
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+            <Link href="/contact" className="btn btn-gold mt-7">
+              Préparer votre projet vidéo
             </Link>
           </div>
         </div>
       </Section>
-
-      <Section className="bg-surface/30 border-t border-border">
-        <h2 className="font-display text-2xl font-bold mb-8">À lire aussi</h2>
-        <div className="grid sm:grid-cols-3 gap-5">
+      <Section className="border-t border-border bg-surface/40">
+        <h2 className="font-display text-2xl font-bold mb-8">
+          Pour poursuivre votre lecture
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {related.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/blog/${p.slug}`}
-              className="card p-6 group"
-            >
-              <span className="text-gold text-xs uppercase tracking-widest font-display font-semibold">
-                {p.category}
-              </span>
-              <h3 className="font-display font-bold mt-3 leading-snug group-hover:text-gold-light transition-colors">
-                {p.title}
-              </h3>
-            </Link>
+            <PostCard key={p.slug} post={p} />
           ))}
         </div>
       </Section>

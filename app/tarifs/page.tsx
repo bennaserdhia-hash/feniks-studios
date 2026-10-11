@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import { Section } from "@/components/Section";
 import { pricing, formatPrice } from "@/lib/content";
 import { serviceIcons, IconArrow, IconCheck } from "@/components/Icons";
 
-export const metadata: Metadata = {
-  title: "Tarifs",
-  description:
-    "Les tarifs de Feniks Studios, agence de production audiovisuelle parisienne : film d'entreprise dès 3 500 €, motion design, publicité, couverture d'événement, video learning. Devis sur-mesure gratuit.",
-};
+export const metadata = pageMetadata(
+  "/tarifs",
+  "Tarifs vidéo d’entreprise et motion design",
+  "Film d’entreprise dès 3 500 € HT, motion design dès 2 200 € HT : consultez nos tarifs de départ et les prestations incluses. Devis sur mesure sous 24 à 48 h.",
+);
 
 const included = [
   "Réunion de cadrage et écriture",
@@ -24,11 +24,7 @@ export default function TarifsPage() {
     <>
       <PageHeader
         eyebrow="Nos tarifs"
-        title={
-          <>
-            Des prix clairs, <span className="text-gradient-gold">une valeur juste</span>
-          </>
-        }
+        title="Tarifs de production audiovisuelle"
         intro="Chez Feniks Studios, rien n'est standardisé : chaque projet est entièrement sur-mesure, réalisé par une équipe de passionnés dont le métier est de rendre votre film unique. Ces prix de départ vous donnent un ordre de grandeur — le devis final est construit avec vous, selon vos ambitions et votre diffusion."
       />
 
@@ -55,15 +51,24 @@ export default function TarifsPage() {
                   )}
                 </div>
 
-                <h2 className="font-display font-bold text-lg leading-tight">{p.title}</h2>
-                <p className="text-muted text-sm mt-2 leading-relaxed flex-1">{p.note}</p>
+                <h2 className="font-display font-bold text-lg leading-tight">
+                  {p.title}
+                </h2>
+                <p className="text-muted text-sm mt-2 leading-relaxed flex-1">
+                  {p.note}
+                </p>
 
                 <div className="mt-5 pt-5 border-t border-border">
-                  <p className="text-xs text-muted-2 uppercase tracking-wide">À partir de</p>
+                  <p className="text-xs text-muted-2 uppercase tracking-wide">
+                    À partir de
+                  </p>
                   <p className="font-display text-3xl font-black text-foreground mt-1">
                     {formatPrice(p.from)}
                     {p.unit && (
-                      <span className="text-base font-semibold text-muted"> / {p.unit}</span>
+                      <span className="text-base font-semibold text-muted">
+                        {" "}
+                        / {p.unit}
+                      </span>
                     )}
                   </p>
                 </div>
@@ -73,7 +78,8 @@ export default function TarifsPage() {
         </div>
 
         <p className="text-center text-sm text-muted-2 mt-8">
-          Tarifs indicatifs hors taxes. Prise de vue drone soumise aux autorisations de vol en vigueur.
+          Tarifs indicatifs hors taxes. Prise de vue drone soumise aux
+          autorisations de vol en vigueur.
         </p>
       </Section>
 
@@ -86,10 +92,11 @@ export default function TarifsPage() {
               Du sur-mesure, par une équipe de passionnés.
             </h2>
             <p className="text-muted mt-4 leading-relaxed">
-              Nous ne vendons pas des « packs » sortis d&apos;un catalogue. Chaque film est pensé,
-              écrit et réalisé pour vous — par une équipe qui aime son métier et met un point
-              d&apos;honneur à rendre votre projet unique. Nos prix incluent tout ce qui fait la
-              qualité, du premier échange à la livraison.
+              Nous ne vendons pas des « packs » sortis d&apos;un catalogue.
+              Chaque film est pensé, écrit et réalisé pour vous — par une équipe
+              qui aime son métier et met un point d&apos;honneur à rendre votre
+              projet unique. Nos prix incluent tout ce qui fait la qualité, du
+              premier échange à la livraison.
             </p>
           </div>
           <ul className="reveal space-y-4">
@@ -121,14 +128,17 @@ export default function TarifsPage() {
             <span className="text-gradient-gold">sous 24 à 48h.</span>
           </h2>
           <p className="text-[#b9b3a5] mt-4 max-w-xl mx-auto">
-            Décrivez-nous votre besoin : nous revenons vers vous avec une proposition adaptée à
-            vos objectifs et à votre budget.
+            Décrivez-nous votre besoin : nous revenons vers vous avec une
+            proposition adaptée à vos objectifs et à votre budget.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href="/contact" className="btn btn-gold">
               Demander un devis <IconArrow className="h-4 w-4" />
             </Link>
-            <Link href="/realisations" className="btn btn-outline !border-gold/40 !text-gold">
+            <Link
+              href="/realisations"
+              className="btn btn-outline !border-gold/40 !text-gold"
+            >
               Voir nos réalisations
             </Link>
           </div>

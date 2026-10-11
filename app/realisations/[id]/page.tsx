@@ -1,10 +1,21 @@
+import projectTitles from "@/data/project-seo-titles.json";
+import {
+  pageMetadata,
+  conciseDescription,
+  absoluteUrl,
+  ORGANIZATION_ID,
+} from "@/lib/seo";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import StructuredData from "@/components/StructuredData";
+import { servicePages } from "@/lib/services";
+import videoDates from "@/data/video-publication-dates.json";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/Section";
 import WorkCard from "@/components/WorkCard";
-import { getVideos, embedUrl, watchUrl } from "@/lib/portfolio";
+import { getPublicVideos, embedUrl, watchUrl } from "@/lib/portfolio";
 import { IconArrow, IconPlay } from "@/components/Icons";
 
 type Props = { params: Promise<{ id: string }> };
@@ -14,40 +25,76 @@ type Props = { params: Promise<{ id: string }> };
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const videos = await getVideos();
+  const videos = await getPublicVideos();
   return videos.map((v) => ({ id: v.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const video = (await getVideos()).find((v) => v.id === id);
+  const video = (await getPublicVideos()).find((v) => v.id === id);
   if (!video) return { title: "Réalisation introuvable" };
-  return {
-    title: `${video.title} — ${video.category}`,
-    description: video.description?.slice(0, 160),
-    openGraph: {
-      title: `${video.title} — Feniks Studios`,
-      description: video.description?.slice(0, 200),
-      images: video.image ? [video.image] : undefined,
-    },
-  };
+  return pageMetadata(
+    `/realisations/${id}`,
+    (projectTitles as Record<string, string>)[id] || video.title,
+    conciseDescription(
+      video.description || "",
+      `Découvrez ${video.title}, une réalisation ${video.category.toLowerCase()} de Feniks Studios.`,
+    ),
+    video.image || "/brand/social-share.png",
+  );
 }
 
 export default async function ProjectPage({ params }: Props) {
   const { id } = await params;
-  const videos = await getVideos();
+  const videos = await getPublicVideos();
   const video = videos.find((v) => v.id === id);
   if (!video) notFound();
 
   const embed = embedUrl(video);
   const watch = watchUrl(video);
-  const others = videos.filter((v) => v.id !== video.id && v.category === video.category).slice(0, 3);
+  const others = videos
+    .filter((v) => v.id !== video.id && v.category === video.category)
+    .slice(0, 3);
   const fallback = videos.filter((v) => v.id !== video.id).slice(0, 3);
   const suggestions = others.length ? others : fallback;
 
+  const publication = (
+    videoDates as Record<string, { uploadDate: string; videoId: string }>
+  )[id];
+  const hasVerifiedDate =
+    publication && publication.videoId === (video.youtubeId || video.vimeoId);
+  const relatedServices = servicePages.filter(
+    (s) => s.projectIds.includes(id) || s.categories.includes(video.category),
+  );
   return (
     <>
-      <Section className="pt-32 md:pt-40 !pb-10">
+      <Breadcrumbs
+        items={[
+          { name: "Accueil", path: "/" },
+          { name: "Réalisations", path: "/realisations" },
+          { name: video.title, path: `/realisations/${id}` },
+        ]}
+      />
+      {embed && hasVerifiedDate && (
+        <StructuredData
+          data={{
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: video.title,
+            description: conciseDescription(
+              video.description || "",
+              `Une réalisation ${video.category} par Feniks Studios.`,
+            ),
+            thumbnailUrl: absoluteUrl(video.image),
+            uploadDate: publication.uploadDate,
+            embedUrl: embed,
+            url: absoluteUrl(`/realisations/${id}`),
+            publisher: { "@id": ORGANIZATION_ID },
+          }}
+        />
+      )}
+
+      <Section className="!pt-12 !pb-10">
         <Link
           href="/realisations"
           className="inline-flex items-center gap-2 text-sm text-muted hover:text-gold-ink transition-colors mb-8"
@@ -65,7 +112,9 @@ export default async function ProjectPage({ params }: Props) {
       <Section className="!pt-4 !pb-10">
         <div
           className={`relative rounded-2xl overflow-hidden border border-border bg-surface-2 shadow-[0_40px_80px_-40px_rgba(120,90,30,0.35)] ${
-            video.vertical ? "aspect-[9/16] max-w-[420px] mx-auto" : "aspect-video"
+            video.vertical
+              ? "aspect-[9/16] max-w-[420px] mx-auto"
+              : "aspect-video"
           }`}
         >
           {embed ? (
@@ -90,8 +139,14 @@ export default async function ProjectPage({ params }: Props) {
 
         {watch && (
           <div className="mt-5 flex flex-wrap items-center gap-4">
-            <a href={watch} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-              <IconPlay className="h-4 w-4" /> Voir sur {video.youtubeId ? "YouTube" : "Vimeo"}
+            <a
+              href={watch}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
+            >
+              <IconPlay className="h-4 w-4" /> Voir sur{" "}
+              {video.youtubeId ? "YouTube" : "Vimeo"}
             </a>
             <Link href="/contact" className="btn btn-gold">
               Un projet similaire ? <IconArrow className="h-4 w-4" />
@@ -109,13 +164,34 @@ export default async function ProjectPage({ params }: Props) {
           </div>
           <div className="space-y-5">
             {video.description && (
-              <p className="text-lg leading-relaxed text-foreground/90">{video.description}</p>
+              <p className="text-lg leading-relaxed text-foreground/90">
+                {video.description}
+              </p>
             )}
             {video.details?.map((d, i) => (
               <p key={i} className="text-muted leading-relaxed">
                 {d}
               </p>
             ))}
+            {relatedServices.length > 0 && (
+              <div className="pt-4">
+                <h3 className="font-display font-semibold mb-3">
+                  Les prestations associées
+                </h3>
+                <ul className="space-y-2">
+                  {relatedServices.map((service) => (
+                    <li key={service.slug}>
+                      <Link
+                        href={`/prestations/${service.slug}`}
+                        className="text-gold-ink underline underline-offset-4"
+                      >
+                        {service.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </Section>
@@ -125,7 +201,9 @@ export default async function ProjectPage({ params }: Props) {
         <Section className="border-t border-border">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
             <h2 className="font-display text-2xl font-extrabold">
-              {others.length ? `Autres projets · ${video.category}` : "Autres réalisations"}
+              {others.length
+                ? `Autres projets · ${video.category}`
+                : "Autres réalisations"}
             </h2>
             <Link href="/realisations" className="btn btn-ghost">
               Voir tout <IconArrow className="h-4 w-4" />

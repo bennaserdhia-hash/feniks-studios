@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { serviceHref } from "@/lib/services";
 import { Service } from "@/lib/content";
 import { serviceIcons, IconArrow } from "./Icons";
 
@@ -7,7 +9,8 @@ export default function ServicesList({ items }: { items: Service[] }) {
       {items.map((service, idx) => {
         const Icon = serviceIcons[service.icon] ?? serviceIcons.play;
         return (
-          <div
+          <Link
+            href={serviceHref(service.icon)}
             key={service.title}
             className="reveal group grid grid-cols-[auto_1fr_auto] md:grid-cols-[5rem_1fr_1.4fr_auto] items-center gap-4 md:gap-8 py-6 md:py-7 border-b border-border transition-colors hover:bg-surface/40 px-2 md:px-4"
           >
@@ -26,7 +29,7 @@ export default function ServicesList({ items }: { items: Service[] }) {
               {service.description}
             </p>
             <IconArrow className="h-5 w-5 text-muted-2 group-hover:text-gold group-hover:translate-x-1 transition-all" />
-          </div>
+          </Link>
         );
       })}
     </div>

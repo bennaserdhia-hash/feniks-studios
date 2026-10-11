@@ -1,0 +1,30 @@
+[
+  {
+    "description": "AJ+ nous a sollicité afin de produire un reportage sur le football en amont de la coupe du monde.",
+    "details": [
+      "Le challenge était de pouvoir à la fois couvrir toutes les nécessités d’AJ+ afin qu’ils puissent opérer sur le terrain français, mais également d’identifier les meilleurs profils et les meilleures histoires à raconter concernant ce sujet tout en ayant un reportage digital à destination des réseaux sociaux."
+    ],
+    "youtubeId": "TUA0qpQUR1E",
+    "vimeoId": "",
+    "id": "aj-reportage-sportif",
+    "title": "AJ+ — Reportage sportif",
+    "category": "Reportage",
+    "image": "/portfolio/aj-2.png",
+    "categoryLabel": "Réalisation historique"
+  },
+  {
+    "description": "Lawson Jr’Music – The Focused Project",
+    "details": [
+      "Identité visuelle + création de site web pour le batteur professionnel Lawson Jr’Music.",
+      "Artiste Passionné, Lawson vit son rêve qui se réalise pas après pas. Sa principale activité se résume par le partage de cette passion en concerts ou en studios d’enregistrements mais aussi par le biais de belles rencontres & collaborations musicales au niveau national et international.",
+      "Définir une identité visuelle (création de logo, charte graphique)"
+    ],
+    "youtubeId": "",
+    "vimeoId": "",
+    "id": "lawson-jr-music-batteur-professionnel",
+    "title": "Lawson Jr’Music — identité visuelle et site web",
+    "category": "Site web",
+    "image": "/portfolio/lawson-jr-music-batteur-professionnel.png",
+    "categoryLabel": "Réalisation historique"
+  }
+]

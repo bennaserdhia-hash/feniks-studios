@@ -1,26 +1,27 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import PageHeader from "@/components/PageHeader";
 import { Section } from "@/components/Section";
 import QuoteForm from "@/components/QuoteForm";
 import { site } from "@/lib/content";
-import { SocialIcon, IconMapPin, IconMail, IconDownload } from "@/components/Icons";
+import {
+  SocialIcon,
+  IconMapPin,
+  IconMail,
+  IconDownload,
+} from "@/components/Icons";
 
-export const metadata: Metadata = {
-  title: "Contact & demande de devis",
-  description:
-    "Contactez Feniks Studios pour votre projet audiovisuel. Demandez un devis gratuit ou soyez recontacté par notre équipe à Paris.",
-};
+export const metadata = pageMetadata(
+  "/contact",
+  "Devis de production vidéo à Paris",
+  "Décrivez votre projet vidéo à Feniks Studios : film d’entreprise, motion design, interview ou événement. Recevez une proposition sur mesure sous 24 à 48 h.",
+);
 
 export default function ContactPage() {
   return (
     <>
       <PageHeader
         eyebrow="Contact"
-        title={
-          <>
-            Parlons de <span className="text-gradient-gold">votre projet</span>
-          </>
-        }
+        title="Contact et devis pour votre projet vidéo"
         intro="Une idée, un besoin, une envie de partenariat… ou simplement un p'tit coucou. Décrivez votre projet, nous revenons vers vous rapidement avec un devis."
       />
 
@@ -29,14 +30,18 @@ export default function ContactPage() {
           {/* Info column */}
           <div className="reveal space-y-6">
             <div className="card p-7">
-              <h2 className="font-display font-bold text-lg mb-5">Nos coordonnées</h2>
+              <h2 className="font-display font-bold text-lg mb-5">
+                Nos coordonnées
+              </h2>
               <ul className="space-y-4 text-muted">
                 <li className="flex items-start gap-3">
                   <IconMapPin className="h-5 w-5 text-gold shrink-0 mt-0.5" />
                   <span>
                     Agence de production basée à
                     <br />
-                    <strong className="text-foreground">{site.locations.join(" & ")}</strong>
+                    <strong className="text-foreground">
+                      {site.locations.join(" & ")}
+                    </strong>
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -52,7 +57,9 @@ export default function ContactPage() {
             </div>
 
             <div className="card p-7">
-              <h2 className="font-display font-bold text-lg mb-5">Suivez-nous</h2>
+              <h2 className="font-display font-bold text-lg mb-5">
+                Suivez-nous
+              </h2>
               <div className="flex flex-wrap gap-3">
                 {site.socials.map((s) => (
                   <a
@@ -72,8 +79,8 @@ export default function ContactPage() {
             <div className="card p-7">
               <p className="eyebrow mb-3">Réactivité</p>
               <p className="text-muted text-sm leading-relaxed">
-                Nous répondons généralement sous 24–48h ouvrées. Plus votre brief est précis,
-                plus notre réponse sera pertinente.
+                Nous répondons généralement sous 24–48h ouvrées. Plus votre
+                brief est précis, plus notre réponse sera pertinente.
               </p>
             </div>
 

@@ -1,0 +1,252 @@
+[
+  {
+    "source": "/portfolio/skooleo-after-movie",
+    "destination": "/realisations/skooleo",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/sefri-cime-meryllim-film-chantier",
+    "destination": "/realisations/sefri-cime-meryllim",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/groupe-sandaya-video-produit-3",
+    "destination": "/realisations/groupe-sandaya",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/groupe-sandaya-video-produit-2",
+    "destination": "/realisations/groupe-sandaya-2",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/groupe-sandaya-video-produit",
+    "destination": "/realisations/groupe-sandaya-3",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/film-dentreprise-presentation-de-produit-hirsch-isolation-x-squid-surfboards",
+    "destination": "/realisations/hirsch-isolation-x-squid-surfboards",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/video-de-presentation-ibrahim-shalabi",
+    "destination": "/realisations/ibrahim-shalabi",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/les-boutiques-saint-georges-film-dentreprise",
+    "destination": "/realisations/les-boutiques-saint-georges",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/afsr-motion-design",
+    "destination": "/realisations/afsr",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/hirsch-isolation-film-dentreprise",
+    "destination": "/realisations/hirsch-isolation",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/hirsch-isolation-motion-design",
+    "destination": "/realisations/hirsch-isolation-2",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/aj-reportage-sportif-2",
+    "destination": "/realisations/aj",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/aljazeera-reportage-politique",
+    "destination": "/realisations/aljazeera",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/play-rec-film-sportif",
+    "destination": "/realisations/play-rec",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/fcsm-cv-video",
+    "destination": "/realisations/fcsm",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/timelapse-1001vies-destruction-du-gallion",
+    "destination": "/realisations/destruction-du-gallion",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/corporate-sicav-isr-europe-video-corporate",
+    "destination": "/realisations/sicav-labellisee-isr-echiquier-positive-impact-eur",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/couverture-devenement-aftermovie-concert-2019-arabel-fm",
+    "destination": "/realisations/concert-2019-arabel-fm",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/blue-project-motion-design",
+    "destination": "/realisations/blue-project",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/spot-city-pub-web-highlander-adventures",
+    "destination": "/realisations/highlander-adventures",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/couverture-devenement-lagence-pgo-carcassonne",
+    "destination": "/realisations/l-agence-pgo-carcassonne",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/presentation-activite-time-lapse-thouron-les-chapiteaux-du-sud-ouest",
+    "destination": "/realisations/thouron-les-chapiteaux-du-sud-ouest",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/mini-serie-reportage-water-challenge-2-voyage-humanitaire",
+    "destination": "/realisations/water-challenge-2-voyage-humanitaire",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/motion-design-lancement-dapplication-e-kinote-pro",
+    "destination": "/realisations/e-kinote-pro",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/video-de-presentation-claridge-events-a-dream-location-for-your-events",
+    "destination": "/realisations/claridge-events-a-dream-location-for-your-events",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/couverture-devenement-inauguration-le-five-paris-13eme",
+    "destination": "/realisations/inauguration-le-five-paris-13eme",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/local-x-linkedin-local-toulouse-couverture-evenement",
+    "destination": "/realisations/local-x-linkedin-local-toulouse",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/serie-reportage-ummanite-au-mali-2018",
+    "destination": "/realisations/ummanite-au-mali-2018",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/monsieur-store-pub-web",
+    "destination": "/realisations/monsieur-store-care-habitat",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/kfc-foot-5-cup-couverture-evenement",
+    "destination": "/realisations/kfc-foot-5-cup-le-five",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/pub-tv-mfr-loire-auvergne-motion-design",
+    "destination": "/realisations/mfr-loire-auvergne",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/spot-pub-mfr-st-germain-lespinasse-pub-cinema-web",
+    "destination": "/realisations/mfr-st-germain-lespinasse",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/ummanite-water-challenge-motion-design",
+    "destination": "/realisations/ummanite-water-challenge",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/spot-web-slow-motion-stop-motion-jardin-coquille-nos-salades-et-nos-jus",
+    "destination": "/realisations/jardin-coquille-nos-salades-et-nos-jus",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/spot-web-kashan-rug-iranian-handmade-carpets",
+    "destination": "/realisations/kashan-rug-iranian-handmade-carpets",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/actility-the-ecosystem-motion-design",
+    "destination": "/realisations/actility-the-ecosystem",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/ummanite-metro-boulot-dispo-video-de-sensibilisation",
+    "destination": "/realisations/umma-nite-metro-boulot-dispo",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/meetup-actility-telecom-paris-tech-couverture-evenement",
+    "destination": "/realisations/meet-up-experimentation-iot-actility-telecom-paris",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/meetup-actility-ge-digital-couverture-evenement",
+    "destination": "/realisations/meet-up-iot-industriel-actility-ge-digital",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/be-infiny-spot-web",
+    "destination": "/realisations/be-infiny",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/seminaire-splf-soccer-park-le-five",
+    "destination": "/realisations/1er-seminaire-splf-soccer-park-le-five",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/lempreinte-film-de-presentation",
+    "destination": "/realisations/l-empreinte-mehdi-maatoug-le-temps",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/filmrrr-edf-video-de-formation",
+    "destination": "/realisations/film-rrr-edf-formation-commerciale",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/master-marketing-pharma-spot-pub-web",
+    "destination": "/realisations/master-marketing-pharmaceutique",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/les-rencontres-de-la-proprete-4e-edition-couverture-evenement",
+    "destination": "/realisations/les-rencontres-de-la-proprete-4e-edition",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/war-games-couverture-evenement",
+    "destination": "/realisations/war-games",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/paymed-consulting-trs-2014-video-corporate",
+    "destination": "/realisations/paymed-consulting-resultats-de-l-enquete-salariale",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/magistrales-applis-sante-medecine-couverture-evenement",
+    "destination": "/realisations/les-magistrales-2014-applis-sante-et-e-medecine",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/aj-reportage-sportif",
+    "destination": "/realisations/aj-reportage-sportif",
+    "permanent": true
+  },
+  {
+    "source": "/portfolio/site-web-lawson-jrmusic-batteur-professionnel",
+    "destination": "/realisations/lawson-jr-music-batteur-professionnel",
+    "permanent": true
+  }
+]

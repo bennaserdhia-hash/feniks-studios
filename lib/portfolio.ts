@@ -1,3 +1,5 @@
+import archivedProjects from "@/data/archive-projects.json";
+import editorial from "@/data/project-editorial.json";
 /**
  * Stockage des réalisations (portfolio).
  *
@@ -49,7 +51,8 @@ export function watchUrl(v: Video): string | null {
 
 /** URL d'intégration (lecteur embarqué). */
 export function embedUrl(v: Video): string | null {
-  if (v.youtubeId) return `https://www.youtube-nocookie.com/embed/${v.youtubeId}`;
+  if (v.youtubeId)
+    return `https://www.youtube-nocookie.com/embed/${v.youtubeId}`;
   if (v.vimeoId) return `https://player.vimeo.com/video/${v.vimeoId}`;
   return null;
 }
@@ -73,7 +76,7 @@ export class StorageReadOnlyError extends Error {
     super(
       "Le stockage est en lecture seule : la base Supabase n'est pas configurée " +
         "(variables SUPABASE_URL / SUPABASE_SECRET_KEY). Les modifications ne " +
-        "peuvent pas être enregistrées."
+        "peuvent pas être enregistrées.",
     );
     this.name = "StorageReadOnlyError";
   }
@@ -91,7 +94,10 @@ export async function getVideos(): Promise<Video[]> {
     .order("position", { ascending: true });
 
   if (error) {
-    console.error("[portfolio] lecture Supabase échouée, repli JSON:", error.message);
+    console.error(
+      "[portfolio] lecture Supabase échouée, repli JSON:",
+      error.message,
+    );
     return readFileVideos();
   }
   // Si la table est vide (pas encore semée), on retombe sur le JSON.
@@ -119,13 +125,12 @@ export async function addVideo(input: Omit<Video, "id">): Promise<Video> {
   const existing = await getVideos();
   let id = slugify(input.title);
   let n = 2;
-  while (existing.some((v) => v.id === id)) id = `${slugify(input.title)}-${n++}`;
+  while (existing.some((v) => v.id === id))
+    id = `${slugify(input.title)}-${n++}`;
 
   const video: Video = { id, ...input };
   // Nouveautés en tête : position inférieure au minimum actuel.
-  const minPos = existing.length
-    ? await getMinPosition(supabase)
-    : 0;
+  const minPos = existing.length ? await getMinPosition(supabase) : 0;
 
   const { error } = await supabase
     .from(PORTFOLIO_TABLE)
@@ -136,7 +141,7 @@ export async function addVideo(input: Omit<Video, "id">): Promise<Video> {
 }
 
 async function getMinPosition(
-  supabase: NonNullable<ReturnType<typeof getServiceClient>>
+  supabase: NonNullable<ReturnType<typeof getServiceClient>>,
 ): Promise<number> {
   const { data } = await supabase
     .from(PORTFOLIO_TABLE)
@@ -148,7 +153,7 @@ async function getMinPosition(
 
 export async function updateVideo(
   id: string,
-  patch: Partial<Omit<Video, "id">>
+  patch: Partial<Omit<Video, "id">>,
 ): Promise<Video | null> {
   const supabase = getServiceClient();
   if (!supabase) throw new StorageReadOnlyError();
@@ -190,8 +195,21 @@ export async function reorderVideos(ids: string[]): Promise<Video[]> {
   // Position = index dans la liste fournie.
   await Promise.all(
     ids.map((id, i) =>
-      supabase.from(PORTFOLIO_TABLE).update({ position: i }).eq("id", id)
-    )
+      supabase.from(PORTFOLIO_TABLE).update({ position: i }).eq("id", id),
+    ),
   );
   return getVideos();
+}
+
+/** Public copy corrections do not overwrite the portfolio database. */
+export async function getPublicVideos(): Promise<Video[]> {
+  const overrides: Record<string, Partial<Video>> = editorial;
+  const current = await getVideos();
+  const archived = archivedProjects.filter(
+    (video) => !current.some((v) => v.id === video.id),
+  );
+  return [...current, ...archived].map((video) => ({
+    ...video,
+    ...overrides[video.id],
+  }));
 }

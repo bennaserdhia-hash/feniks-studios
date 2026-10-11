@@ -1,3 +1,5 @@
+import Showreel from "@/components/Showreel";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import Hero from "@/components/Hero";
@@ -8,15 +10,21 @@ import WorkCard from "@/components/WorkCard";
 import PostCard from "@/components/PostCard";
 import Testimonials from "@/components/Testimonials";
 import { services, posts, showreel2022 } from "@/lib/content";
-import { getVideos } from "@/lib/portfolio";
+import { getPublicVideos } from "@/lib/portfolio";
 import { IconArrow } from "@/components/Icons";
 
 // ISR : la page se régénère au plus toutes les 60 s pour refléter
 // automatiquement les changements du portfolio (Supabase / dashboard /admin).
 export const revalidate = 60;
 
+export const metadata = pageMetadata(
+  "/",
+  "Production audiovisuelle à Paris",
+  "Agence de production audiovisuelle à Paris : films d’entreprise, motion design, interviews et vidéos événementielles. Découvrez nos projets et demandez un devis.",
+);
+
 export default async function Home() {
-  const works = await getVideos();
+  const works = await getPublicVideos();
   return (
     <>
       <Hero />
@@ -47,7 +55,9 @@ export default async function Home() {
               title={
                 <>
                   Comprendre votre entreprise{" "}
-                  <span className="text-gold">avant de filmer quoi que ce soit.</span>
+                  <span className="text-gold">
+                    avant de filmer quoi que ce soit.
+                  </span>
                 </>
               }
               intro="Aujourd'hui, la vraie valeur d'une agence de production ne tient pas au matériel : elle tient à sa capacité à comprendre votre produit, votre histoire et ce qui fait votre âme — puis à en tirer un récit. C'est ce que nous faisons depuis 2014, en associant maîtrise du storytelling et exigence technique haut de gamme."
@@ -59,7 +69,10 @@ export default async function Home() {
       {/* Réalisations — editorial grid */}
       <Section className="border-t border-border">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
-          <SectionHeading eyebrow="Nos réalisations" title="Les histoires qu'on nous a confiées" />
+          <SectionHeading
+            eyebrow="Nos réalisations"
+            title="Les histoires qu'on nous a confiées"
+          />
           <Link href="/realisations" className="btn btn-ghost reveal">
             Voir tout <IconArrow className="h-4 w-4" />
           </Link>
@@ -83,25 +96,26 @@ export default async function Home() {
         <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
           <SectionHeading
             eyebrow="Nos prestations"
-            title={<>Tout l'audiovisuel,<br />sous un même toit.</>}
+            title={
+              <>
+                Tout l’audiovisuel,
+                <br />
+                sous un même toit.
+              </>
+            }
           />
           <Link href="/agence" className="btn btn-ghost reveal">
-            Découvrir l'agence <IconArrow className="h-4 w-4" />
+            Découvrir l’agence <IconArrow className="h-4 w-4" />
           </Link>
         </div>
 
         <div className="reveal relative aspect-video md:aspect-[21/9] rounded-2xl overflow-hidden border border-border mb-12 bg-ink">
-          <video
-            className="h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={showreel2022.poster}
-            preload="metadata"
-          >
-            <source src={showreel2022.mp4} type="video/mp4" />
-          </video>
+          <Showreel
+            src={showreel2022.mp4}
+            poster="/video/poster-2022.webp"
+            title="Showreel des prestations Feniks Studios"
+            className="h-full w-full"
+          />
         </div>
 
         <ServicesList items={services.slice(0, 6)} />
@@ -110,7 +124,10 @@ export default async function Home() {
       {/* Testimonials */}
       <Section className="border-t border-border">
         <div className="mb-14">
-          <SectionHeading eyebrow="Ils nous font confiance" title="Avec eux, on fait mieux." />
+          <SectionHeading
+            eyebrow="Ils nous font confiance"
+            title="Avec eux, on fait mieux."
+          />
         </div>
         <Testimonials />
       </Section>
@@ -118,7 +135,10 @@ export default async function Home() {
       {/* Blog */}
       <Section className="bg-surface/20 border-t border-border">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-14">
-          <SectionHeading eyebrow="Le blog" title="Devenez expert en audiovisuel" />
+          <SectionHeading
+            eyebrow="Le blog"
+            title="Devenez expert en audiovisuel"
+          />
           <Link href="/blog" className="btn btn-ghost reveal">
             Tous les articles <IconArrow className="h-4 w-4" />
           </Link>

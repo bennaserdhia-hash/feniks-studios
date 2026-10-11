@@ -8,18 +8,18 @@
 
 :root {
   --background: #ffffff;
-  --surface: #faf7f1;      /* crème clair pour sections alternées */
+  --surface: #faf7f1; /* crème clair pour sections alternées */
   --surface-2: #f3eee4;
   --border: #e9e3d7;
-  --foreground: #17150f;   /* presque noir chaud */
-  --muted: #6c675c;        /* gris chaud (texte secondaire) */
+  --foreground: #17150f; /* presque noir chaud */
+  --muted: #6c675c; /* gris chaud (texte secondaire) */
   --muted-2: #a49d8f;
 
-  --gold: #deb267;         /* or de marque (aplats, lignes, gros titres) */
+  --gold: #deb267; /* or de marque (aplats, lignes, gros titres) */
   --gold-deep: #b8863b;
-  --gold-ink: #9a6f28;     /* or lisible pour petit texte sur blanc */
+  --gold-ink: #9a6f28; /* or lisible pour petit texte sur blanc */
 
-  --ink: #17150f;          /* pour sections noir & or ponctuelles */
+  --ink: #17150f; /* pour sections noir & or ponctuelles */
 }
 
 @theme inline {
@@ -105,9 +105,14 @@ body {
 
 /* ---- Reveal on scroll ---- */
 .reveal {
+  opacity: 1;
+  transform: none;
+}
+.reveal.reveal-pending {
   opacity: 0;
   transform: translateY(26px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
@@ -177,7 +182,10 @@ body {
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 1rem;
-  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 .card:hover {
   border-color: rgba(222, 178, 103, 0.7);
@@ -268,8 +276,12 @@ body {
 
 /* Marquee */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 .marquee-track {
   display: flex;
@@ -278,4 +290,32 @@ body {
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-ink);
+  outline-offset: 4px;
+}
+input,
+textarea {
+  caret-color: var(--gold-ink);
+}
+.skip-link {
+  position: fixed;
+  z-index: 10000;
+  inset-inline-start: 1rem;
+  top: 1rem;
+  padding: 1rem;
+  background: var(--ink);
+  color: white;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal.reveal-pending {
+    opacity: 1;
+    transform: none;
+  }
 }

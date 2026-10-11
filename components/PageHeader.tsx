@@ -5,7 +5,7 @@ export default function PageHeader({
   title,
   intro,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode;
   intro?: string;
 }) {
@@ -19,7 +19,7 @@ export default function PageHeader({
         }}
       />
       <div className="container-x">
-        <p className="eyebrow reveal mb-5">{eyebrow}</p>
+        {eyebrow && <p className="eyebrow reveal mb-5">{eyebrow}</p>}
         <h1 className="reveal font-display font-extrabold tracking-tight leading-[1.02] text-[clamp(2.4rem,6vw,4.5rem)] max-w-4xl">
           {title}
         </h1>

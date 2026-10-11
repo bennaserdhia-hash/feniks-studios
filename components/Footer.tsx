@@ -19,11 +19,12 @@ export default function Footer() {
           <div className="relative">
             <p className="eyebrow mb-4">Un projet vidéo ?</p>
             <h2 className="font-display text-3xl md:text-5xl font-extrabold leading-tight mb-5">
-              Donnons vie à <span className="text-gradient-gold">votre histoire</span>.
+              Donnons vie à{" "}
+              <span className="text-gradient-gold">votre histoire</span>.
             </h2>
             <p className="text-muted max-w-xl mx-auto mb-8">
-              Parlez-nous de votre projet : nous vous répondons avec des idées, un
-              accompagnement sur-mesure et un devis clair.
+              Parlez-nous de votre projet : nous vous répondons avec des idées,
+              un accompagnement sur-mesure et un devis clair.
             </p>
             <Link href="/contact" className="btn btn-gold">
               Demander un devis <IconArrow className="h-4 w-4" />
@@ -39,8 +40,9 @@ export default function Footer() {
         <div className="md:col-span-2">
           <Logo />
           <p className="text-muted mt-5 max-w-sm leading-relaxed">
-            {site.tagline}. Nous racontons vos histoires en vidéo, du film d'entreprise
-            au motion design, pour aider votre marque à se démarquer.
+            {site.tagline}. Nous racontons vos histoires en vidéo, du film
+            d’entreprise au motion design, pour aider votre marque à se
+            démarquer.
           </p>
           <div className="flex items-center gap-3 mt-6">
             {site.socials.map((s) => (
@@ -92,7 +94,10 @@ export default function Footer() {
             </li>
             <li className="flex items-start gap-3">
               <IconMail className="h-5 w-5 text-gold shrink-0 mt-0.5" />
-              <a href={`mailto:${site.email}`} className="hover:text-foreground transition-colors break-all">
+              <a
+                href={`mailto:${site.email}`}
+                className="hover:text-foreground transition-colors break-all"
+              >
                 {site.email}
               </a>
             </li>
@@ -102,8 +107,13 @@ export default function Footer() {
 
       <div className="hairline" />
       <div className="container-x py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted-2">
-        <p>© {new Date().getFullYear()} Feniks Studios. Tous droits réservés.</p>
-        <Link href="/mentions-legales" className="hover:text-muted transition-colors">
+        <p>
+          © {new Date().getFullYear()} Feniks Studios. Tous droits réservés.
+        </p>
+        <Link
+          href="/mentions-legales"
+          className="hover:text-muted transition-colors"
+        >
           Mentions légales & confidentialité
         </Link>
       </div>
