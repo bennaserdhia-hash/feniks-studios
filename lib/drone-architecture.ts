@@ -8,37 +8,86 @@ export const references = {
   since: "2019",
 };
 
-// Communes survolées pour des programmes immobiliers (missions facturées).
+// Communes survolées pour des programmes immobiliers (missions facturées
+// ou dossiers de prises de vue livrés).
 export const communes = [
+  "Alfortville",
   "Antony",
   "Asnières-sur-Seine",
   "Aubervilliers",
+  "Bobigny",
   "Boulogne-Billancourt",
+  "Bussy-Saint-Georges",
   "Champigny-sur-Marne",
   "Chartres",
   "Châtillon",
   "Clamart",
   "Creil",
+  "Élancourt",
   "Fontenay-aux-Roses",
+  "Gennevilliers",
   "Gentilly",
   "Île de Ré",
   "Issy-les-Moulineaux",
   "Ivry-sur-Seine",
+  "Le Blanc-Mesnil",
   "Le Chesnay",
   "Le Perreux-sur-Marne",
   "Le Pré-Saint-Gervais",
   "Les Clayes-sous-Bois",
   "Maisons-Alfort",
-  "Montigny-le-Bretonneux",
+  "Montigny-lès-Cormeilles",
   "Nanterre",
   "Paris 12e",
+  "Pierrefitte-sur-Seine",
   "Rosny-sous-Bois",
   "Saint-Denis",
   "Saint-Germain-en-Laye",
   "Sartrouville",
   "Stains",
+  "Suresnes",
+  "Triel-sur-Seine",
   "Troyes",
   "Vanves",
+];
+
+// Films 3D publiés par les studios et promoteurs à partir de nos prises de
+// vue. Nous ne réalisons pas ces films : la carte montre notre image et
+// renvoie vers la publication d'origine.
+export const publishedFilms = [
+  {
+    city: "Gennevilliers",
+    year: "2024",
+    programme: "Programme ROOJ",
+    delivered:
+      "Photolocalisation 360° à 120 m, perspectives aérienne et terrasse, 90 images pour la maquette d’environnement.",
+    image: "/drone-architecture/gennevilliers-terrain.webp",
+    alt: "Terrain nu à Gennevilliers photographié au drone avant la construction",
+    film: "Teaser 3D « Le bâtiment prend vie »",
+    url: "https://www.youtube.com/watch?v=VCl4V3-oXNk",
+  },
+  {
+    city: "Nanterre",
+    year: "2023",
+    programme: "Beau Chemin, ancien hôpital Max Fourestier",
+    delivered:
+      "Prises de vue aériennes du site et vues depuis les futurs étages, face à La Défense.",
+    image: "/drone-architecture/nanterre-vue-etage.webp",
+    alt: "Vue depuis un futur étage à Nanterre, avec les tours de La Défense à l’horizon",
+    film: "Film du programme",
+    url: "https://vimeo.com/907528728",
+  },
+  {
+    city: "Boulogne-Billancourt",
+    year: "2022",
+    programme: "Programme Evodia",
+    delivered:
+      "Vol de jour et vol à l’heure bleue, tour Eiffel dans l’axe, pour le film et le teaser.",
+    image: "/drone-architecture/boulogne-nuit.webp",
+    alt: "Boulogne-Billancourt au drone à l’heure bleue, tour Eiffel illuminée au loin",
+    film: "Film du programme",
+    url: "https://vimeo.com/778562179",
+  },
 ];
 
 export const audiences = [
@@ -72,8 +121,8 @@ export const useCases = [
   {
     title: "Insertion 3D & photomontage",
     text: "Nous volons aux coordonnées, à l'altitude et au cap demandés pour que votre perspective s'insère sans retouche. Panoramas 360° sphériques sur demande.",
-    image: "/drone-architecture/contexte-panorama.webp",
-    alt: "Vue aérienne de contexte du quartier Jean Zay à Antony, avec le tissu pavillonnaire au premier plan",
+    image: "/drone-architecture/gennevilliers-360.webp",
+    alt: "Panorama 360° de photolocalisation pris à 120 mètres au-dessus de Gennevilliers",
   },
   {
     title: "Commercialisation",

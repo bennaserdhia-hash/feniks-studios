@@ -13,6 +13,7 @@ import {
   packs,
   options,
   faq,
+  publishedFilms,
 } from "@/lib/drone-architecture";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import StructuredData from "@/components/StructuredData";
@@ -262,6 +263,59 @@ export default async function DroneArchitecturePage() {
           </Link>
         </div>
       </section>
+
+      {/* Films publiés à partir de nos prises de vue */}
+      <Section>
+        <SectionHeading
+          eyebrow="Nos images, leurs films"
+          title={
+            <>
+              Du vol au film{" "}
+              <span className="text-gold">du promoteur.</span>
+            </>
+          }
+          intro="Pour l’insertion 3D, nous livrons la matière : le studio de perspectives y place le bâtiment et réalise le film de commercialisation. Voici des films publiés à partir de nos prises de vue."
+        />
+        <div className="grid md:grid-cols-3 gap-6 mt-12">
+          {publishedFilms.map((f) => (
+            <article key={f.url} className="reveal card overflow-hidden flex flex-col min-w-0">
+              <div className="relative aspect-[16/10]">
+                <Image
+                  src={f.image}
+                  alt={f.alt}
+                  fill
+                  sizes="(max-width:768px) 100vw, 380px"
+                  className="object-cover"
+                />
+                <span className="absolute top-3 left-3 text-[10px] uppercase tracking-widest font-display font-bold bg-black/60 text-white rounded-full px-3 py-1">
+                  Notre prise de vue
+                </span>
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <p className="eyebrow">
+                  {f.city} · {f.year}
+                </p>
+                <h3 className="font-display font-bold text-lg mt-2">
+                  {f.programme}
+                </h3>
+                <p className="text-muted text-sm leading-relaxed mt-2 flex-1">
+                  {f.delivered}
+                </p>
+                <a
+                  href={f.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 text-gold-ink font-semibold underline underline-offset-4"
+                >
+                  {f.film}
+                  <IconArrow className="h-4 w-4 -rotate-45" />
+                  <span className="sr-only"> (nouvel onglet)</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </Section>
 
       {/* Méthode */}
       <Section>
