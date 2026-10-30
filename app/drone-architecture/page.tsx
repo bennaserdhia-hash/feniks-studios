@@ -112,7 +112,7 @@ export default async function DroneArchitecturePage() {
             Depuis {references.since}, nous volons pour des promoteurs, des
             architectes et des studios de perspectives 3D en Île-de-France.
             Des images calées au mètre près pour vos insertions,{" "}
-            <span className="text-gold-ink">et assez belles pour vendre.</span>
+            <span className="text-gold-ink">faites pour vendre.</span>
           </p>
           <dl className="grid grid-cols-2 gap-6">
             {[
