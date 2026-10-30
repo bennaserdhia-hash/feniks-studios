@@ -57,6 +57,7 @@ export default function DroneSlideshow({
               fill
               priority={i === 0}
               sizes="100vw"
+              quality={90}
               className={`object-cover ${active ? "drone-drift" : ""}`}
               style={
                 active

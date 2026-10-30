@@ -137,8 +137,8 @@ export default async function DroneArchitecturePage() {
         src="/drone-architecture/boucle-drone.mp4"
         mobileSrc="/drone-architecture/boucle-drone-mobile.mp4"
         poster="/drone-architecture/boucle-drone-poster.webp"
-        label="Extraits de vols drone au-dessus du quartier Jean Zay à Antony et de Boulogne-Billancourt"
-        caption="Extraits de vols · Antony, Boulogne-Billancourt"
+        label="Extraits de vols drone à Saint-Denis, Antony, Boulogne-Billancourt, Toulouse et Sarcelles"
+        caption="Extraits de vols · Saint-Denis, Antony, Boulogne-Billancourt, Toulouse, Sarcelles"
       />
 
       {/* Pour qui */}
@@ -467,7 +467,7 @@ export default async function DroneArchitecturePage() {
       {/* CTA */}
       <section className="section-dark relative overflow-hidden">
         <Image
-          src="/drone-architecture/toitures-vegetalisees.webp"
+          src="/drone-architecture/slides/issy-panorama.webp"
           alt=""
           fill
           sizes="100vw"

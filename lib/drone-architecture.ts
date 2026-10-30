@@ -54,10 +54,10 @@ export const communes = [
 // Diaporama d'ouverture : une photo par programme, en 2400 px.
 export const heroSlides = [
   {
-    image: "/drone-architecture/hero-quartier-livre.webp",
-    alt: "Vue aérienne du quartier Jean Zay à Antony après livraison, immeubles blancs et toitures végétalisées",
-    place: "Quartier Jean Zay, Antony",
-    date: "mai 2024",
+    image: "/drone-architecture/slides/issy-panorama.webp",
+    alt: "Issy-les-Moulineaux vue du ciel, immeubles neufs et tours, la tour Eiffel et Montparnasse à l’horizon",
+    place: "Issy-les-Moulineaux",
+    date: "mai 2022",
   },
   {
     image: "/drone-architecture/slides/nanterre-la-defense.webp",
@@ -72,22 +72,28 @@ export const heroSlides = [
     date: "décembre 2022",
   },
   {
+    image: "/drone-architecture/slides/paris-12-terrasse.webp",
+    alt: "Vue depuis une terrasse du 12e arrondissement de Paris, toits et façades haussmanniennes au soleil couchant",
+    place: "Paris 12e",
+    date: "avril 2023",
+  },
+  {
     image: "/drone-architecture/slides/gennevilliers-terrain.webp",
     alt: "Terrain nu à Gennevilliers vu en plongée avant la construction du programme",
     place: "ROOJ, Gennevilliers",
     date: "août 2024",
   },
   {
-    image: "/drone-architecture/slides/issy-chantier.webp",
-    alt: "Immeubles en gros œuvre et grues à tour dans la ZAC Léon Blum à Issy-les-Moulineaux",
-    place: "ZAC Léon Blum, Issy-les-Moulineaux",
-    date: "décembre 2021",
+    image: "/drone-architecture/slides/chatillon-panorama.webp",
+    alt: "Châtillon vu du ciel, toitures végétalisées et pavillons, Paris à l’horizon",
+    place: "Châtillon",
+    date: "avril 2022",
   },
   {
-    image: "/drone-architecture/slides/antony-gros-oeuvre.webp",
-    alt: "Chantier du quartier Jean Zay à Antony en gros œuvre, grues à tour au-dessus des bâtiments",
+    image: "/drone-architecture/hero-quartier-livre.webp",
+    alt: "Vue aérienne du quartier Jean Zay à Antony après livraison, immeubles blancs et toitures végétalisées",
     place: "Quartier Jean Zay, Antony",
-    date: "mai 2023",
+    date: "mai 2024",
   },
 ];
 
@@ -178,8 +184,8 @@ export const useCases = [
   {
     title: "Commercialisation",
     text: "Le bâtiment dans son environnement : transports, parcs, vues dégagées. Les images qui rassurent un acquéreur avant la visite.",
-    image: "/drone-architecture/oblique-batiment.webp",
-    alt: "Vue oblique d'un immeuble neuf à Antony, toitures-terrasses et façades blanches",
+    image: "/drone-architecture/val-d-oise-residence.webp",
+    alt: "Résidence neuve en brique et enduit blanc au milieu des pavillons, dans le Val-d'Oise",
   },
   {
     title: "Suivi de chantier",
@@ -190,8 +196,8 @@ export const useCases = [
   {
     title: "Vues zénithales",
     text: "Vue à la verticale du site, utile pour lire un plan masse, des espaces verts ou l'organisation d'un îlot.",
-    image: "/drone-architecture/vue-zenithale.webp",
-    alt: "Vue zénithale d'un îlot de logements avec toitures végétalisées",
+    image: "/drone-architecture/chatillon-zenithale.webp",
+    alt: "Vue zénithale d'un carrefour et de pavillons à Châtillon",
   },
   {
     title: "Façades & toitures",
@@ -202,8 +208,8 @@ export const useCases = [
   {
     title: "Livraison & inauguration",
     text: "L'ouvrage terminé, ses cours et ses espaces partagés, avant l'arrivée des occupants ou le jour de l'inauguration.",
-    image: "/drone-architecture/cour-interieure.webp",
-    alt: "Cour intérieure paysagée d'un bâtiment livré à Antony",
+    image: "/drone-architecture/paris-12-rue-nuit.webp",
+    alt: "Immeuble neuf à l'angle d'une rue du 12e arrondissement de Paris, à la tombée de la nuit",
   },
 ];
 
