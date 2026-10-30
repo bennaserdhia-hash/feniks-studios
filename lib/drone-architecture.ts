@@ -1,0 +1,230 @@
+// Contenu de la landing page « Prise de vue aérienne pour l'architecture
+// et l'immobilier » (/drone-architecture).
+// Les chiffres de références proviennent des factures 2019-2025 : ne les
+// augmenter qu'avec de nouvelles missions facturées.
+
+export const references = {
+  missions: "40+",
+  since: "2019",
+};
+
+// Communes survolées pour des programmes immobiliers (missions facturées).
+export const communes = [
+  "Antony",
+  "Asnières-sur-Seine",
+  "Aubervilliers",
+  "Boulogne-Billancourt",
+  "Champigny-sur-Marne",
+  "Chartres",
+  "Châtillon",
+  "Clamart",
+  "Creil",
+  "Fontenay-aux-Roses",
+  "Gentilly",
+  "Île de Ré",
+  "Issy-les-Moulineaux",
+  "Ivry-sur-Seine",
+  "Le Chesnay",
+  "Le Perreux-sur-Marne",
+  "Le Pré-Saint-Gervais",
+  "Les Clayes-sous-Bois",
+  "Maisons-Alfort",
+  "Montigny-le-Bretonneux",
+  "Nanterre",
+  "Paris 12e",
+  "Rosny-sous-Bois",
+  "Saint-Denis",
+  "Saint-Germain-en-Laye",
+  "Sartrouville",
+  "Stains",
+  "Troyes",
+  "Vanves",
+];
+
+export const audiences = [
+  {
+    title: "Promoteurs immobiliers",
+    text: "Visuels de commercialisation, vues depuis les étages, suivi de chantier pour vos acquéreurs.",
+  },
+  {
+    title: "Architectes & urbanistes",
+    text: "Vues de contexte pour concours et permis, insertion paysagère, documentation de l'ouvrage livré.",
+  },
+  {
+    title: "Studios de perspectives 3D",
+    text: "Prises de vue géolocalisées et calées en altitude, prêtes pour l'insertion de vos rendus.",
+  },
+  {
+    title: "Constructeurs & entreprises générales",
+    text: "Avancement du gros œuvre, reporting maître d'ouvrage, images de référence pour vos appels d'offres.",
+  },
+  {
+    title: "Collectivités & aménageurs",
+    text: "Projets urbains, ZAC et renouvellement de quartier racontés avant, pendant et après.",
+  },
+  {
+    title: "Bailleurs sociaux",
+    text: "Réhabilitations, démolitions et livraisons documentées pour vos habitants et partenaires.",
+  },
+];
+
+export const useCases = [
+  {
+    title: "Insertion 3D & photomontage",
+    text: "Nous volons aux coordonnées, à l'altitude et au cap demandés pour que votre perspective s'insère sans retouche. Panoramas 360° sphériques sur demande.",
+    image: "/drone-architecture/contexte-panorama.webp",
+    alt: "Vue aérienne de contexte du quartier Jean Zay à Antony, avec le tissu pavillonnaire au premier plan",
+  },
+  {
+    title: "Commercialisation",
+    text: "Le bâtiment dans son environnement : transports, parcs, vues dégagées. Les images qui rassurent un acquéreur avant la visite.",
+    image: "/drone-architecture/oblique-batiment.webp",
+    alt: "Vue oblique d'un immeuble neuf à Antony, toitures-terrasses et façades blanches",
+  },
+  {
+    title: "Suivi de chantier",
+    text: "Mêmes points de vue à chaque passage, pour comparer les étapes. Un mini-clip monté par passage pour vos réseaux et vos réservataires.",
+    image: "/drone-architecture/chantier-grues.webp",
+    alt: "Chantier en gros œuvre avec grues à tour, quartier Jean Zay à Antony en mai 2023",
+  },
+  {
+    title: "Vues zénithales",
+    text: "Vue à la verticale du site, utile pour lire un plan masse, des espaces verts ou l'organisation d'un îlot.",
+    image: "/drone-architecture/vue-zenithale.webp",
+    alt: "Vue zénithale d'un îlot de logements avec toitures végétalisées",
+  },
+  {
+    title: "Façades & toitures",
+    text: "Plans rapprochés sur les matériaux, les balcons, les toitures végétalisées ou photovoltaïques, sans nacelle ni échafaudage.",
+    image: "/drone-architecture/facade-detail.webp",
+    alt: "Détail de façade en pierre claire avec garde-corps vitrés, pris en drone",
+  },
+  {
+    title: "Livraison & inauguration",
+    text: "L'ouvrage terminé, ses cours et ses espaces partagés, avant l'arrivée des occupants ou le jour de l'inauguration.",
+    image: "/drone-architecture/cour-interieure.webp",
+    alt: "Cour intérieure paysagée d'un bâtiment livré à Antony",
+  },
+];
+
+export const timeline = [
+  {
+    date: "Mai 2023",
+    label: "Gros œuvre",
+    image: "/drone-architecture/suivi-01-mai-2023.webp",
+  },
+  {
+    date: "Sept. 2023",
+    label: "Hors d'eau",
+    image: "/drone-architecture/suivi-02-sept-2023.webp",
+  },
+  {
+    date: "Fév. 2024",
+    label: "Rooftops & façades",
+    image: "/drone-architecture/suivi-03-fev-2024.webp",
+  },
+  {
+    date: "Mai 2024",
+    label: "Quartier livré",
+    image: "/drone-architecture/suivi-04-mai-2024.webp",
+  },
+];
+
+export const steps = [
+  {
+    title: "Brief et points de vue",
+    text: "Vous nous transmettez l'adresse, le plan masse ou les vues souhaitées. Nous préparons un plan de vol géolocalisé : position, altitude et orientation de chaque prise.",
+  },
+  {
+    title: "Démarches et autorisations",
+    text: "Nous prenons en charge les déclarations préalables auprès de la DGAC et les autorisations du site. Une lettre de mission du maître d'ouvrage suffit de votre côté.",
+  },
+  {
+    title: "Vol au bon créneau",
+    text: "Nous calons la date sur la météo et la lumière. Si le ciel ne permet pas un rendu à la hauteur, le vol est reporté sans frais.",
+  },
+  {
+    title: "Sélection et retouche",
+    text: "Tri, redressement des verticales, colorimétrie homogène, assemblage des panoramas 360°. Les clips sont montés et habillés à vos couleurs.",
+  },
+  {
+    title: "Livraison exploitable",
+    text: "JPG haute définition, RAW (DNG) pour vos graphistes, vidéo 4K, et les coordonnées GPS et altitudes de chaque prise pour l'insertion 3D.",
+  },
+];
+
+export const packs = [
+  {
+    name: "Point de vue",
+    price: 700,
+    unit: "passage",
+    pitch: "Pour l'insertion 3D, le photomontage ou une vue de contexte.",
+    features: [
+      "1 vol, jusqu'à 4 points de vue calés",
+      "Photos HD + RAW, panorama 360° si besoin",
+      "Coordonnées GPS et altitude de chaque prise",
+      "Démarches DGAC incluses",
+    ],
+  },
+  {
+    name: "Commercialisation",
+    price: 1450,
+    unit: "programme",
+    highlight: true,
+    pitch: "Pour vendre un programme : l'aérien, le sol et un clip prêt à diffuser.",
+    features: [
+      "Demi-journée de prises de vue aériennes et au sol",
+      "25 photos retouchées",
+      "1 clip de 30 à 45 s, en 16:9 et en vertical",
+      "Rushs vidéo 4K livrés",
+      "Démarches DGAC incluses",
+    ],
+  },
+  {
+    name: "Suivi de chantier",
+    price: 1450,
+    unit: "passage",
+    pitch: "Pour raconter un chantier, de la première grue à la livraison.",
+    features: [
+      "Mêmes points de vue à chaque passage",
+      "Photos aériennes et au sol",
+      "1 mini-clip monté par passage",
+      "Tarif dès 4 passages planifiés",
+      "Démarches DGAC incluses",
+    ],
+  },
+];
+
+export const options = [
+  { label: "Reportage photo au sol complémentaire", price: "350 € HT" },
+  { label: "Vidéo aérienne complémentaire", price: "250 € HT" },
+  { label: "Passage supplémentaire le même jour", price: "350 € HT" },
+  { label: "Déplacement hors Île-de-France", price: "Sur devis" },
+];
+
+export const faq = [
+  {
+    q: "Pouvez-vous voler en ville, y compris à Paris ?",
+    a: "Oui, la plupart des missions que nous réalisons ont lieu en zone urbaine dense, en Île-de-France et à Paris. Les vols y sont soumis à déclaration ou autorisation préalable : nous vérifions la faisabilité dès le brief et nous nous chargeons des démarches.",
+  },
+  {
+    q: "Quel délai prévoir avant le vol ?",
+    a: "Comptez quelques jours ouvrés pour les démarches, davantage dans les zones les plus réglementées. Indiquez-nous votre échéance (dépôt de permis, lancement commercial, inauguration) : nous construisons le planning à partir d'elle.",
+  },
+  {
+    q: "Que se passe-t-il s'il pleut le jour prévu ?",
+    a: "Nous reportons le vol à la prochaine fenêtre favorable, sans frais. Un ciel gris ne donne pas des images de commercialisation, et nous préférons attendre.",
+  },
+  {
+    q: "Les images sont-elles utilisables pour une insertion 3D ?",
+    a: "C'est l'une de nos spécialités : nous respectons les coordonnées, les altitudes et les focales demandées, et nous livrons les métadonnées de chaque prise ainsi que les fichiers RAW.",
+  },
+  {
+    q: "Puis-je utiliser les images sur mes supports commerciaux ?",
+    a: "Oui. Les droits d'utilisation pour votre communication (site, brochures, panneaux de chantier, réseaux sociaux) sont inclus et précisés dans le devis.",
+  },
+  {
+    q: "Travaillez-vous avec les studios de perspectives et les agences ?",
+    a: "Oui, une grande partie de nos vols est commandée par des studios de perspectives 3D. Pour un volume régulier, nous proposons des conditions dédiées.",
+  },
+];
