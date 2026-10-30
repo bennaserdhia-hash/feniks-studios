@@ -18,6 +18,7 @@ import {
 } from "@/lib/drone-architecture";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import DroneSlideshow from "@/components/DroneSlideshow";
+import DroneLoop from "@/components/DroneLoop";
 import StructuredData from "@/components/StructuredData";
 import WorkCard from "@/components/WorkCard";
 import { Section, SectionHeading } from "@/components/Section";
@@ -132,8 +133,16 @@ export default async function DroneArchitecturePage() {
         </div>
       </section>
 
+      <DroneLoop
+        src="/drone-architecture/boucle-drone.mp4"
+        mobileSrc="/drone-architecture/boucle-drone-mobile.mp4"
+        poster="/drone-architecture/boucle-drone-poster.webp"
+        label="Extraits de vols drone au-dessus du quartier Jean Zay à Antony et de Boulogne-Billancourt"
+        caption="Extraits de vols · Antony, Boulogne-Billancourt"
+      />
+
       {/* Pour qui */}
-      <Section className="border-y border-border bg-surface/40">
+      <Section className="border-b border-border bg-surface/40">
         <SectionHeading
           eyebrow="Pour qui"
           title="Ceux qui construisent la ville."
