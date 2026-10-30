@@ -91,6 +91,20 @@ export function IconPlay(props: IconProps) {
     </svg>
   );
 }
+export function IconPause(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M9 5v14M15 5v14" />
+    </svg>
+  );
+}
+export function IconResume(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M8 5l11 7-11 7V5Z" />
+    </svg>
+  );
+}
 export function IconTv(props: IconProps) {
   return (
     <svg {...base} {...props}>

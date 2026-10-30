@@ -51,6 +51,46 @@ export const communes = [
   "Vanves",
 ];
 
+// Diaporama d'ouverture : une photo par programme, en 2400 px.
+export const heroSlides = [
+  {
+    image: "/drone-architecture/hero-quartier-livre.webp",
+    alt: "Vue aérienne du quartier Jean Zay à Antony après livraison, immeubles blancs et toitures végétalisées",
+    place: "Quartier Jean Zay, Antony",
+    date: "mai 2024",
+  },
+  {
+    image: "/drone-architecture/slides/nanterre-la-defense.webp",
+    alt: "Vue depuis un futur étage du programme Beau Chemin à Nanterre, les tours de La Défense à l’horizon",
+    place: "Beau Chemin, Nanterre",
+    date: "janvier 2024",
+  },
+  {
+    image: "/drone-architecture/slides/boulogne-heure-bleue.webp",
+    alt: "Boulogne-Billancourt au drone à l’heure bleue, la tour Eiffel illuminée au loin",
+    place: "Evodia, Boulogne-Billancourt",
+    date: "décembre 2022",
+  },
+  {
+    image: "/drone-architecture/slides/gennevilliers-terrain.webp",
+    alt: "Terrain nu à Gennevilliers vu en plongée avant la construction du programme",
+    place: "ROOJ, Gennevilliers",
+    date: "août 2024",
+  },
+  {
+    image: "/drone-architecture/slides/issy-chantier.webp",
+    alt: "Immeubles en gros œuvre et grues à tour dans la ZAC Léon Blum à Issy-les-Moulineaux",
+    place: "ZAC Léon Blum, Issy-les-Moulineaux",
+    date: "décembre 2021",
+  },
+  {
+    image: "/drone-architecture/slides/antony-gros-oeuvre.webp",
+    alt: "Chantier du quartier Jean Zay à Antony en gros œuvre, grues à tour au-dessus des bâtiments",
+    place: "Quartier Jean Zay, Antony",
+    date: "mai 2023",
+  },
+];
+
 // Films 3D publiés par les studios et promoteurs à partir de nos prises de
 // vue. Nous ne réalisons pas ces films : la carte montre notre image et
 // renvoie vers la publication d'origine.
@@ -87,6 +127,17 @@ export const publishedFilms = [
     alt: "Boulogne-Billancourt au drone à l’heure bleue, tour Eiffel illuminée au loin",
     film: "Film du programme",
     url: "https://vimeo.com/778562179",
+  },
+  {
+    city: "Issy-les-Moulineaux",
+    year: "2024",
+    programme: "ZAC Léon Blum, îlots A3-A4",
+    delivered:
+      "Panoramas 360° au-dessus du chantier en 2021, puis vues depuis les futurs étages, du R+6 au R+10.",
+    image: "/drone-architecture/issy-chantier.webp",
+    alt: "Immeubles en gros œuvre et grues à tour dans la ZAC Léon Blum à Issy-les-Moulineaux",
+    film: "Film du programme",
+    url: "https://vimeo.com/913688892",
   },
 ];
 

@@ -14,12 +14,14 @@ import {
   options,
   faq,
   publishedFilms,
+  heroSlides,
 } from "@/lib/drone-architecture";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import DroneSlideshow from "@/components/DroneSlideshow";
 import StructuredData from "@/components/StructuredData";
 import WorkCard from "@/components/WorkCard";
 import { Section, SectionHeading } from "@/components/Section";
-import { IconArrow, IconCheck, IconMapPin } from "@/components/Icons";
+import { IconArrow, IconCheck } from "@/components/Icons";
 
 export const revalidate = 60;
 
@@ -84,71 +86,41 @@ export default async function DroneArchitecturePage() {
         }}
       />
 
-      {/* Hero */}
-      <section className="relative pt-10 md:pt-14 pb-16 md:pb-24 overflow-hidden">
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(90% 80% at 50% -10%, rgba(222,178,103,0.16), transparent 55%)",
-          }}
-        />
-        <div className="container-x">
-          <div className="grid lg:grid-cols-[1.25fr_1fr] gap-8 lg:gap-14 items-end">
-            <div>
-              <p className="eyebrow mb-5">
-                Prise de vue aérienne · Architecture & immobilier
-              </p>
-              <h1 className="font-display font-extrabold tracking-tight leading-[1.04] text-[clamp(2.3rem,5.6vw,4.4rem)]">
-                Vos programmes, vus du ciel.{" "}
-                <span className="text-gradient-gold">
-                  Du terrain nu à la livraison.
-                </span>
-              </h1>
-            </div>
-            <div>
-              <p className="text-lg text-muted leading-relaxed">
-                Depuis {references.since}, nous volons pour des promoteurs,
-                des architectes et des studios de perspectives 3D en
-                Île-de-France. Des images calées au mètre près pour vos
-                insertions, et assez belles pour vendre.
-              </p>
-              <div className="flex flex-wrap gap-4 mt-7">
-                <Link href={QUOTE} className="btn btn-gold">
-                  Demander un devis <IconArrow className="h-4 w-4" />
-                </Link>
-                <a href="#tarifs" className="btn btn-outline">
-                  Dès {formatPrice(packs[0].price)} HT
-                </a>
-              </div>
-            </div>
-          </div>
+      {/* Hero : diaporama plein cadre */}
+      <DroneSlideshow slides={heroSlides}>
+        <h1 className="max-w-4xl font-display font-extrabold tracking-tight leading-[1.04] text-balance text-[clamp(2.3rem,6vw,4.8rem)]">
+          Vos programmes, vus du ciel.{" "}
+          <span className="text-gold">Du terrain nu à la livraison.</span>
+        </h1>
+        <div className="flex flex-wrap gap-3 mt-8">
+          <Link href={QUOTE} className="btn btn-gold">
+            Demander un devis <IconArrow className="h-4 w-4" />
+          </Link>
+          <a
+            href="#tarifs"
+            className="btn border border-white/50 text-white hover:border-gold hover:text-gold"
+          >
+            Dès {formatPrice(packs[0].price)} HT
+          </a>
+        </div>
+      </DroneSlideshow>
 
-          <figure className="relative mt-12 md:mt-16 aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden border border-border">
-            <Image
-              src="/drone-architecture/hero-quartier-livre.webp"
-              alt="Vue aérienne du quartier Jean Zay à Antony après livraison, immeubles blancs et toitures végétalisées"
-              fill
-              priority
-              sizes="(max-width:1200px) 100vw, 1150px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-            <figcaption className="absolute left-5 bottom-5 md:left-8 md:bottom-7 text-white/85 text-sm flex items-center gap-2">
-              <IconMapPin className="h-4 w-4 text-gold" />
-              Quartier Jean Zay, Antony — mai 2024
-            </figcaption>
-          </figure>
-
-          <dl className="grid grid-cols-3 gap-4 md:gap-8 mt-10 text-center md:text-left">
+      <section className="py-14 md:py-20">
+        <div className="container-x grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-end">
+          <p className="text-xl md:text-2xl leading-relaxed text-foreground max-w-[38ch] text-pretty">
+            Depuis {references.since}, nous volons pour des promoteurs, des
+            architectes et des studios de perspectives 3D en Île-de-France.
+            Des images calées au mètre près pour vos insertions,{" "}
+            <span className="text-gold-ink">et assez belles pour vendre.</span>
+          </p>
+          <dl className="grid grid-cols-2 gap-6">
             {[
               [references.missions, "missions aériennes pour l’immobilier"],
               [String(communes.length), "communes survolées"],
-              ["100 %", "démarches DGAC prises en charge"],
             ].map(([value, label]) => (
               <div key={label} className="border-t border-border pt-5">
                 <dt className="sr-only">{label}</dt>
-                <dd className="font-display font-black text-3xl md:text-5xl text-foreground">
+                <dd className="font-display font-black text-4xl md:text-5xl text-foreground">
                   {value}
                 </dd>
                 <dd className="text-sm md:text-base text-muted mt-2 leading-snug">
@@ -276,7 +248,7 @@ export default async function DroneArchitecturePage() {
           }
           intro="Pour l’insertion 3D, nous livrons la matière : le studio de perspectives y place le bâtiment et réalise le film de commercialisation. Voici des films publiés à partir de nos prises de vue."
         />
-        <div className="grid md:grid-cols-3 gap-6 mt-12">
+        <div className="grid md:grid-cols-2 gap-6 mt-12">
           {publishedFilms.map((f) => (
             <article key={f.url} className="reveal card overflow-hidden flex flex-col min-w-0">
               <div className="relative aspect-[16/10]">
