@@ -133,21 +133,23 @@ export default async function DroneArchitecturePage() {
         </div>
       </section>
 
-      <DroneLoop
-        src="/drone-architecture/boucle-drone.mp4"
-        mobileSrc="/drone-architecture/boucle-drone-mobile.mp4"
-        poster="/drone-architecture/boucle-drone-poster.webp"
-        label="Extraits de vols drone à Saint-Denis, Antony, Boulogne-Billancourt, Toulouse et Sarcelles"
-        caption="Extraits de vols · Saint-Denis, Antony, Boulogne-Billancourt, Toulouse, Sarcelles"
-      />
-
       {/* Pour qui */}
-      <Section className="border-b border-border bg-surface/40">
-        <SectionHeading
-          eyebrow="Pour qui"
-          title="Ceux qui construisent la ville."
-          intro="Chaque métier attend autre chose d’une vue aérienne. Nous adaptons les points de vue, les livrables et le calendrier à votre usage."
-        />
+      <Section className="border-y border-border bg-surface/40">
+        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-14 items-center">
+          <SectionHeading
+            eyebrow="Pour qui"
+            title="Ceux qui construisent la ville."
+            intro="Chaque métier attend autre chose d’une vue aérienne. Nous adaptons les points de vue, les livrables et le calendrier à votre usage."
+          />
+          <DroneLoop
+            src="/drone-architecture/boucle-drone.mp4"
+            mobileSrc="/drone-architecture/boucle-drone-mobile.mp4"
+            poster="/drone-architecture/boucle-drone-poster.webp"
+            label="Extraits de vols drone à Saint-Denis, Antony, Boulogne-Billancourt, Toulouse et Sarcelles"
+            caption="Saint-Denis · Antony · Boulogne · Toulouse · Sarcelles"
+            className="reveal aspect-video rounded-2xl border border-border shadow-[0_24px_48px_-28px_rgba(23,21,15,0.45)]"
+          />
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
           {audiences.map((a) => (
             <div key={a.title} className="reveal card p-7">

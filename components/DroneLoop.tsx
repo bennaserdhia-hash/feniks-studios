@@ -10,6 +10,7 @@ type Props = {
   poster: string;
   label: string;
   caption: string;
+  className?: string;
 };
 
 // Boucle vidéo d'ambiance, muette. Chargée à l'approche de l'écran, mise en
@@ -20,6 +21,7 @@ export default function DroneLoop({
   poster,
   label,
   caption,
+  className = "",
 }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const player = useRef<HTMLVideoElement>(null);
@@ -56,13 +58,13 @@ export default function DroneLoop({
   return (
     <div
       ref={host}
-      className="relative isolate overflow-hidden bg-ink h-[62svh] min-h-[360px] max-h-[720px]"
+      className={`relative isolate overflow-hidden bg-ink ${className}`}
     >
       <Image
         src={poster}
         alt=""
         fill
-        sizes="100vw"
+        sizes="(max-width: 1024px) 100vw, 680px"
         className="-z-20 object-cover"
       />
       {loaded && (
@@ -81,10 +83,10 @@ export default function DroneLoop({
           <source src={src} type="video/mp4" />
         </video>
       )}
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-black/70 to-transparent" />
 
-      <div className="container-x flex h-full items-end justify-between gap-4 pb-6 md:pb-8">
-        <p className="text-sm text-white/85">{caption}</p>
+      <div className="flex h-full items-end justify-between gap-4 p-4 md:p-5">
+        <p className="text-xs md:text-sm text-white/85 leading-snug">{caption}</p>
         {loaded && (
           <button
             type="button"
