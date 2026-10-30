@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   },
   experimental: { serverActions: { bodySizeLimit: "4mb" } },
   images: {
+    // 90 : diaporama plein écran de /drone-architecture.
+    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: "https",

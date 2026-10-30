@@ -38,7 +38,9 @@ export default function QuoteForm() {
     const type =
       requested === "ia"
         ? projectTypes.find((t) => t.startsWith("Production IA"))
-        : undefined;
+        : requested === "drone"
+          ? projectTypes.find((t) => t.startsWith("Prises de vues Drone"))
+          : undefined;
     if (type)
       queueMicrotask(() =>
         setSelected((s) => (s.includes(type) ? s : [...s, type])),

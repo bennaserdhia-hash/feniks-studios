@@ -274,6 +274,29 @@ body {
   transition: opacity 0.25s ease;
 }
 
+/* Diaporama drone : léger recul de caméra et barre de progression */
+@keyframes drone-drift {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes drone-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drone-drift {
+    animation: none !important;
+  }
+}
+
 /* Marquee */
 @keyframes marquee {
   from {
