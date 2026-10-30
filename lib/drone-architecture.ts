@@ -54,6 +54,12 @@ export const communes = [
 // Diaporama d'ouverture : une photo par programme, en 2400 px.
 export const heroSlides = [
   {
+    image: "/drone-architecture/slides/boulogne-heure-bleue.webp",
+    alt: "Boulogne-Billancourt au drone à l’heure bleue, la tour Eiffel illuminée au loin",
+    place: "Evodia, Boulogne-Billancourt",
+    date: "décembre 2022",
+  },
+  {
     image: "/drone-architecture/slides/issy-panorama.webp",
     alt: "Issy-les-Moulineaux vue du ciel, immeubles neufs et tours, la tour Eiffel et Montparnasse à l’horizon",
     place: "Issy-les-Moulineaux",
@@ -64,12 +70,6 @@ export const heroSlides = [
     alt: "Vue depuis un futur étage du programme Beau Chemin à Nanterre, les tours de La Défense à l’horizon",
     place: "Beau Chemin, Nanterre",
     date: "janvier 2024",
-  },
-  {
-    image: "/drone-architecture/slides/boulogne-heure-bleue.webp",
-    alt: "Boulogne-Billancourt au drone à l’heure bleue, la tour Eiffel illuminée au loin",
-    place: "Evodia, Boulogne-Billancourt",
-    date: "décembre 2022",
   },
   {
     image: "/drone-architecture/slides/paris-12-terrasse.webp",
