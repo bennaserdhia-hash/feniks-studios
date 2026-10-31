@@ -145,8 +145,8 @@ export default async function DroneArchitecturePage() {
             src="/drone-architecture/boucle-drone.mp4"
             mobileSrc="/drone-architecture/boucle-drone-mobile.mp4"
             poster="/drone-architecture/boucle-drone-poster.webp"
-            label="Extraits de vols drone à Saint-Denis, Antony, Boulogne-Billancourt, Toulouse et Sarcelles"
-            caption="Saint-Denis · Antony · Boulogne · Toulouse · Sarcelles"
+            label="Extraits de vols drone à Saint-Denis, Antony, Boulogne-Billancourt et Toulouse"
+            caption="Saint-Denis · Antony · Boulogne · Toulouse"
             className="reveal aspect-video rounded-2xl border border-border shadow-[0_24px_48px_-28px_rgba(23,21,15,0.45)]"
           />
         </div>
