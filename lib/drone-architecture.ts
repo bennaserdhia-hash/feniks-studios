@@ -215,22 +215,22 @@ export const useCases = [
 
 export const timeline = [
   {
-    date: "Mai 2023",
+    label: "Terrain vierge",
+    image: "/drone-architecture/suivi-00-janv-2021.webp",
+  },
+  {
     label: "Gros œuvre",
     image: "/drone-architecture/suivi-01-mai-2023.webp",
   },
   {
-    date: "Sept. 2023",
     label: "Hors d'eau",
     image: "/drone-architecture/suivi-02-sept-2023.webp",
   },
   {
-    date: "Fév. 2024",
     label: "Rooftops & façades",
     image: "/drone-architecture/suivi-03-fev-2024.webp",
   },
   {
-    date: "Mai 2024",
     label: "Quartier livré",
     image: "/drone-architecture/suivi-04-mai-2024.webp",
   },

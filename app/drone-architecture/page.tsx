@@ -203,37 +203,40 @@ export default async function DroneArchitecturePage() {
             <div>
               <p className="eyebrow mb-4">Étude de cas · Antony (92)</p>
               <h2 className="font-display text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
-                Un quartier, <span className="text-gradient-gold">un an,</span>{" "}
-                quatre passages.
+                Un quartier,{" "}
+                <span className="text-gradient-gold whitespace-nowrap">
+                  cinq passages.
+                </span>
               </h2>
             </div>
             <p className="text-muted text-lg leading-relaxed">
-              Pour Sefri-Cime et Meryllim, nous avons suivi la construction du
-              quartier Jean Zay de mai 2023 à mai 2024. À chaque passage :
-              photos aériennes et au sol, mini-clips pour l’« offre du moment »
-              et les rooftops, livrés pour la commercialisation. Antony, nous
-              la connaissons bien : nous y volons pour l’immobilier depuis
-              2021.
+              Du terrain vierge au quartier livré, nous avons photographié
+              chaque étape du quartier Jean Zay. Pour Sefri-Cime et Meryllim,
+              à chaque passage du chantier : photos aériennes et au sol,
+              mini-clips pour l’« offre du moment » et les rooftops, livrés
+              pour la commercialisation.
             </p>
           </div>
 
-          <ol className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mt-12">
+          <ol className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 mt-12">
             {timeline.map((t, i) => (
-              <li key={t.date} className="reveal">
+              <li
+                key={t.label}
+                className={`reveal ${i === 0 ? "col-span-2 lg:col-span-1" : ""}`}
+              >
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-white/10">
                   <Image
                     src={t.image}
-                    alt={`Quartier Jean Zay à Antony, ${t.date.toLowerCase()} : ${t.label.toLowerCase()}`}
+                    alt={`Quartier Jean Zay à Antony, étape ${i + 1} : ${t.label.toLowerCase()}`}
                     fill
-                    sizes="(max-width:1024px) 50vw, 280px"
+                    sizes={i === 0 ? "(max-width:1024px) 100vw, 230px" : "(max-width:1024px) 50vw, 230px"}
                     className="object-cover"
                   />
                   <span className="absolute top-3 left-3 font-display font-bold text-xs tracking-widest uppercase bg-black/60 text-gold rounded-full px-3 py-1">
                     0{i + 1}
                   </span>
                 </div>
-                <p className="font-display font-bold mt-4">{t.date}</p>
-                <p className="text-muted text-sm">{t.label}</p>
+                <p className="font-display font-bold mt-4">{t.label}</p>
               </li>
             ))}
           </ol>
