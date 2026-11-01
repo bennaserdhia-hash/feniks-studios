@@ -262,8 +262,6 @@ export const steps = [
 export const packs = [
   {
     name: "Point de vue",
-    price: 700,
-    unit: "passage",
     pitch: "Pour l'insertion 3D, le photomontage ou une vue de contexte.",
     features: [
       "1 vol, jusqu'à 4 points de vue calés",
@@ -274,8 +272,6 @@ export const packs = [
   },
   {
     name: "Commercialisation",
-    price: 1450,
-    unit: "programme",
     highlight: true,
     pitch: "Pour vendre un programme : l'aérien, le sol et un clip prêt à diffuser.",
     features: [
@@ -288,24 +284,22 @@ export const packs = [
   },
   {
     name: "Suivi de chantier",
-    price: 1450,
-    unit: "passage",
     pitch: "Pour raconter un chantier, de la première grue à la livraison.",
     features: [
       "Mêmes points de vue à chaque passage",
       "Photos aériennes et au sol",
       "1 mini-clip monté par passage",
-      "Tarif dès 4 passages planifiés",
+      "Calendrier des passages calé sur le chantier",
       "Démarches DGAC incluses",
     ],
   },
 ];
 
 export const options = [
-  { label: "Reportage photo au sol complémentaire", price: "350 € HT" },
-  { label: "Vidéo aérienne complémentaire", price: "250 € HT" },
-  { label: "Passage supplémentaire le même jour", price: "350 € HT" },
-  { label: "Déplacement hors Île-de-France", price: "Sur devis" },
+  "Reportage photo au sol complémentaire",
+  "Vidéo aérienne complémentaire",
+  "Passage supplémentaire le même jour",
+  "Déplacement hors Île-de-France",
 ];
 
 export const faq = [
