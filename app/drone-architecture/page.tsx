@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { pageMetadata, absoluteUrl, ORGANIZATION_ID } from "@/lib/seo";
-import { formatPrice } from "@/lib/content";
 import { getPublicVideos } from "@/lib/portfolio";
 import {
   references,
@@ -32,7 +31,7 @@ const QUOTE = "/contact?projet=drone";
 export const metadata = pageMetadata(
   PATH,
   "Prise de vue drone pour l’architecture et l’immobilier",
-  "Photos et vidéos aériennes pour promoteurs, architectes et studios 3D : insertion, commercialisation, suivi de chantier. Plus de 40 missions en Île-de-France, démarches DGAC incluses. Dès 700 € HT.",
+  "Photos et vidéos aériennes pour promoteurs, architectes et studios 3D : insertion, commercialisation, suivi de chantier. Plus de 40 missions en Île-de-France, démarches DGAC incluses. Devis après étude de votre projet.",
   "/drone-architecture/og.jpg",
 );
 
@@ -70,8 +69,7 @@ export default async function DroneArchitecturePage() {
           offers: packs.map((p) => ({
             "@type": "Offer",
             name: p.name,
-            price: p.price,
-            priceCurrency: "EUR",
+            description: p.pitch,
           })),
         }}
       />
@@ -98,10 +96,10 @@ export default async function DroneArchitecturePage() {
             Demander un devis <IconArrow className="h-4 w-4" />
           </Link>
           <a
-            href="#tarifs"
+            href="#formules"
             className="btn border border-white/50 text-white hover:border-gold hover:text-gold"
           >
-            Dès {formatPrice(packs[0].price)} HT
+            Voir les formules
           </a>
         </div>
       </DroneSlideshow>
@@ -329,12 +327,12 @@ export default async function DroneArchitecturePage() {
         </div>
       </Section>
 
-      {/* Tarifs */}
-      <Section id="tarifs" className="border-y border-border bg-surface/40 scroll-mt-20">
+      {/* Formules */}
+      <Section id="formules" className="border-y border-border bg-surface/40 scroll-mt-20">
         <SectionHeading
-          eyebrow="Tarifs"
-          title="Trois formules, un devis précis."
-          intro="Prix de départ hors taxes, démarches de vol comprises, déplacements inclus en Île-de-France. Le devis final tient compte du nombre de points de vue et des contraintes du site."
+          eyebrow="Formules"
+          title="Trois formules, un devis sur mesure."
+          intro="Chaque site a ses contraintes de vol, chaque programme ses points de vue. Nous étudions votre projet avant de chiffrer : le devis précise le nombre de passages, les livrables et les droits d’utilisation."
           center
         />
         <div className="grid md:grid-cols-3 gap-5 mt-12">
@@ -355,15 +353,6 @@ export default async function DroneArchitecturePage() {
               </div>
               <p className="text-muted text-sm mt-2 leading-relaxed">
                 {p.pitch}
-              </p>
-              <p className="mt-6">
-                <span className="text-xs text-muted-2 uppercase tracking-wide block">
-                  À partir de
-                </span>
-                <span className="font-display text-4xl font-black">
-                  {formatPrice(p.price)}
-                </span>
-                <span className="text-muted font-semibold"> HT / {p.unit}</span>
               </p>
               <ul className="space-y-3 mt-6 pt-6 border-t border-border flex-1">
                 {p.features.map((f) => (
@@ -387,15 +376,12 @@ export default async function DroneArchitecturePage() {
 
         <div className="reveal max-w-3xl mx-auto mt-12">
           <h3 className="font-display font-bold text-lg text-center">
-            Options
+            En option, sur devis
           </h3>
           <ul className="mt-5 divide-y divide-border border-y border-border">
             {options.map((o) => (
-              <li key={o.label} className="flex justify-between gap-4 py-3">
-                <span className="text-muted">{o.label}</span>
-                <span className="font-semibold whitespace-nowrap">
-                  {o.price}
-                </span>
+              <li key={o} className="py-3 text-muted">
+                {o}
               </li>
             ))}
           </ul>
